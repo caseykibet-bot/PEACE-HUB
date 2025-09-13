@@ -18,7 +18,7 @@
             flex-direction: column;
             min-height: 100vh;
             overflow-x: hidden;
-            padding: 20px;
+            padding: 15px; /* Reduced padding */
             position: relative;
         }
         #particle-canvas {
@@ -57,7 +57,7 @@
         /* Mini Audio Player Styles - 50% smaller, centered at bottom */
         #audio-player {
             position: relative;
-            margin: 30px auto;
+            margin: 40px auto; /* Increased margin to push it down further */
             width: 250px;
             background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(15px);
@@ -280,7 +280,7 @@
             text-align: center;
             z-index: 5;
             width: 100%;
-            padding: 20px 0 10px;
+            padding: 15px 0 10px; /* Reduced padding */
         }
         
         /* Layout adjustments */
@@ -291,14 +291,14 @@
             width: 100%;
             max-width: 500px;
             margin: 0 auto;
-            min-height: calc(100vh - 40px); /* Account for body padding */
+            min-height: calc(100vh - 30px); /* Adjusted for reduced body padding */
             justify-content: space-between;
         }
         
         .back-link {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 15px; /* Reduced from 20px */
+            left: 15px; /* Reduced from 20px */
             z-index: 20;
             display: flex;
             align-items: center;
@@ -308,7 +308,13 @@
         
         .main-content {
             width: 100%;
+            margin-top: 20px; /* Added to push content down */
             margin-bottom: 30px;
+        }
+        
+        /* Adjusted pairing card spacing */
+        #pairing-card {
+            margin-top: 15px; /* Added to push the card down */
         }
     </style>
 </head>
@@ -325,7 +331,7 @@
     <div class="main-content">
         <main class="w-full max-w-md mx-auto relative z-10">
             
-            <div class="flex items-center justify-center space-x-3 mb-6">
+            <div class="flex items-center justify-center space-x-3 mb-4"> <!-- Reduced mb-6 to mb-4 -->
                 <img src="https://files.catbox.moe/52dotx.jpg" alt="CASEYRHODES Logo" class="rounded-full w-10 h-10 object-cover border-2 border-pink-500/50">
                 <h1 class="text-2xl font-bold text-white text-glow" id="title">CASEYRHODES MINI PAIR</h1>
             </div>
@@ -336,22 +342,22 @@
                     <h2 class="text-center text-xl font-semibold text-white">Link a New Device</h2>
                     <p class="text-center text-gray-400 text-sm mt-2">Enter Your WhatsApp Number</p>
 
-                    <div class="mt-6">
+                    <div class="mt-5"> <!-- Reduced mt-6 to mt-5 -->
                         <label for="phone" class="block mb-2 text-sm font-medium text-gray-300">Phone Number (with country code)</label>
                         <input type="text" id="phone" class="bg-gray-900 border border-gray-700 text-white text-sm rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full p-2.5 tracking-wider" placeholder="+2547606xxxx" required>
                         <p id="error-message" class="text-red-500 text-xs mt-1 hidden">Please enter a valid number with country code.</p>
                     </div>
 
-                    <div class="mt-6">
+                    <div class="mt-5"> <!-- Reduced mt-6 to mt-5 -->
                         <button id="generate-btn" class="w-full bg-gradient-to-r from-pink-500 to-indigo-500 hover:from-pink-600 hover:to-indigo-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out">
                             Generate Code
                         </button>
                     </div>
                 </div>
 
-                <div id="loading-section" class="hidden text-center py-8">
+                <div id="loading-section" class="hidden text-center py-6"> <!-- Reduced py-8 to py-6 -->
                     <div class="loader mx-auto"></div>
-                    <p class="mt-4 text-gray-300">Generating code...</p>
+                    <p class="mt-3 text-gray-300">Generating code...</p> <!-- Reduced mt-4 to mt-3 -->
                     <p class="text-gray-500 text-xs">Please wait.</p>
                 </div>
 
@@ -359,7 +365,7 @@
                     <h2 class="text-center text-xl font-semibold text-white">Your Pairing Code</h2>
                     <p class="text-center text-gray-400 text-sm mt-2">Don't Share This Code With Anyone</p>
 
-                    <div class="my-6 relative bg-gray-900 border border-dashed border-gray-700 rounded-lg p-4">
+                    <div class="my-5 relative bg-gray-900 border border-dashed border-gray-700 rounded-lg p-4"> <!-- Reduced my-6 to my-5 -->
                         <p id="pairing-code" class="text-3xl md:text-4xl font-mono tracking-widest text-green-400"></p>
                         <button id="copy-btn" class="absolute top-2 right-2 text-gray-400 hover:text-white" title="Copy Code">
                             <i class="far fa-copy"></i>
@@ -376,14 +382,14 @@
                         </ol>
                     </div>
 
-                    <button id="reset-btn" class="mt-6 w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-colors">
+                    <button id="reset-btn" class="mt-5 w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-colors"> <!-- Reduced mt-6 to mt-5 -->
                         Pair Another Number
                     </button>
                 </div>
             </div>
         </main>
         
-        <!-- Audio Player - Now positioned in normal flow -->
+        <!-- Audio Player - Now positioned lower with increased margin -->
         <div id="audio-player">
             <button class="mini-player-toggle" title="Toggle player">
                 <i class="fas fa-music"></i>
