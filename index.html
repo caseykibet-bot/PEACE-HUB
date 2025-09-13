@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CASEYRHODES-PAIR</title>
+    <title>CASEYRHODES-PAIR with Mini Audio Player</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
             align-items: center;
             min-height: 100vh;
             overflow: hidden;
-            padding-bottom: 100px; /* Added padding to accommodate audio player */
+            padding-bottom: 60px; /* Reduced padding for smaller audio player */
         }
         #particle-canvas {
             position: fixed;
@@ -54,40 +54,47 @@
             bottom: 30px;
         }
         
-        /* Audio Player Styles - Centered at bottom and increased size */
+        /* Mini Audio Player Styles - 50% smaller, centered at bottom */
         #audio-player {
             position: fixed;
-            bottom: 20px;
+            bottom: 15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 500px;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(236, 72, 153, 0.4);
-            border-radius: 16px;
-            padding: 15px;
+            width: 250px; /* Reduced from 500px */
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(236, 72, 153, 0.6);
+            border-radius: 20px;
+            padding: 12px;
             z-index: 100;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.5), 0 0 15px rgba(236,72,153,0.3);
+            box-shadow: 
+                0 5px 25px rgba(0,0,0,0.6), 
+                0 0 20px rgba(236,72,153,0.5),
+                inset 0 0 15px rgba(255,255,255,0.1);
         }
         
         #audio-player:hover {
-            background: rgba(0, 0, 0, 0.85);
-            border-color: rgba(236, 72, 153, 0.6);
-            box-shadow: 0 5px 30px rgba(0,0,0,0.6), 0 0 20px rgba(236,72,153,0.4);
+            background: rgba(0, 0, 0, 0.95);
+            border-color: rgba(236, 72, 153, 0.8);
+            box-shadow: 
+                0 8px 30px rgba(0,0,0,0.7), 
+                0 0 25px rgba(236,72,153,0.6),
+                inset 0 0 20px rgba(255,255,255,0.15);
         }
         
         .audio-title {
-            font-size: 14px;
-            margin-bottom: 10px;
+            font-size: 12px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             color: #e0e0e0;
             font-weight: 500;
+            justify-content: center;
         }
         
         .audio-title i {
-            margin-right: 8px;
+            margin-right: 6px;
             color: #ec4899;
         }
         
@@ -95,12 +102,12 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            height: 30px;
-            margin-bottom: 10px;
+            height: 20px;
+            margin-bottom: 8px;
         }
         
         .wave-bar {
-            width: 4px;
+            width: 3px;
             background: linear-gradient(to top, #ec4899, #818cf8);
             border-radius: 2px;
             animation: wave 1.2s infinite ease-in-out;
@@ -125,11 +132,12 @@
         
         .progress-container {
             width: 100%;
-            height: 6px;
+            height: 5px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 3px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             cursor: pointer;
+            overflow: hidden;
         }
         
         .progress-bar {
@@ -138,33 +146,34 @@
             border-radius: 3px;
             width: 0%;
             transition: width 0.1s linear;
+            box-shadow: 0 0 8px rgba(236, 72, 153, 0.6);
         }
         
         .time-display {
             display: flex;
             justify-content: space-between;
-            font-size: 12px;
+            font-size: 10px;
             color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .control-buttons {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 10px;
+            gap: 8px;
+            margin-bottom: 8px;
         }
         
         .control-btn {
             background: none;
             border: none;
             color: #e0e0e0;
-            font-size: 16px;
+            font-size: 12px;
             cursor: pointer;
-            padding: 6px;
+            padding: 5px;
             border-radius: 50%;
-            width: 36px;
-            height: 36px;
+            width: 28px;
+            height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -174,34 +183,37 @@
         .control-btn:hover {
             background: rgba(236, 72, 153, 0.2);
             color: #ec4899;
+            transform: translateY(-2px);
         }
         
         .play-pause {
-            background: rgba(236, 72, 153, 0.3);
-            width: 44px;
-            height: 44px;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.3), rgba(129, 140, 248, 0.3));
+            width: 34px;
+            height: 34px;
+            box-shadow: 0 0 12px rgba(236, 72, 153, 0.4);
         }
         
         .play-pause:hover {
-            background: rgba(236, 72, 153, 0.5);
-            transform: scale(1.1);
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.5), rgba(129, 140, 248, 0.5));
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.6);
         }
         
         .volume-control {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 8px;
+            margin-top: 8px;
         }
         
         .volume-control i {
-            font-size: 16px;
+            font-size: 12px;
             color: #e0e0e0;
         }
         
         .volume-slider {
             width: 100%;
-            height: 5px;
+            height: 4px;
             -webkit-appearance: none;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 3px;
@@ -210,12 +222,13 @@
         
         .volume-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: #ec4899;
             cursor: pointer;
             transition: all 0.2s ease;
+            box-shadow: 0 0 8px rgba(236, 72, 153, 0.8);
         }
         
         .volume-slider::-webkit-slider-thumb:hover {
@@ -224,18 +237,43 @@
         }
         
         .volume-slider::-moz-range-thumb {
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: #ec4899;
             cursor: pointer;
             border: none;
             transition: all 0.2s ease;
+            box-shadow: 0 0 8px rgba(236, 72, 153, 0.8);
         }
         
         .volume-slider::-moz-range-thumb:hover {
             background: #db2779;
             transform: scale(1.2);
+        }
+
+        /* Mini player toggle button */
+        .mini-player-toggle {
+            position: absolute;
+            top: -20px;
+            right: 10px;
+            background: rgba(236, 72, 153, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            color: white;
+            font-size: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .mini-player-toggle:hover {
+            background: rgba(236, 72, 153, 1);
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -247,7 +285,6 @@
     <i class="fas fa-chevron-left transform group-hover:-translate-x-1 transition-transform duration-300"></i>
     <span>Back to Web</span>
 </a>
-
 
 <main class="w-full max-w-md mx-auto relative z-10">
     
@@ -308,8 +345,12 @@
         </div>
     </div>
     
-    <!-- Audio Player -->
+    <!-- Audio Player - Now 50% smaller and more attractive -->
     <div id="audio-player">
+      <button class="mini-player-toggle" title="Toggle player">
+        <i class="fas fa-music"></i>
+      </button>
+      
       <div class="audio-container">
         <div class="audio-title">
           <i class="fas fa-music"></i> <span id="song-title">Background Music</span>
@@ -336,26 +377,26 @@
           </div>
           
           <div class="control-buttons">
-            <button class="control-btn" id="prev">
+            <button class="control-btn" id="prev" title="Previous">
               <i class="fas fa-backward-step"></i>
             </button>
-            <button class="control-btn" id="rewind">
+            <button class="control-btn" id="rewind" title="Rewind 10s">
               <i class="fas fa-backward"></i>
             </button>
-            <button class="control-btn play-pause" id="play-pause">
+            <button class="control-btn play-pause" id="play-pause" title="Play/Pause">
               <i class="fas fa-play" id="play-icon"></i>
             </button>
-            <button class="control-btn" id="forward">
+            <button class="control-btn" id="forward" title="Forward 10s">
               <i class="fas fa-forward"></i>
             </button>
-            <button class="control-btn" id="next">
+            <button class="control-btn" id="next" title="Next">
               <i class="fas fa-forward-step"></i>
             </button>
           </div>
           
           <div class="volume-control">
             <i class="fas fa-volume-up"></i>
-            <input type="range" class="volume-slider" id="volume" min="0" max="1" step="0.01" value="0.7">
+            <input type="range" class="volume-slider" id="volume" min="0" max="1" step="0.01" value="0.7" title="Volume">
           </div>
         </div>
       </div>
@@ -498,6 +539,7 @@
     const nextBtn = document.getElementById('next');
     const songTitleEl = document.getElementById('song-title');
     const waveBars = document.querySelectorAll('.wave-bar');
+    const miniPlayerToggle = document.querySelector('.mini-player-toggle');
 
     // Playlist of songs
     const playlist = [
@@ -621,6 +663,38 @@
       loadSong(currentSongIndex + 1);
     }
 
+    // Toggle mini player view
+    function toggleMiniPlayer() {
+      const player = document.getElementById('audio-player');
+      player.classList.toggle('mini-mode');
+      
+      if (player.classList.contains('mini-mode')) {
+        // Mini mode - show only play button and song title
+        document.querySelector('.audio-wave').style.display = 'none';
+        document.querySelector('.progress-container').style.display = 'none';
+        document.querySelector('.time-display').style.display = 'none';
+        document.querySelector('.volume-control').style.display = 'none';
+        document.getElementById('prev').style.display = 'none';
+        document.getElementById('next').style.display = 'none';
+        document.getElementById('rewind').style.display = 'none';
+        document.getElementById('forward').style.display = 'none';
+        player.style.width = '150px';
+        miniPlayerToggle.innerHTML = '<i class="fas fa-expand"></i>';
+      } else {
+        // Normal mode - show all controls
+        document.querySelector('.audio-wave').style.display = 'flex';
+        document.querySelector('.progress-container').style.display = 'block';
+        document.querySelector('.time-display').style.display = 'flex';
+        document.querySelector('.volume-control').style.display = 'flex';
+        document.getElementById('prev').style.display = 'flex';
+        document.getElementById('next').style.display = 'flex';
+        document.getElementById('rewind').style.display = 'flex';
+        document.getElementById('forward').style.display = 'flex';
+        player.style.width = '250px';
+        miniPlayerToggle.innerHTML = '<i class="fas fa-compress"></i>';
+      }
+    }
+
     // Event listeners for audio player
     playPauseBtn.addEventListener('click', togglePlayPause);
     audio.addEventListener('timeupdate', updateProgress);
@@ -632,6 +706,7 @@
     forwardBtn.addEventListener('click', forward);
     prevBtn.addEventListener('click', prevSong);
     nextBtn.addEventListener('click', nextSong);
+    miniPlayerToggle.addEventListener('click', toggleMiniPlayer);
 
     // Initialize player with first song
     loadSong(0);
