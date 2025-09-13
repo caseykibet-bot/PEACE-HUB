@@ -19,6 +19,7 @@
             align-items: center;
             min-height: 100vh;
             overflow: hidden;
+            padding-bottom: 100px; /* Added padding to accommodate audio player */
         }
         #particle-canvas {
             position: fixed;
@@ -53,37 +54,40 @@
             bottom: 30px;
         }
         
-        /* Audio Player Styles - Reduced by 50% */
+        /* Audio Player Styles - Centered at bottom and increased size */
         #audio-player {
             position: fixed;
             bottom: 20px;
-            right: 20px;
-            width: 180px; /* Reduced from approx 360px */
-            background: rgba(0, 0, 0, 0.7);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(236, 72, 153, 0.3);
-            border-radius: 12px;
-            padding: 8px;
+            border: 1px solid rgba(236, 72, 153, 0.4);
+            border-radius: 16px;
+            padding: 15px;
             z-index: 100;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5), 0 0 15px rgba(236,72,153,0.3);
         }
         
         #audio-player:hover {
-            background: rgba(0, 0, 0, 0.8);
-            border-color: rgba(236, 72, 153, 0.5);
+            background: rgba(0, 0, 0, 0.85);
+            border-color: rgba(236, 72, 153, 0.6);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.6), 0 0 20px rgba(236,72,153,0.4);
         }
         
         .audio-title {
-            font-size: 10px;
-            margin-bottom: 6px;
+            font-size: 14px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             color: #e0e0e0;
+            font-weight: 500;
         }
         
         .audio-title i {
-            margin-right: 5px;
+            margin-right: 8px;
             color: #ec4899;
         }
         
@@ -91,14 +95,14 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            height: 20px;
-            margin-bottom: 6px;
+            height: 30px;
+            margin-bottom: 10px;
         }
         
         .wave-bar {
-            width: 2px;
+            width: 4px;
             background: linear-gradient(to top, #ec4899, #818cf8);
-            border-radius: 1px;
+            border-radius: 2px;
             animation: wave 1.2s infinite ease-in-out;
         }
         
@@ -121,17 +125,17 @@
         
         .progress-container {
             width: 100%;
-            height: 4px;
+            height: 6px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
-            margin-bottom: 4px;
+            border-radius: 3px;
+            margin-bottom: 8px;
             cursor: pointer;
         }
         
         .progress-bar {
             height: 100%;
             background: linear-gradient(to right, #ec4899, #818cf8);
-            border-radius: 2px;
+            border-radius: 3px;
             width: 0%;
             transition: width 0.1s linear;
         }
@@ -139,28 +143,28 @@
         .time-display {
             display: flex;
             justify-content: space-between;
-            font-size: 9px;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 5px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
         }
         
         .control-buttons {
             display: flex;
             justify-content: center;
-            gap: 5px;
-            margin-bottom: 5px;
+            gap: 12px;
+            margin-bottom: 10px;
         }
         
         .control-btn {
             background: none;
             border: none;
             color: #e0e0e0;
-            font-size: 10px;
+            font-size: 16px;
             cursor: pointer;
-            padding: 3px;
+            padding: 6px;
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -174,6 +178,8 @@
         
         .play-pause {
             background: rgba(236, 72, 153, 0.3);
+            width: 44px;
+            height: 44px;
         }
         
         .play-pause:hover {
@@ -184,39 +190,52 @@
         .volume-control {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 10px;
+            margin-top: 10px;
         }
         
         .volume-control i {
-            font-size: 10px;
+            font-size: 16px;
             color: #e0e0e0;
         }
         
         .volume-slider {
             width: 100%;
-            height: 3px;
+            height: 5px;
             -webkit-appearance: none;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
+            border-radius: 3px;
             outline: none;
         }
         
         .volume-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 8px;
-            height: 8px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: #ec4899;
             cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .volume-slider::-webkit-slider-thumb:hover {
+            background: #db2779;
+            transform: scale(1.2);
         }
         
         .volume-slider::-moz-range-thumb {
-            width: 8px;
-            height: 8px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: #ec4899;
             cursor: pointer;
             border: none;
+            transition: all 0.2s ease;
+        }
+        
+        .volume-slider::-moz-range-thumb:hover {
+            background: #db2779;
+            transform: scale(1.2);
         }
     </style>
 </head>
@@ -288,7 +307,9 @@
             </button>
         </div>
     </div>
-<div id="audio-player">
+    
+    <!-- Audio Player -->
+    <div id="audio-player">
       <div class="audio-container">
         <div class="audio-title">
           <i class="fas fa-music"></i> <span id="song-title">Background Music</span>
@@ -344,6 +365,7 @@
         Your browser does not support the audio element.
       </audio>
     </div>
+    
     <footer class="text-center mt-6">
         <p class="text-xs text-gray-500">&copy; 2025 CASEYRHODES BOT INC. Created By Caseyrhodes ❤️.</p>
     </footer>
