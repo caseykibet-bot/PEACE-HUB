@@ -20,7 +20,7 @@
             min-height: 100vh;
             overflow: hidden;
             padding-bottom: 60px; /* Reduced padding for smaller audio player */
-            position: relative; /* Added for footer positioning */
+            position: relative;
         }
         #particle-canvas {
             position: fixed;
@@ -277,12 +277,14 @@
             transform: scale(1.1);
         }
         
-        /* Footer positioning fix */
+        /* Footer styles */
         footer {
-            position: absolute;
-            bottom: 10px;
+            position: fixed;
+            bottom: 70px;
+            left: 0;
             width: 100%;
             text-align: center;
+            z-index: 5;
         }
     </style>
 </head>
@@ -354,6 +356,11 @@
         </div>
     </div>
     
+    <!-- Footer positioned at the bottom -->
+    <footer class="text-center">
+        <p class="text-xs text-gray-500">&copy; 2025 CASEYRHODES BOT INC. Created By Caseyrhodes ❤️.</p>
+    </footer>
+    
     <!-- Audio Player - Now 50% smaller and more attractive -->
     <div id="audio-player">
       <button class="mini-player-toggle" title="Toggle player">
@@ -415,10 +422,6 @@
         Your browser does not support the audio element.
       </audio>
     </div>
-    
-    <footer class="text-center mt-6">
-        <p class="text-xs text-gray-500">&copy; 2025 CASEYRHODES BOT INC. Created By Caseyrhodes ❤️.</p>
-    </footer>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
