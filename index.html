@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASEYRHODES-PAIR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        #particle-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
+        }
+        .text-glow { text-shadow: 0 0 8px rgba(255,255,255,0.3), 0 0 20px rgba(236,72,153,0.4); }
+        .card-glow { box-shadow:0 0 25px rgba(236,72,153,0.25),0 0 40px rgba(129,140,248,0.2);}
+        .loader {
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-left-color: #ec4899;
+            border-radius: 50%;
+            width: 40px; height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        .toast {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 24px;
+            border-radius: 8px;
+            background-color: #10B981;
+            color: #ffffff;
+            font-weight: 500;
+            z-index: 9999;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: bottom 0.5s ease-in-out;
+        }
+        .toast.show {
+            bottom: 30px;
+        }
+        
+        /* Audio Player Styles - Reduced by 50% */
+        #audio-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 180px; /* Reduced from approx 360px */
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            border-radius: 12px;
+            padding: 8px;
+            z-index: 100;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        #audio-player:hover {
+            background: rgba(0, 0, 0, 0.8);
+            border-color: rgba(236, 72, 153, 0.5);
+        }
+        
+        .audio-title {
+            font-size: 10px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            color: #e0e0e0;
+        }
+        
+        .audio-title i {
+            margin-right: 5px;
+            color: #ec4899;
+        }
+        
+        .audio-wave {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 20px;
+            margin-bottom: 6px;
+        }
+        
+        .wave-bar {
+            width: 2px;
+            background: linear-gradient(to top, #ec4899, #818cf8);
+            border-radius: 1px;
+            animation: wave 1.2s infinite ease-in-out;
+        }
+        
+        .wave-bar:nth-child(1) { height: 40%; animation-delay: 0s; }
+        .wave-bar:nth-child(2) { height: 60%; animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { height: 80%; animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { height: 100%; animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { height: 80%; animation-delay: 0.4s; }
+        .wave-bar:nth-child(6) { height: 60%; animation-delay: 0.5s; }
+        .wave-bar:nth-child(7) { height: 40%; animation-delay: 0.6s; }
+        
+        @keyframes wave {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.3); }
+        }
+        
+        .custom-audio-controls {
+            width: 100%;
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin-bottom: 4px;
+            cursor: pointer;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #ec4899, #818cf8);
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 5px;
+        }
+        
+        .control-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .control-btn {
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            font-size: 10px;
+            cursor: pointer;
+            padding: 3px;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        
+        .control-btn:hover {
+            background: rgba(236, 72, 153, 0.2);
+            color: #ec4899;
+        }
+        
+        .play-pause {
+            background: rgba(236, 72, 153, 0.3);
+        }
+        
+        .play-pause:hover {
+            background: rgba(236, 72, 153, 0.5);
+            transform: scale(1.1);
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .volume-control i {
+            font-size: 10px;
+            color: #e0e0e0;
+        }
+        
+        .volume-slider {
+            width: 100%;
+            height: 3px;
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            outline: none;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ec4899;
+            cursor: pointer;
+        }
+        
+        .volume-slider::-moz-range-thumb {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ec4899;
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+</head>
+<body class="p-4">
+
+<canvas id="particle-canvas"></canvas>
+
+<a href="https://caseyrhodes.whatsboost.me/" class="fixed top-5 left-5 z-20 flex items-center space-x-2 text-sm text-gray-400 hover:text-pink-400 transition-colors duration-300 group" title="Back to main website">
+    <i class="fas fa-chevron-left transform group-hover:-translate-x-1 transition-transform duration-300"></i>
+    <span>Back to Web</span>
+</a>
+
+
+<main class="w-full max-w-md mx-auto relative z-10">
+    
+    <div class="flex items-center justify-center space-x-3 mb-6">
+        <img src="https://files.catbox.moe/52dotx.jpg" alt="CASEYRHODES Logo" class="rounded-full w-10 h-10 object-cover border-2 border-pink-500/50">
+        <h1 class="text-2xl font-bold text-white text-glow" id="title">CASEYRHODES MINI PAIR</h1>
+    </div>
+
+    <div id="pairing-card" class="bg-black/50 backdrop-blur-md border border-pink-500/20 rounded-2xl p-6 md:p-8 card-glow">
+        <!-- Form Section -->
+        <div id="form-section">
+            <h2 class="text-center text-xl font-semibold text-white">Link a New Device</h2>
+            <p class="text-center text-gray-400 text-sm mt-2">Enter Your WhatsApp Number</p>
+
+            <div class="mt-6">
+                <label for="phone" class="block mb-2 text-sm font-medium text-gray-300">Phone Number (with country code)</label>
+                <input type="text" id="phone" class="bg-gray-900 border border-gray-700 text-white text-sm rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full p-2.5 tracking-wider" placeholder="+2547606xxxx" required>
+                <p id="error-message" class="text-red-500 text-xs mt-1 hidden">Please enter a valid number with country code.</p>
+            </div>
+
+            <div class="mt-6">
+                <button id="generate-btn" class="w-full bg-gradient-to-r from-pink-500 to-indigo-500 hover:from-pink-600 hover:to-indigo-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out">
+                    Generate Code
+                </button>
+            </div>
+        </div>
+
+        <div id="loading-section" class="hidden text-center py-8">
+            <div class="loader mx-auto"></div>
+            <p class="mt-4 text-gray-300">Generating code...</p>
+            <p class="text-gray-500 text-xs">Please wait.</p>
+        </div>
+
+     <div id="code-section" class="hidden text-center">
+            <h2 class="text-center text-xl font-semibold text-white">Your Pairing Code</h2>
+            <p class="text-center text-gray-400 text-sm mt-2">Don't Share This Code With Anyone</p>
+
+            <div class="my-6 relative bg-gray-900 border border-dashed border-gray-700 rounded-lg p-4">
+                <p id="pairing-code" class="text-3xl md:text-4xl font-mono tracking-widest text-green-400"></p>
+                <button id="copy-btn" class="absolute top-2 right-2 text-gray-400 hover:text-white" title="Copy Code">
+                    <i class="far fa-copy"></i>
+                </button>
+            </div>
+
+            <div>
+                <h3 class="font-semibold text-white mb-2">How to Use:</h3>
+                <ol class="text-left text-sm text-gray-400 space-y-2 list-decimal list-inside">
+                    <li>Open WhatsApp on your phone</li>
+                    <li>Go to Settings > Linked Devices</li>
+                    <li>Select 'Link a Device' then 'Link with phone number instead'</li>
+                    <li>Enter this pairing code when prompted</li>
+                </ol>
+            </div>
+
+            <button id="reset-btn" class="mt-6 w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-colors">
+                Pair Another Number
+            </button>
+        </div>
+    </div>
+<div id="audio-player">
+      <div class="audio-container">
+        <div class="audio-title">
+          <i class="fas fa-music"></i> <span id="song-title">Background Music</span>
+        </div>
+        
+        <div class="audio-wave">
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+        </div>
+        
+        <div class="custom-audio-controls">
+          <div class="progress-container" id="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+          </div>
+          
+          <div class="time-display">
+            <span id="current-time">0:00</span>
+            <span id="duration">0:00</span>
+          </div>
+          
+          <div class="control-buttons">
+            <button class="control-btn" id="prev">
+              <i class="fas fa-backward-step"></i>
+            </button>
+            <button class="control-btn" id="rewind">
+              <i class="fas fa-backward"></i>
+            </button>
+            <button class="control-btn play-pause" id="play-pause">
+              <i class="fas fa-play" id="play-icon"></i>
+            </button>
+            <button class="control-btn" id="forward">
+              <i class="fas fa-forward"></i>
+            </button>
+            <button class="control-btn" id="next">
+              <i class="fas fa-forward-step"></i>
+            </button>
+          </div>
+          
+          <div class="volume-control">
+            <i class="fas fa-volume-up"></i>
+            <input type="range" class="volume-slider" id="volume" min="0" max="1" step="0.01" value="0.7">
+          </div>
+        </div>
+      </div>
+      
+      <audio id="audio-element">
+        <source src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <footer class="text-center mt-6">
+        <p class="text-xs text-gray-500">&copy; 2025 CASEYRHODES BOT INC. Created By Caseyrhodes ❤️.</p>
+    </footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+<script>
+
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    let particlesArray;
+
+    const particleCount = 70;
+    const colors = ['rgba(236, 72, 153, 0.7)', 'rgba(129, 140, 248, 0.7)'];
+
+    class Particle {
+        constructor(x, y, directionX, directionY, size, color) {
+            this.x = x; this.y = y; this.directionX = directionX; this.directionY = directionY; this.size = size; this.color = color;
+        }
+        draw() {
+            ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false); ctx.fillStyle = this.color; ctx.fill();
+        }
+        update() {
+            if (this.x > canvas.width || this.x < 0) { this.directionX = -this.directionX; }
+            if (this.y > canvas.height || this.y < 0) { this.directionY = -this.directionY; }
+            this.x += this.directionX; this.y += this.directionY; this.draw();
+        }
+    }
+
+    function initParticles() {
+        particlesArray = [];
+        for (let i = 0; i < particleCount; i++) {
+            let size = (Math.random() * 2) + 1;
+            let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+            let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+            let directionX = (Math.random() * .4) - .2; let directionY = (Math.random() * .4) - .2;
+            let color = colors[Math.floor(Math.random() * colors.length)];
+            particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+        }
+    }
+
+    function animateParticles() {
+        requestAnimationFrame(animateParticles);
+        ctx.clearRect(0, 0, innerWidth, innerHeight);
+        for (let i = 0; i < particlesArray.length; i++) { particlesArray[i].update(); }
+    }
+    
+    window.addEventListener('resize', () => {
+        canvas.width = innerWidth; canvas.height = innerHeight; initParticles();
+    });
+    initParticles();
+    animateParticles();
+
+    const generateBtn = document.getElementById("generate-btn");
+    const phoneInput = document.getElementById("phone");
+    const codeSection = document.getElementById("code-section");
+    const pairingCode = document.getElementById("pairing-code");
+    const copyBtn = document.getElementById("copy-btn");
+    const resetBtn = document.getElementById("reset-btn");
+    const formSection = document.getElementById("form-section");
+    const loadingSection = document.getElementById("loading-section");
+    const errorMessage = document.getElementById("error-message");
+    
+    function showToast(message) {
+        const toast = document.createElement('div');
+        toast.textContent = message;
+        toast.className = 'toast';
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.classList.add('show');
+        }, 10);
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => {
+                document.body.removeChild(toast);
+            }, 500);
+        }, 2500);
+    }
+
+    generateBtn.addEventListener("click", async () => {
+        const numberValue = phoneInput.value.trim();
+        if (!numberValue.startsWith('+') || numberValue.length < 11) {
+            errorMessage.innerText = "Please enter a valid number with country code (e.g., +94...).";
+            errorMessage.classList.remove("hidden");
+            return;
+        }
+        errorMessage.classList.add("hidden");
+        const number = numberValue.replace(/[^0-9]/g, "");
+
+        formSection.classList.add("hidden");
+        loadingSection.classList.remove("hidden");
+        loadingSection.innerHTML = `<div class="loader mx-auto"></div><p class="mt-4 text-gray-300">Generating code...</p><p class="text-gray-500 text-xs">Please wait.</p>`;
+
+        try {
+            const { data } = await axios(`/code?number=${number}`);
+            const code = data.code || "Service Unavailable";
+            pairingCode.innerText = code;
+            loadingSection.classList.add("hidden");
+            codeSection.classList.remove("hidden");
+        } catch (err) {
+            console.error("API Error:", err);
+            loadingSection.innerHTML = `<p class="text-red-500">Error generating code. Please try again later.</p>`;
+        }
+    });
+
+    copyBtn.addEventListener("click", async () => {
+        if (!pairingCode.innerText) return;
+        try {
+            await navigator.clipboard.writeText(pairingCode.innerText);
+            showToast("Code Copied Successfully!");
+        } catch (err) {
+            showToast("Failed to copy code!");
+        }
+    });
+     
+    // Custom Audio Player Functionality
+    const audio = document.getElementById('audio-element');
+    const playPauseBtn = document.getElementById('play-pause');
+    const playIcon = document.getElementById('play-icon');
+    const progressBar = document.getElementById('progress-bar');
+    const progressContainer = document.getElementById('progress-container');
+    const currentTimeEl = document.getElementById('current-time');
+    const durationEl = document.getElementById('duration');
+    const volumeSlider = document.getElementById('volume');
+    const rewindBtn = document.getElementById('rewind');
+    const forwardBtn = document.getElementById('forward');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const songTitleEl = document.getElementById('song-title');
+    const waveBars = document.querySelectorAll('.wave-bar');
+
+    // Playlist of songs
+    const playlist = [
+      { title: "real beats", src: "https://files.catbox.moe/kxdej4.m4a" },
+      { title: "starlight by dave", src: "https://files.catbox.moe/0aoqzx.mp3" },
+      { title: "enemies by bien", src: "https://files.catbox.moe/d5yxdu.mp3" },
+      { title: "favourite", src: "https://files.catbox.moe/zn5rcs.mp3" }
+    ];
+    
+    let currentSongIndex = 0;
+
+    // Load a song
+    function loadSong(index) {
+      if (index < 0) index = playlist.length - 1;
+      if (index >= playlist.length) index = 0;
+      
+      currentSongIndex = index;
+      const song = playlist[currentSongIndex];
+      
+      audio.src = song.src;
+      songTitleEl.textContent = song.title;
+      
+      // Reset progress bar and time display
+      progressBar.style.width = '0%';
+      currentTimeEl.textContent = '0:00';
+      durationEl.textContent = '0:00';
+      
+      // If a song was playing, continue playing the new one
+      const wasPlaying = !audio.paused;
+      audio.load();
+      
+      if (wasPlaying) {
+        audio.play().catch(e => console.log("Playback failed:", e));
+      }
+    }
+
+    // Play/Pause functionality
+    function togglePlayPause() {
+      if (audio.paused) {
+        audio.play().catch(e => console.log("Playback failed:", e));
+        playIcon.classList.remove('fa-play');
+        playIcon.classList.add('fa-pause');
+        playPauseBtn.setAttribute('aria-label', 'Pause');
+        
+        // Animate wave bars when playing
+        waveBars.forEach(bar => bar.style.animationPlayState = 'running');
+      } else {
+        audio.pause();
+        playIcon.classList.remove('fa-pause');
+        playIcon.classList.add('fa-play');
+        playPauseBtn.setAttribute('aria-label', 'Play');
+        
+        // Pause wave bars animation
+        waveBars.forEach(bar => bar.style.animationPlayState = 'paused');
+      }
+    }
+
+    // Update progress bar
+    function updateProgress() {
+      const { currentTime, duration } = audio;
+      const progressPercent = (currentTime / duration) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+      
+      // Update time displays
+      currentTimeEl.textContent = formatTime(currentTime);
+      if (!isNaN(duration)) {
+        durationEl.textContent = formatTime(duration);
+      }
+    }
+
+    // Set progress when clicking on progress bar
+    function setProgress(e) {
+      const width = this.clientWidth;
+      const clickX = e.offsetX;
+      const duration = audio.duration;
+      audio.currentTime = (clickX / width) * duration;
+    }
+
+    // Format time in minutes:seconds
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    // Set volume
+    function setVolume() {
+      audio.volume = volumeSlider.value;
+      
+      // Change volume icon based on level
+      const volumeIcon = volumeSlider.previousElementSibling;
+      if (audio.volume == 0) {
+        volumeIcon.classList.remove('fa-volume-up', 'fa-volume-down');
+        volumeIcon.classList.add('fa-volume-off');
+      } else if (audio.volume < 0.5) {
+        volumeIcon.classList.remove('fa-volume-up', 'fa-volume-off');
+        volumeIcon.classList.add('fa-volume-down');
+      } else {
+        volumeIcon.classList.remove('fa-volume-down', 'fa-volume-off');
+        volumeIcon.classList.add('fa-volume-up');
+      }
+    }
+
+    // Rewind 10 seconds
+    function rewind() {
+      audio.currentTime = Math.max(0, audio.currentTime - 10);
+    }
+
+    // Forward 10 seconds
+    function forward() {
+      audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+    }
+
+    // Previous song
+    function prevSong() {
+      loadSong(currentSongIndex - 1);
+    }
+
+    // Next song
+    function nextSong() {
+      loadSong(currentSongIndex + 1);
+    }
+
+    // Event listeners for audio player
+    playPauseBtn.addEventListener('click', togglePlayPause);
+    audio.addEventListener('timeupdate', updateProgress);
+    audio.addEventListener('ended', nextSong);
+    audio.addEventListener('loadedmetadata', updateProgress);
+    progressContainer.addEventListener('click', setProgress);
+    volumeSlider.addEventListener('input', setVolume);
+    rewindBtn.addEventListener('click', rewind);
+    forwardBtn.addEventListener('click', forward);
+    prevBtn.addEventListener('click', prevSong);
+    nextBtn.addEventListener('click', nextSong);
+
+    // Initialize player with first song
+    loadSong(0);
+    
+    // Initialize volume
+    setVolume();
+    
+    // Pause wave bars initially
+    waveBars.forEach(bar => bar.style.animationPlayState = 'paused');
+
+    resetBtn.addEventListener("click", () => {
+        codeSection.classList.add("hidden");
+        formSection.classList.remove("hidden");
+        phoneInput.value = "";
+    });
+</script>
+
+</body>
+</html>
