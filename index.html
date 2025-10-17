@@ -29,15 +29,28 @@
             top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
             overflow: hidden;
         }
-        .crystal {
+        .crystal-shard {
             position: absolute;
-            opacity: 0.7;
-            filter: blur(1px);
-            animation: float 15s infinite ease-in-out;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.7), rgba(168, 85, 247, 0.7));
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            opacity: 0;
+            animation: shatter 4s infinite ease-in-out;
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+        @keyframes shatter {
+            0% { 
+                opacity: 0;
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            10% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% { 
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) rotate(var(--r)) scale(0.1);
+            }
         }
         .text-glow { 
             text-shadow: 0 0 8px rgba(255,255,255,0.3), 0 0 20px rgba(236,72,153,0.4); 
@@ -136,28 +149,12 @@
             50% { opacity: 1; transform: scale(1.2); }
         }
         
-        /* Button animations */
+        /* Reduced button animations by 60% */
         .btn-animation {
-            transition: all 0.3s ease-in-out;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-animation::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-        .btn-animation:hover::before {
-            left: 100%;
+            transition: transform 0.06s ease-in-out; /* Reduced from 0.15s */
         }
         .btn-animation:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transform: scale(1.01); /* Reduced from 1.025 */
         }
         
         /* Input field styling */
@@ -282,52 +279,40 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
 <script>
-    // Create crystals
-    function createCrystals() {
+    // Create breaking crystal glass effect
+    function createCrystalShards() {
         const crystalContainer = document.getElementById('crystal-container');
-        const crystalCount = 15;
+        const shardCount = 30;
         
-        for (let i = 0; i < crystalCount; i++) {
-            const crystal = document.createElement('div');
-            crystal.classList.add('crystal');
+        for (let i = 0; i < shardCount; i++) {
+            const shard = document.createElement('div');
+            shard.classList.add('crystal-shard');
             
             // Random position
             const x = Math.random() * window.innerWidth;
             const y = Math.random() * window.innerHeight;
             
             // Random size
-            const size = Math.random() * 100 + 50;
-            
-            // Random color
-            const colors = [
-                'rgba(236, 72, 153, 0.3)',
-                'rgba(192, 72, 236, 0.3)',
-                'rgba(129, 140, 248, 0.3)',
-                'rgba(168, 85, 247, 0.3)'
-            ];
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            
-            // Random shape
-            const shapes = [
-                'polygon(50% 0%, 0% 100%, 100% 100%)',
-                'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)',
-                'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)',
-                'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
-            ];
-            const shape = shapes[Math.floor(Math.random() * shapes.length)];
+            const size = Math.random() * 60 + 20;
             
             // Random animation delay
-            const delay = Math.random() * 15;
+            const delay = Math.random() * 4;
             
-            crystal.style.left = `${x}px`;
-            crystal.style.top = `${y}px`;
-            crystal.style.width = `${size}px`;
-            crystal.style.height = `${size}px`;
-            crystal.style.backgroundColor = color;
-            crystal.style.clipPath = shape;
-            crystal.style.animationDelay = `${delay}s`;
+            // Random movement direction
+            const tx = (Math.random() - 0.5) * 200;
+            const ty = (Math.random() - 0.5) * 200;
+            const rotation = (Math.random() - 0.5) * 360;
             
-            crystalContainer.appendChild(crystal);
+            shard.style.left = `${x}px`;
+            shard.style.top = `${y}px`;
+            shard.style.width = `${size}px`;
+            shard.style.height = `${size}px`;
+            shard.style.animationDelay = `${delay}s`;
+            shard.style.setProperty('--tx', `${tx}px`);
+            shard.style.setProperty('--ty', `${ty}px`);
+            shard.style.setProperty('--r', `${rotation}deg`);
+            
+            crystalContainer.appendChild(shard);
         }
     }
 
@@ -366,7 +351,7 @@
     canvas.height = window.innerHeight;
     let particlesArray;
 
-    const particleCount = 100;
+    const particleCount = 80;
     const colors = [
         'rgba(236, 72, 153, 0.7)',   // Pink
         'rgba(192, 72, 236, 0.7)',   // Purple-pink
@@ -455,7 +440,7 @@
         // Recreate crystals and stars on resize
         document.getElementById('crystal-container').innerHTML = '';
         document.getElementById('stars-container').innerHTML = '';
-        createCrystals();
+        createCrystalShards();
         createStars();
     }
     
@@ -463,7 +448,7 @@
     
     // Initialize everything
     initParticles();
-    createCrystals();
+    createCrystalShards();
     createStars();
     animateParticles();
 
