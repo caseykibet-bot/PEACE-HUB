@@ -24,131 +24,8 @@
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
         }
-        #glass-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        .glass-pane {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(135deg, rgba(236, 72, 153, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%),
-                radial-gradient(circle at 20% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 
-                inset 0 0 50px rgba(236, 72, 153, 0.1),
-                0 0 80px rgba(168, 85, 247, 0.1);
-            animation: glassShimmer 8s infinite linear;
-        }
-        @keyframes glassShimmer {
-            0% { opacity: 0.7; }
-            50% { opacity: 0.9; }
-            100% { opacity: 0.7; }
-        }
-        .crack {
-            position: absolute;
-            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.8), transparent);
-            transform-origin: top center;
-            animation: crackAppear 3s forwards;
-        }
-        @keyframes crackAppear {
-            0% { height: 0; opacity: 0; }
-            100% { height: var(--crack-height); opacity: 0.7; }
-        }
-        .glass-shard {
-            position: absolute;
-            width: var(--shard-size);
-            height: var(--shard-size);
-            background: 
-                linear-gradient(135deg, 
-                    rgba(255, 255, 255, 0.9) 0%, 
-                    rgba(236, 72, 153, 0.3) 30%, 
-                    rgba(168, 85, 247, 0.3) 70%, 
-                    rgba(255, 255, 255, 0.9) 100%);
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            opacity: 0;
-            filter: drop-shadow(0 0 5px rgba(236, 72, 153, 0.5));
-            animation: shatter 4s infinite ease-in-out;
-        }
-        @keyframes shatter {
-            0% { 
-                opacity: 0;
-                transform: translate(0, 0) rotate(0deg) scale(1);
-            }
-            10% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.8;
-            }
-            100% { 
-                opacity: 0;
-                transform: translate(var(--tx), var(--ty)) rotate(var(--r)) scale(0.1);
-            }
-        }
-        .text-glow { 
-            text-shadow: 0 0 8px rgba(255,255,255,0.3), 0 0 20px rgba(236,72,153,0.4); 
-        }
-        .title-text {
-            background: linear-gradient(135deg, #ec4899, #a855f7, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 900;
-            letter-spacing: -0.025em;
-            position: relative;
-        }
-        .title-text::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #ec4899, #a855f7, transparent);
-            border-radius: 2px;
-        }
-        .card-glow { 
-            box-shadow: 0 0 25px rgba(236,72,153,0.25), 0 0 40px rgba(129,140,248,0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        .card-glow::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #ec4899, #a855f7, #8b5cf6, #ec4899);
-            z-index: -1;
-            border-radius: 24px;
-            animation: borderGlow 3s linear infinite;
-            background-size: 400%;
-        }
-        .card-glow::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.85);
-            border-radius: 22px;
-            z-index: -1;
-        }
-        @keyframes borderGlow {
-            0% { background-position: 0 0; }
-            50% { background-position: 400% 0; }
-            100% { background-position: 0 0; }
-        }
+        .text-glow { text-shadow: 0 0 8px rgba(255,255,255,0.3), 0 0 20px rgba(236,72,153,0.4); }
+        .card-glow { box-shadow:0 0 25px rgba(236,72,153,0.25),0 0 40px rgba(129,140,248,0.2);}
         .loader {
             border: 4px solid rgba(255, 255, 255, 0.2);
             border-left-color: #ec4899;
@@ -165,7 +42,7 @@
             transform: translateX(-50%);
             padding: 12px 24px;
             border-radius: 8px;
-            background: linear-gradient(135deg, #ec4899, #a855f7);
+            background-color: #10B981;
             color: #ffffff;
             font-weight: 500;
             z-index: 9999;
@@ -190,90 +67,18 @@
             50% { opacity: 1; transform: scale(1.2); }
         }
         
-        /* Reduced button animations by 60% */
+        /* Reduced button animations */
         .btn-animation {
-            transition: transform 0.06s ease-in-out; /* Reduced from 0.15s */
+            transition: transform 0.15s ease-in-out;
         }
         .btn-animation:hover {
-            transform: scale(1.01); /* Reduced from 1.025 */
-        }
-        
-        /* Input field styling */
-        .input-field {
-            background: rgba(17, 24, 39, 0.7);
-            border: 1px solid rgba(236, 72, 153, 0.3);
-            color: white;
-            transition: all 0.3s ease;
-        }
-        .input-field:focus {
-            border-color: #ec4899;
-            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.2);
-            outline: none;
-        }
-        
-        /* Code display styling */
-        .code-display {
-            background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(30, 27, 75, 0.9));
-            border: 1px solid rgba(236, 72, 153, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-        .code-display::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(236, 72, 153, 0.1), transparent);
-            animation: shine 3s infinite;
-        }
-        @keyframes shine {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        
-        /* Floating animation for elements */
-        .float-animation {
-            animation: floatElement 6s ease-in-out infinite;
-        }
-        @keyframes floatElement {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        /* Glass reflection effect */
-        .glass-reflection {
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                rgba(255, 255, 255, 0) 0%,
-                rgba(255, 255, 255, 0) 40%,
-                rgba(255, 255, 255, 0.1) 50%,
-                rgba(255, 255, 255, 0) 60%,
-                rgba(255, 255, 255, 0) 100%
-            );
-            transform: rotate(30deg);
-            animation: reflectionMove 8s infinite linear;
-        }
-        @keyframes reflectionMove {
-            0% { transform: translateX(-100%) rotate(30deg); }
-            100% { transform: translateX(100%) rotate(30deg); }
+            transform: scale(1.025);
         }
     </style>
 </head>
 <body class="p-4">
 
 <canvas id="particle-canvas"></canvas>
-<div id="glass-container">
-    <div class="glass-pane">
-        <div class="glass-reflection"></div>
-    </div>
-</div>
 <div id="stars-container"></div>
 
 <a href="https://wa.me/+254704472907" class="fixed top-5 left-5 z-20 flex items-center space-x-2 text-sm text-gray-400 hover:text-gray-300 transition-colors duration-300 group" title="Back to main website">
@@ -281,11 +86,11 @@
     <span>CONTACT OWNER 🫅</span>
 </a>
 
-<main class="w-full max-w-md mx-auto relative z-10 float-animation">
+<main class="w-full max-w-md mx-auto relative z-10">
     
     <div class="flex items-center justify-center space-x-3 mb-6">
         <img src="https://files.catbox.moe/52dotx.jpg" alt="CASEYRHODES Logo" class="rounded-full w-10 h-10 object-cover border-2 border-pink-500/50">
-        <h1 class="text-xl font-bold text-white title-text" id="title">CASEYRHODES MINI PAIR 🎀</h1>
+        <h1 class="text-xl font-bold text-white text-glow" id="title">CASEYRHODES MINI PAIR 🎀</h1>
     </div>
 
     <div id="pairing-card" class="bg-black/50 backdrop-blur-md border border-pink-500/20 rounded-2xl p-6 md:p-8 card-glow">
@@ -296,7 +101,7 @@
 
             <div class="mt-6">
                 <label for="phone" class="block mb-2 text-sm font-medium text-gray-300">Phone Number (with country code)</label>
-                <input type="text" id="phone" class="input-field text-sm rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full p-2.5 tracking-wider" placeholder="+2547606xxxx" required>
+                <input type="text" id="phone" class="bg-gray-900 border border-gray-700 text-white text-sm rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full p-2.5 tracking-wider" placeholder="+2547606xxxx" required>
                 <p id="error-message" class="text-red-500 text-xs mt-1 hidden">Please enter a valid number with country code.</p>
             </div>
 
@@ -313,11 +118,11 @@
             <p class="text-gray-500 text-xs">Please wait.</p>
         </div>
 
-        <div id="code-section" class="hidden text-center">
+     <div id="code-section" class="hidden text-center">
             <h2 class="text-center text-xl font-semibold text-white">Your Pairing Code</h2>
             <p class="text-center text-gray-400 text-sm mt-2">Don't Share This Code With Anyone</p>
 
-            <div class="my-6 relative code-display rounded-lg p-4">
+            <div class="my-6 relative bg-gray-900 border border-dashed border-gray-700 rounded-lg p-4">
                 <p id="pairing-code" class="text-3xl md:text-4xl font-mono tracking-widest text-green-400"></p>
                 <button id="copy-btn" class="absolute top-2 right-2 text-gray-400 hover:text-white btn-animation" title="Copy Code">
                     <i class="far fa-copy"></i>
@@ -347,61 +152,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
 <script>
-    // Create realistic glass effect
-    function createGlassEffect() {
-        const glassContainer = document.getElementById('glass-container');
-        
-        // Create cracks
-        for (let i = 0; i < 5; i++) {
-            const crack = document.createElement('div');
-            crack.classList.add('crack');
-            
-            // Random position and angle
-            const left = Math.random() * 100;
-            const angle = (Math.random() - 0.5) * 60;
-            const height = Math.random() * 50 + 30;
-            
-            crack.style.left = `${left}%`;
-            crack.style.transform = `rotate(${angle}deg)`;
-            crack.style.width = '2px';
-            crack.style.setProperty('--crack-height', `${height}vh`);
-            crack.style.animationDelay = `${Math.random() * 5}s`;
-            
-            glassContainer.appendChild(crack);
-        }
-        
-        // Create glass shards
-        for (let i = 0; i < 25; i++) {
-            const shard = document.createElement('div');
-            shard.classList.add('glass-shard');
-            
-            // Random position
-            const x = Math.random() * window.innerWidth;
-            const y = Math.random() * window.innerHeight;
-            
-            // Random size
-            const size = Math.random() * 40 + 20;
-            
-            // Random animation delay
-            const delay = Math.random() * 4;
-            
-            // Random movement direction
-            const tx = (Math.random() - 0.5) * 300;
-            const ty = (Math.random() - 0.5) * 300;
-            const rotation = (Math.random() - 0.5) * 720;
-            
-            shard.style.left = `${x}px`;
-            shard.style.top = `${y}px`;
-            shard.style.setProperty('--shard-size', `${size}px`);
-            shard.style.animationDelay = `${delay}s`;
-            shard.style.setProperty('--tx', `${tx}px`);
-            shard.style.setProperty('--ty', `${ty}px`);
-            shard.style.setProperty('--r', `${rotation}deg`);
-            
-            glassContainer.appendChild(shard);
-        }
-    }
-
     // Create stars
     function createStars() {
         const starsContainer = document.getElementById('stars-container');
@@ -437,7 +187,7 @@
     canvas.height = window.innerHeight;
     let particlesArray;
 
-    const particleCount = 80;
+    const particleCount = 100;
     const colors = [
         'rgba(236, 72, 153, 0.7)',   // Pink
         'rgba(192, 72, 236, 0.7)',   // Purple-pink
@@ -523,14 +273,8 @@
         canvas.height = innerHeight; 
         initParticles();
         
-        // Recreate glass effect and stars on resize
-        document.getElementById('glass-container').innerHTML = `
-            <div class="glass-pane">
-                <div class="glass-reflection"></div>
-            </div>
-        `;
+        // Recreate stars on resize
         document.getElementById('stars-container').innerHTML = '';
-        createGlassEffect();
         createStars();
     }
     
@@ -538,7 +282,6 @@
     
     // Initialize everything
     initParticles();
-    createGlassEffect();
     createStars();
     animateParticles();
 
