@@ -18,6 +18,9 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
         }
         
         .nav-link-premium {
@@ -41,8 +44,8 @@
         }
         
         .bot-hero-image {
-            width: 160px; /* Increased from 110px */
-            height: 160px; /* Increased from 110px */
+            width: 160px;
+            height: 160px;
             border-radius: 10px;
             box-shadow: 
                 0 0 15px rgba(219, 95, 219, 0.5),
@@ -105,8 +108,8 @@
         
         .fade-in-up {
             opacity: 0;
-            transform: translateY(5px); /* Reduced from 7.5px */
-            transition: all 0.3s ease; /* Reduced from 0.4s */
+            transform: translateY(4px); /* Reduced by 20% from 5px */
+            transition: all 0.24s ease; /* Reduced by 20% from 0.3s */
         }
         
         .fade-in-up.visible {
@@ -128,7 +131,7 @@
             overflow-x: hidden;
         }
         
-        /* Black Background with Purple Particles */
+        /* Black Background with Star Particles */
         .particles-container {
             position: fixed;
             top: 0;
@@ -137,20 +140,35 @@
             height: 100%;
             z-index: -1;
             background: #000;
+            overflow: hidden;
         }
         
-        .particle {
+        .star {
             position: absolute;
             width: 2px;
             height: 2px;
-            background: rgba(138, 43, 226, 0.7);
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
-            box-shadow: 0 0 5px 1px rgba(138, 43, 226, 0.5);
+            box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.5);
             pointer-events: none;
-            transition: transform 0.1s ease;
+            animation: twinkle 3s infinite ease-in-out;
         }
         
-        /* Reduced Floating animation for the hero section */
+        .star.purple {
+            background: rgba(218, 112, 214, 0.8);
+            box-shadow: 0 0 5px 1px rgba(218, 112, 214, 0.5);
+        }
+        
+        .star.pink {
+            background: rgba(255, 105, 180, 0.8);
+            box-shadow: 0 0 5px 1px rgba(255, 105, 180, 0.5);
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-5px); }
@@ -185,12 +203,14 @@
         
         /* Increased brand text size by 50% */
         .brand-text {
-            font-size: 1.5rem; /* Increased by 50% */
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
-    <!-- Black Background with Purple Particles -->
+    <!-- Black Background with Star Particles -->
     <div class="particles-container" id="particles-container"></div>
 
     <header id="header" class="navbar-premium fixed top-0 left-0 right-0 z-50">
@@ -260,18 +280,18 @@
         </div>
     </header>
 
-    <main class="pt-8"> <!-- Reduced from pt-12 to pt-8 -->
+    <main class="pt-8">
         
-        <section id="home" class="min-h-[80vh] flex items-center justify-center text-center px-4"> <!-- Reduced min-height -->
+        <section id="home" class="min-h-[80vh] flex items-center justify-center text-center px-4">
             <div class="relative z-10 max-w-2xl mx-auto">
-                <div class="image-container mb-2 floating"> <!-- Reduced from mb-4 to mb-2 -->
+                <div class="image-container mb-2 floating">
                     <img src="https://i.ibb.co/JjBdXXCS/IMG-20251027-WA0027.jpg" alt="CaseyRhodes Bot Thumbnail" class="bot-hero-image">
                 </div>
 
-                 <h1 class="text-2xl md:text-3.5xl font-bold text-white leading-tight mb-1"> <!-- Reduced from mb-2 to mb-1 -->
+                 <h1 class="text-2xl md:text-3.5xl font-bold text-white leading-tight mb-1">
                     <span class="hero-title-gradient">CASEYRHODES</span> MINI.
                 </h1>
-                <p class="text-sm md:text-base text-lavender max-w-xl mx-auto mb-2"> <!-- Reduced from mb-4 to mb-2 -->
+                <p class="text-sm md:text-base text-lavender max-w-xl mx-auto mb-2">
                     Introducing CaseyRhodes, the ultimate bot engineered for unparalleled speed, functionality, and user experience.
                 </p>
                 <a href="https://mini-5e04ab3aea23.herokuapp.com/" target="_blank" class="btn-glow inline-block text-white font-bold py-2 px-5 rounded text-sm">
@@ -280,23 +300,23 @@
             </div>
         </section>
 
-        <section id="features" class="py-4 px-4"> <!-- Reduced from py-8 to py-4 -->
+        <section id="features" class="py-4 px-4">
             <div class="container mx-auto">
-                <div class="text-center max-w-xl mx-auto mb-3 fade-in-up"> <!-- Reduced from mb-6 to mb-3 -->
-                    <h2 class="text-2xl font-bold text-white mb-1"> <!-- Reduced from mb-2 to mb-1 -->
+                <div class="text-center max-w-xl mx-auto mb-3 fade-in-up">
+                    <h2 class="text-2xl font-bold text-white mb-1">
                         Premium Features
                     </h2>
                     <p class="text-lavender text-sm">
                         CaseyRhodes is packed with a premium set of tools designed to elevate your experience to the next level.
                     </p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3"> <!-- Reduced from gap-4 to gap-3 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                     
-                    <div class="feature-card-advanced rounded-lg p-3 text-center fade-in-up"> <!-- Reduced from p-4 to p-3 -->
-                        <div class="text-2xl mb-2 text-pink"> <!-- Reduced from mb-3 to mb-2 -->
+                    <div class="feature-card-advanced rounded-lg p-3 text-center fade-in-up">
+                        <div class="text-2xl mb-2 text-pink">
                             <i class="fas fa-bolt"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-white mb-1"> <!-- Reduced from mb-1.5 to mb-1 -->
+                        <h3 class="text-lg font-semibold text-white mb-1">
                             Lightning Fast Performance
                         </h3>
                         <p class="text-lavender text-xs">
@@ -304,11 +324,11 @@
                         </p>
                     </div>
                     
-                    <div class="feature-card-advanced rounded-lg p-3 text-center fade-in-up" style="transition-delay: 150ms;"> <!-- Reduced from p-4 to p-3 -->
-                         <div class="text-2xl mb-2 text-light-purple"> <!-- Reduced from mb-3 to mb-2 -->
+                    <div class="feature-card-advanced rounded-lg p-3 text-center fade-in-up" style="transition-delay: 120ms;">
+                         <div class="text-2xl mb-2 text-light-purple">
                             <i class="fas fa-download"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-white mb-1"> <!-- Reduced from mb-1.5 to mb-1 -->
+                        <h3 class="text-lg font-semibold text-white mb-1">
                             Advanced Download System
                         </h3>
                         <p class="text-lavender text-xs">
@@ -316,11 +336,11 @@
                         </p>
                     </div>
 
-                    <div class="feature-card-advanced rounded-lg p-3 text-center fade-in-up" style="transition-delay: 300ms;"> <!-- Reduced from p-4 to p-3 -->
-                        <div class="text-2xl mb-2 text-purple"> <!-- Reduced from mb-3 to mb-2 -->
+                    <div class="feature-card-advanced rounded-lg p-3 text-center fade-in-up" style="transition-delay: 240ms;">
+                        <div class="text-2xl mb-2 text-purple">
                             <i class="fas fa-shield-alt"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-white mb-1"> <!-- Reduced from mb-1.5 to mb-1 -->
+                        <h3 class="text-lg font-semibold text-white mb-1">
                             Advanced Security
                         </h3>
                         <p class="text-lavender text-xs">
@@ -331,40 +351,40 @@
             </div>
         </section>
 
-        <section id="commands" class="py-4 px-4 bg-black/20"> <!-- Reduced from py-8 to py-4 -->
+        <section id="commands" class="py-4 px-4 bg-black/20">
             <div class="container mx-auto">
-                 <div class="text-center max-w-xl mx-auto mb-3 fade-in-up"> <!-- Reduced from mb-6 to mb-3 -->
-                    <h2 class="text-2xl font-bold text-white mb-1"> <!-- Reduced from mb-2 to mb-1 -->
+                 <div class="text-center max-w-xl mx-auto mb-3 fade-in-up">
+                    <h2 class="text-2xl font-bold text-white mb-1">
                         Commands List
                     </h2>
                     <p class="text-lavender text-sm">
                         Explore a glimpse of what CaseyRhodes can do for you. Over 100+ commands at your fingertips
                     </p>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-center"> <!-- Reduced from gap-3 to gap-2 -->
-                    <div class="bg-gray-900/50 p-2 rounded-lg fade-in-up"> <!-- Reduced from p-3 to p-2 -->
-                        <div class="text-base mb-1 text-pink"> <!-- Reduced from mb-2 to mb-1 -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-center">
+                    <div class="bg-gray-900/50 p-2 rounded-lg fade-in-up">
+                        <div class="text-base mb-1 text-pink">
                             <i class="fas fa-download"></i>
                         </div>
                         <h4 class="font-bold text-pink text-sm">Download Tools</h4>
                         <p class="text-xs text-lavender">.song, .video, .tiktok, .fb, .apk</p>
                     </div>
-                    <div class="bg-gray-900/50 p-2 rounded-lg fade-in-up" style="transition-delay: 100ms;"> <!-- Reduced from p-3 to p-2 -->
-                        <div class="text-base mb-1 text-light-purple"> <!-- Reduced from mb-2 to mb-1 -->
+                    <div class="bg-gray-900/50 p-2 rounded-lg fade-in-up" style="transition-delay: 80ms;">
+                        <div class="text-base mb-1 text-light-purple">
                             <i class="fas fa-cog"></i>
                         </div>
                         <h4 class="font-bold text-light-purple text-sm">System Commands</h4>
                         <p class="text-xs text-lavender">.alive, .system, .ping, .jid</p>
                     </div>
-                    <div class="bg-gray-900/50 p-2 rounded-lg fade-in-up" style="transition-delay: 200ms;"> <!-- Reduced from p-3 to p-2 -->
-                        <div class="text-base mb-1 text-purple"> <!-- Reduced from mb-2 to mb-1 -->
+                    <div class="bg-gray-900/50 p-2 rounded-lg fade-in-up" style="transition-delay: 160ms;">
+                        <div class="text-base mb-1 text-purple">
                             <i class="fas fa-photo-video"></i>
                         </div>
                      <h4 class="font-bold text-purple text-sm">Media Tools</h4>
                         <p class="text-xs text-lavender">.sticker, .getdp, .cinfo, .save</p>
                     </div>
-                     <div class="bg-gray-900/50 p-2 rounded-lg fade-in-up" style="transition-delay: 500ms;"> <!-- Reduced from p-3 to p-2 -->
-                        <div class="text-base mb-1 text-pink"> <!-- Reduced from mb-2 to mb-1 -->
+                     <div class="bg-gray-900/50 p-2 rounded-lg fade-in-up" style="transition-delay: 400ms;">
+                        <div class="text-base mb-1 text-pink">
                             <i class="fas fa-gamepad"></i>
                         </div>
                         <h4 class="font-bold text-pink text-sm">Fun & Games</h4>
@@ -374,35 +394,35 @@
             </div>
         </section>
 
-        <section id="start" class="py-4 px-4"> <!-- Reduced from py-8 to py-4 -->
+        <section id="start" class="py-4 px-4">
              <div class="container mx-auto">
-                 <div class="text-center max-w-xl mx-auto mb-3 fade-in-up"> <!-- Reduced from mb-6 to mb-3 -->
-                    <h2 class="text-2xl font-bold text-white mb-1"> <!-- Reduced from mb-2 to mb-1 -->
+                 <div class="text-center max-w-xl mx-auto mb-3 fade-in-up">
+                    <h2 class="text-2xl font-bold text-white mb-1">
                         Get Started in 3 Steps
                     </h2>
                     <p class="text-lavender text-sm">
                         Deploying your own CaseyRhodes bot is simple and straightforward.
                     </p>
                 </div>
-                <div class="max-w-2xl mx-auto grid md:grid-cols-3 gap-3 text-center"> <!-- Reduced from gap-4 to gap-3 -->
+                <div class="max-w-2xl mx-auto grid md:grid-cols-3 gap-3 text-center">
                     <div class="fade-in-up">
-                        <div class="text-2xl font-bold hero-title-gradient mb-1">1</div> <!-- Reduced from mb-2 to mb-1 -->
-                        <h3 class="text-sm text-white font-semibold mb-0.5">Click Get Started</h3> <!-- Reduced from mb-1 to mb-0.5 -->
+                        <div class="text-2xl font-bold hero-title-gradient mb-1">1</div>
+                        <h3 class="text-sm text-white font-semibold mb-0.5">Click Get Started</h3>
                         <p class="text-lavender text-xs">Begin your journey with CaseyRhodes</p>
                     </div>
-                    <div class="fade-in-up" style="transition-delay: 150ms;">
-                        <div class="text-2xl font-bold hero-title-gradient mb-1">2</div> <!-- Reduced from mb-2 to mb-1 -->
-                        <h3 class="text-sm text-white font-semibold mb-0.5">Deploy & Pair</h3> <!-- Reduced from mb-1 to mb-0.5 -->
+                    <div class="fade-in-up" style="transition-delay: 120ms;">
+                        <div class="text-2xl font-bold hero-title-gradient mb-1">2</div>
+                        <h3 class="text-sm text-white font-semibold mb-0.5">Deploy & Pair</h3>
                         <p class="text-lavender text-xs">Deploy the bot and pair with your device</p>
                     </div>
-                    <div class="fade-in-up" style="transition-delay: 300ms;">
-                        <div class="text-2xl font-bold hero-title-gradient mb-1">3</div> <!-- Reduced from mb-2 to mb-1 -->
-                        <h3 class="text-sm text-white font-semibold mb-0.5">Enjoy Premium Features</h3> <!-- Reduced from mb-1 to mb-0.5 -->
+                    <div class="fade-in-up" style="transition-delay: 240ms;">
+                        <div class="text-2xl font-bold hero-title-gradient mb-1">3</div>
+                        <h3 class="text-sm text-white font-semibold mb-0.5">Enjoy Premium Features</h3>
                         <p class="text-lavender text-xs">Your bot is now live and ready to serve</p>
                     </div>
                 </div>
                 
-                <div class="text-center mt-2 fade-in-up"> <!-- Reduced from mt-4 to mt-2 -->
+                <div class="text-center mt-2 fade-in-up">
                     <a href="https://mini-5e04ab3aea23.herokuapp.com/" target="_blank" class="btn-glow inline-block text-white font-bold py-2 px-5 rounded text-sm">
                         <i class="fab fa-whatsapp mr-1 text-xs"></i>
                         Connect now
@@ -413,12 +433,12 @@
 
     </main>
     
-    <footer class="bg-black/30 border-t border-gray-800/50 text-center pt-4 pb-2 px-4"> <!-- Reduced padding -->
+    <footer class="bg-black/30 border-t border-gray-800/50 text-center pt-4 pb-2 px-4">
         <div class="container mx-auto">
-            <p class="text-lavender max-w-lg mx-auto mb-2 text-sm"> <!-- Reduced from mb-4 to mb-2 -->
+            <p class="text-lavender max-w-lg mx-auto mb-2 text-sm">
                 Elevate your WhatsApp experience with premium-powered automation.
             </p>
-            <div class="border-t border-gray-800 pt-2 mt-2"> <!-- Reduced padding -->
+            <div class="border-t border-gray-800 pt-2 mt-2">
                 <p class="text-lavender text-xs">© 2024 CaseyRhodes. All Rights Reserved.</p>
                 <p class="text-gray-600 text-2xs mt-0.5">Powered by <span class="text-light-purple">CaseyRhodes Team</span></p>
             </div>
@@ -450,61 +470,72 @@
     </div>
 
     <script>
-        // Create purple particles
-        function createParticles() {
+        // Create star particles
+        function createStars() {
             const container = document.getElementById('particles-container');
-            const particleCount = 80;
+            const starCount = 150;
             
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                
+                // Randomly assign star type
+                const starType = Math.random();
+                if (starType < 0.3) {
+                    star.classList.add('star', 'purple');
+                } else if (starType < 0.6) {
+                    star.classList.add('star', 'pink');
+                } else {
+                    star.classList.add('star');
+                }
                 
                 const x = Math.random() * 100;
                 const y = Math.random() * 100;
                 const size = Math.random() * 2 + 1;
                 const opacity = Math.random() * 0.5 + 0.3;
+                const animationDelay = Math.random() * 3;
                 
-                particle.style.left = `${x}%`;
-                particle.style.top = `${y}%`;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.opacity = opacity;
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.opacity = opacity;
+                star.style.animationDelay = `${animationDelay}s`;
                 
-                container.appendChild(particle);
+                container.appendChild(star);
             }
         }
         
-        // Mouse interaction with particles
+        // Mouse interaction with stars
         function createMouseInteraction() {
-            const particles = document.querySelectorAll('.particle');
+            const stars = document.querySelectorAll('.star');
             
             document.addEventListener('mousemove', (e) => {
-                particles.forEach(particle => {
-                    const rect = particle.getBoundingClientRect();
-                    const particleX = rect.left + rect.width / 2;
-                    const particleY = rect.top + rect.height / 2;
+                stars.forEach(star => {
+                    const rect = star.getBoundingClientRect();
+                    const starX = rect.left + rect.width / 2;
+                    const starY = rect.top + rect.height / 2;
                     
                     const distance = Math.sqrt(
-                        Math.pow(e.clientX - particleX, 2) + 
-                        Math.pow(e.clientY - particleY, 2)
+                        Math.pow(e.clientX - starX, 2) + 
+                        Math.pow(e.clientY - starY, 2)
                     );
                     
                     if (distance < 100) {
-                        const moveX = (e.clientX - particleX) * 0.05;
-                        const moveY = (e.clientY - particleY) * 0.05;
+                        const moveX = (e.clientX - starX) * 0.02;
+                        const moveY = (e.clientY - starY) * 0.02;
                         
-                        particle.style.transform = `translate(${moveX}px, ${moveY}px)`;
-                        particle.style.opacity = '0.9';
+                        star.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.5)`;
+                        star.style.opacity = '1';
                     } else {
-                        particle.style.transform = 'translate(0, 0)';
-                        particle.style.opacity = particle.getAttribute('data-opacity') || '0.5';
+                        star.style.transform = 'translate(0, 0) scale(1)';
+                        star.style.opacity = star.getAttribute('data-opacity') || '0.5';
                     }
                 });
             });
             
-            // Store original opacity for each particle
-            particles.forEach(particle => {
-                particle.setAttribute('data-opacity', particle.style.opacity);
+            // Store original opacity for each star
+            stars.forEach(star => {
+                star.setAttribute('data-opacity', star.style.opacity);
             });
         }
 
@@ -534,12 +565,12 @@
             document.getElementById('owner-modal').classList.add('hidden');
         });
 
-        // Reduced scroll animations
+        // Reduced scroll animations by 20%
         function checkScroll() {
             const elements = document.querySelectorAll('.fade-in-up');
             elements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 100; // Reduced from 150
+                const elementVisible = 120; // Slightly reduced from 150
                 
                 if (elementTop < window.innerHeight - elementVisible) {
                     element.classList.add('visible');
@@ -563,7 +594,7 @@
 
         // Initialize
         window.addEventListener('DOMContentLoaded', function() {
-            createParticles();
+            createStars();
             createMouseInteraction();
             checkScroll();
         });
