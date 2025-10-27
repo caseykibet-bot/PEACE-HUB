@@ -207,13 +207,87 @@
             font-weight: 300;
             letter-spacing: 0.5px;
         }
+        
+        /* Casper-style header */
+        .casper-header {
+            background: rgba(20, 10, 30, 0.9);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(219, 95, 219, 0.2);
+            padding: 0.75rem 1rem;
+        }
+        
+        .casper-nav-item {
+            background: rgba(40, 20, 50, 0.6);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            margin: 0 0.25rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(219, 95, 219, 0.2);
+        }
+        
+        .casper-nav-item:hover {
+            background: rgba(60, 30, 70, 0.8);
+            border-color: rgba(255, 105, 180, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .casper-nav-item.active {
+            background: linear-gradient(135deg, rgba(255, 105, 180, 0.3), rgba(138, 43, 226, 0.3));
+            border-color: rgba(255, 105, 180, 0.5);
+        }
+        
+        .casper-time {
+            font-size: 0.9rem;
+            color: #DA70D6;
+            font-weight: 500;
+        }
+        
+        .casper-domain {
+            font-size: 1rem;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .casper-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FF69B4, #DA70D6, #8A2BE2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
 <body>
     <!-- Black Background with Star Particles -->
     <div class="particles-container" id="particles-container"></div>
 
-    <header id="header" class="navbar-premium fixed top-0 left-0 right-0 z-50">
+    <!-- Casper-style Header -->
+    <header class="casper-header fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-4 mb-2 md:mb-0">
+                <div class="casper-time">09:11</div>
+                <div class="casper-domain">caseyrhodes-tech.vercel.app</div>
+            </div>
+            
+            <div class="text-center mb-2 md:mb-0">
+                <div class="casper-title">CASEYRHODES</div>
+                <div class="text-lavender text-sm">TECHNOLOGY</div>
+            </div>
+            
+            <div class="flex space-x-1">
+                <div class="casper-nav-item active">
+                    <span class="text-white text-sm">System</span>
+                </div>
+                <div class="casper-nav-item">
+                    <span class="text-lavender text-sm">Family & Friend</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Original Navigation -->
+    <header id="header" class="navbar-premium fixed top-16 left-0 right-0 z-50">
         <nav class="container mx-auto px-6 py-2 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-1.5 font-bold text-white">
                 <div class="relative">
@@ -280,7 +354,7 @@
         </div>
     </header>
 
-    <main class="pt-8">
+    <main class="pt-32"> <!-- Increased padding to account for the new header -->
         
         <section id="home" class="min-h-[80vh] flex items-center justify-center text-center px-4">
             <div class="relative z-10 max-w-2xl mx-auto">
