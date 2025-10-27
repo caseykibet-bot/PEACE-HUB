@@ -11,7 +11,7 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0f0f23;
+            background-color: #000000;
             color: #ffffff;
             overflow-x: hidden;
         }
@@ -147,11 +147,8 @@
         
         .star {
             position: absolute;
-            width: 2px;
-            height: 2px;
             background: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
-            box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.5);
             pointer-events: none;
             animation: twinkle 3s infinite ease-in-out;
         }
@@ -164,6 +161,11 @@
         .star.pink {
             background: rgba(255, 105, 180, 0.8);
             box-shadow: 0 0 5px 1px rgba(255, 105, 180, 0.5);
+        }
+        
+        .star.blue {
+            background: rgba(100, 149, 237, 0.8);
+            box-shadow: 0 0 5px 1px rgba(100, 149, 237, 0.5);
         }
         
         @keyframes twinkle {
@@ -199,22 +201,22 @@
         
         /* Hero section styling */
         .hero-section {
-            background: radial-gradient(ellipse at center, rgba(138, 43, 226, 0.1) 0%, rgba(15, 15, 35, 0) 70%);
+            background: radial-gradient(ellipse at center, rgba(138, 43, 226, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
         }
         
         /* Feature section styling */
         .feature-section {
-            background: radial-gradient(ellipse at top, rgba(218, 112, 214, 0.05) 0%, rgba(15, 15, 35, 0) 70%);
+            background: radial-gradient(ellipse at top, rgba(218, 112, 214, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
         }
         
         /* Command section styling */
         .command-section {
-            background: radial-gradient(ellipse at center, rgba(255, 105, 180, 0.05) 0%, rgba(15, 15, 35, 0) 70%);
+            background: radial-gradient(ellipse at center, rgba(255, 105, 180, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
         }
         
         /* Footer styling */
         .footer-section {
-            background: radial-gradient(ellipse at bottom, rgba(138, 43, 226, 0.05) 0%, rgba(15, 15, 35, 0) 70%);
+            background: radial-gradient(ellipse at bottom, rgba(138, 43, 226, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
         }
         
         /* Glowing border effect */
@@ -234,6 +236,20 @@
             z-index: -1;
             opacity: 0.5;
             filter: blur(5px);
+        }
+        
+        /* Button styling without colors */
+        .btn-clean {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-clean:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -329,9 +345,14 @@
                     Introducing CaseyRhodes, the ultimate bot engineered for unparalleled speed, functionality, and user experience.
                 </p>
                 
-                <a href="https://mini-5e04ab3aea23.herokuapp.com/" target="_blank" class="btn-glow inline-block text-white font-bold py-3 px-8 rounded-lg text-base">
-                    Get Started Now
-                </a>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="https://mini-5e04ab3aea23.herokuapp.com/" target="_blank" class="btn-glow inline-block text-white font-bold py-3 px-8 rounded-lg text-base">
+                        Get Started Now
+                    </a>
+                    <a href="#features" class="btn-clean inline-block text-white font-bold py-3 px-8 rounded-lg text-base">
+                        Learn More
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -383,6 +404,33 @@
                         </p>
                     </div>
                 </div>
+                
+                <!-- Additional Features -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                    <div class="feature-card-advanced rounded-lg p-6 text-center fade-in-up glow-border" style="transition-delay: 360ms;">
+                        <div class="text-3xl mb-4 text-pink">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">
+                            AI-Powered Automation
+                        </h3>
+                        <p class="text-lavender text-sm">
+                            Smart automation that learns from your usage patterns to provide personalized experiences.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card-advanced rounded-lg p-6 text-center fade-in-up glow-border" style="transition-delay: 480ms;">
+                         <div class="text-3xl mb-4 text-light-purple">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">
+                            Cross-Platform Compatibility
+                        </h3>
+                        <p class="text-lavender text-sm">
+                            Works seamlessly across multiple platforms and devices with synchronized data.
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -426,6 +474,38 @@
                         <p class="text-sm text-lavender">.meme, .quiz, .joke, .dice</p>
                     </div>
                 </div>
+                
+                <!-- Additional Commands -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mt-6">
+                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 500ms;">
+                        <div class="text-xl mb-2 text-light-purple">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4 class="font-bold text-light-purple text-base">Search Tools</h4>
+                        <p class="text-sm text-lavender">.google, .ytsearch, .wiki, .weather</p>
+                    </div>
+                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 580ms;">
+                        <div class="text-xl mb-2 text-purple">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4 class="font-bold text-purple text-base">Group Management</h4>
+                        <p class="text-sm text-lavender">.kick, .promote, .demote, .groupinfo</p>
+                    </div>
+                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 660ms;">
+                        <div class="text-xl mb-2 text-pink">
+                            <i class="fas fa-image"></i>
+                        </div>
+                     <h4 class="font-bold text-pink text-base">Image Tools</h4>
+                        <p class="text-sm text-lavender">.edit, .filter, .caption, .qr</p>
+                    </div>
+                     <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 740ms;">
+                        <div class="text-xl mb-2 text-light-purple">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h4 class="font-bold text-light-purple text-base">Audio Tools</h4>
+                        <p class="text-sm text-lavender">.play, .lyrics, .bass, .volume</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -462,6 +542,21 @@
                         <i class="fab fa-whatsapp mr-2 text-base"></i>
                         Connect now
                     </a>
+                </div>
+                
+                <!-- Additional Information Section -->
+                <div class="mt-16 text-center fade-in-up">
+                    <h2 class="text-2xl font-bold text-white mb-6">Why Choose CaseyRhodes?</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                        <div class="bg-gray-900/30 p-6 rounded-lg">
+                            <h3 class="text-xl font-semibold text-white mb-3">24/7 Active Support</h3>
+                            <p class="text-lavender text-sm">Our dedicated support team is available around the clock to assist you with any issues or questions.</p>
+                        </div>
+                        <div class="bg-gray-900/30 p-6 rounded-lg">
+                            <h3 class="text-xl font-semibold text-white mb-3">Regular Updates</h3>
+                            <p class="text-lavender text-sm">We continuously improve our bot with new features, security patches, and performance enhancements.</p>
+                        </div>
+                    </div>
                 </div>
              </div>
         </section>
@@ -508,26 +603,28 @@
         // Create star particles
         function createStars() {
             const container = document.getElementById('particles-container');
-            const starCount = 150;
+            const starCount = 400; // Increased star count
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 
                 // Randomly assign star type
                 const starType = Math.random();
-                if (starType < 0.3) {
+                if (starType < 0.25) {
                     star.classList.add('star', 'purple');
-                } else if (starType < 0.6) {
+                } else if (starType < 0.5) {
                     star.classList.add('star', 'pink');
+                } else if (starType < 0.75) {
+                    star.classList.add('star', 'blue');
                 } else {
                     star.classList.add('star');
                 }
                 
                 const x = Math.random() * 100;
                 const y = Math.random() * 100;
-                const size = Math.random() * 2 + 1;
-                const opacity = Math.random() * 0.5 + 0.3;
-                const animationDelay = Math.random() * 3;
+                const size = Math.random() * 3 + 1; // Slightly larger stars
+                const opacity = Math.random() * 0.7 + 0.3;
+                const animationDelay = Math.random() * 5;
                 
                 star.style.left = `${x}%`;
                 star.style.top = `${y}%`;
