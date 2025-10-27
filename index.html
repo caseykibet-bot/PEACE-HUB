@@ -41,12 +41,12 @@
         }
         
         .bot-hero-image {
-            width: 220px;
-            height: 220px;
-            border-radius: 20px;
+            width: 110px; /* Reduced by 50% */
+            height: 110px; /* Reduced by 50% */
+            border-radius: 10px; /* Reduced by 50% */
             box-shadow: 
-                0 0 30px rgba(219, 95, 219, 0.5),
-                0 5px 15px rgba(0, 0, 0, 0.3);
+                0 0 15px rgba(219, 95, 219, 0.5), /* Reduced by 50% */
+                0 2.5px 7.5px rgba(0, 0, 0, 0.3); /* Reduced by 50% */
             transition: all 0.3s ease;
             transform-style: preserve-3d;
             position: relative;
@@ -54,10 +54,10 @@
         }
         
         .bot-hero-image:hover {
-            transform: translateY(-5px);
+            transform: translateY(-2.5px); /* Reduced by 50% */
             box-shadow: 
-                0 0 40px rgba(219, 95, 219, 0.7),
-                0 8px 20px rgba(0, 0, 0, 0.4);
+                0 0 20px rgba(219, 95, 219, 0.7), /* Reduced by 50% */
+                0 4px 10px rgba(0, 0, 0, 0.4); /* Reduced by 50% */
         }
         
         .image-container {
@@ -68,26 +68,26 @@
         .image-container::before {
             content: '';
             position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
+            top: -5px; /* Reduced by 50% */
+            left: -5px; /* Reduced by 50% */
+            right: -5px; /* Reduced by 50% */
+            bottom: -5px; /* Reduced by 50% */
             background: linear-gradient(135deg, #FF69B4, #DA70D6, #8A2BE2);
-            border-radius: 30px;
+            border-radius: 15px; /* Reduced by 50% */
             z-index: 1;
             opacity: 0.3;
-            filter: blur(15px);
+            filter: blur(7.5px); /* Reduced by 50% */
         }
         
         .btn-glow {
             background: linear-gradient(135deg, #DA70D6, #8A2BE2);
-            box-shadow: 0 0 15px rgba(219, 95, 219, 0.4);
+            box-shadow: 0 0 7.5px rgba(219, 95, 219, 0.4); /* Reduced by 50% */
             transition: all 0.3s ease;
         }
         
         .btn-glow:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(219, 95, 219, 0.6);
+            transform: translateY(-1px); /* Reduced by 50% */
+            box-shadow: 0 0 10px rgba(219, 95, 219, 0.6); /* Reduced by 50% */
         }
         
         .feature-card-advanced {
@@ -98,14 +98,14 @@
         }
         
         .feature-card-advanced:hover {
-            transform: translateY(-5px);
+            transform: translateY(-2.5px); /* Reduced by 50% */
             border-color: #FF69B4;
-            box-shadow: 0 10px 20px rgba(255, 105, 180, 0.2);
+            box-shadow: 0 5px 10px rgba(255, 105, 180, 0.2); /* Reduced by 50% */
         }
         
         .fade-in-up {
             opacity: 0;
-            transform: translateY(15px);
+            transform: translateY(7.5px); /* Reduced by 50% */
             transition: all 0.4s ease;
         }
         
@@ -118,7 +118,7 @@
             background: rgba(40, 20, 50, 0.95);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(219, 95, 219, 0.5);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 7.5px 15px rgba(0, 0, 0, 0.4); /* Reduced by 50% */
         }
         
         body {
@@ -141,11 +141,11 @@
         
         .particle {
             position: absolute;
-            width: 4px;
-            height: 4px;
+            width: 2px; /* Reduced by 50% */
+            height: 2px; /* Reduced by 50% */
             background: rgba(138, 43, 226, 0.7);
             border-radius: 50%;
-            box-shadow: 0 0 10px 2px rgba(138, 43, 226, 0.5);
+            box-shadow: 0 0 5px 1px rgba(138, 43, 226, 0.5); /* Reduced by 50% */
             pointer-events: none;
             transition: transform 0.1s ease;
         }
@@ -153,7 +153,7 @@
         /* Reduced Floating animation for the hero section */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-5px); } /* Reduced by 50% */
         }
         
         .floating {
@@ -162,8 +162,8 @@
         
         /* Improved section spacing */
         section {
-            padding-top: 4rem;
-            padding-bottom: 4rem;
+            padding-top: 2rem; /* Reduced by 50% */
+            padding-bottom: 2rem; /* Reduced by 50% */
         }
         
         /* Pink/Purple text colors */
@@ -189,191 +189,217 @@
     <div class="particles-container" id="particles-container"></div>
 
     <header id="header" class="navbar-premium fixed top-0 left-0 right-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center space-x-3 text-xl font-bold text-white">
+        <nav class="container mx-auto px-6 py-2 flex justify-between items-center"> <!-- Reduced padding -->
+            <a href="#" class="flex items-center space-x-1.5 text-sm font-bold text-white"> <!-- Reduced text size -->
                 <div class="relative">
-                    <img src="https://i.ibb.co/ZzK3y1m8/malvin-xd.jpg" alt="CaseyRhodes Logo" class="w-10 h-10 rounded-full border-2 border-purple-500 shadow-lg shadow-purple-500/50">
-                    <div class="absolute -top-1 -right-1 w-3 h-3 bg-pink-400 rounded-full"></div>
+                    <img src="https://i.ibb.co/ZzK3y1m8/malvin-xd.jpg" alt="CaseyRhodes Logo" class="w-5 h-5 rounded-full border border-purple-500 shadow shadow-purple-500/50"> <!-- Reduced size -->
+                    <div class="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-pink-400 rounded-full"></div> <!-- Reduced size -->
                 </div>
                 <span class="hero-title-gradient">CASEYRHODES</span>
             </a>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="nav-link-premium text-lavender hover:text-white flex items-center gap-2">
-                    <i class="fas fa-home text-pink"></i>
+            <div class="hidden md:flex items-center space-x-4"> <!-- Reduced spacing -->
+                <a href="#home" class="nav-link-premium text-lavender hover:text-white flex items-center gap-1 text-xs"> <!-- Reduced text size -->
+                    <i class="fas fa-home text-pink text-xs"></i> <!-- Reduced icon size -->
                     Home
                 </a>
-                <a href="#features" class="nav-link-premium text-lavender hover:text-white flex items-center gap-2">
-                    <i class="fas fa-star text-light-purple"></i>
+                <a href="#features" class="nav-link-premium text-lavender hover:text-white flex items-center gap-1 text-xs"> <!-- Reduced text size -->
+                    <i class="fas fa-star text-light-purple text-xs"></i> <!-- Reduced icon size -->
                     Features
                 </a>
-                <a href="#commands" class="nav-link-premium text-lavender hover:text-white flex items-center gap-2">
-                    <i class="fas fa-code text-purple"></i>
+                <a href="#commands" class="nav-link-premium text-lavender hover:text-white flex items-center gap-1 text-xs"> <!-- Reduced text size -->
+                    <i class="fas fa-code text-purple text-xs"></i> <!-- Reduced icon size -->
                     Commands
                 </a>
-                <a href="#start" class="nav-link-premium text-lavender hover:text-white flex items-center gap-2">
-                    <i class="fas fa-rocket text-pink"></i>
+                <a href="#start" class="nav-link-premium text-lavender hover:text-white flex items-center gap-1 text-xs"> <!-- Reduced text size -->
+                    <i class="fas fa-rocket text-pink text-xs"></i> <!-- Reduced icon size -->
                     Get Started
                 </a>
-                <a href="#" target="_blank" class="nav-link-premium text-lavender hover:text-white flex items-center gap-2">
-                    <i class="fas fa-bell text-light-purple"></i>
+                <a href="#" target="_blank" class="nav-link-premium text-lavender hover:text-white flex items-center gap-1 text-xs"> <!-- Reduced text size -->
+                    <i class="fas fa-bell text-light-purple text-xs"></i> <!-- Reduced icon size -->
                     Updates
                 </a>
-                <a href="#" id="owner-link" class="nav-link-premium text-lavender hover:text-white flex items-center gap-2">
-                    <i class="fas fa-user text-purple"></i>
+                <a href="#" id="owner-link" class="nav-link-premium text-lavender hover:text-white flex items-center gap-1 text-xs"> <!-- Reduced text size -->
+                    <i class="fas fa-user text-purple text-xs"></i> <!-- Reduced icon size -->
                     Owner
                 </a>
             </div>
             <button id="mobile-menu-button" class="md:hidden text-white">
-                <i class="fas fa-bars text-2xl"></i>
+                <i class="fas fa-bars text-base"></i> <!-- Reduced icon size -->
             </button>
         </nav>
         <div id="mobile-menu" class="hidden md:hidden bg-gray-900/95 backdrop-blur-lg">
-            <a href="#home" class="block py-4 px-6 text-lavender hover:bg-purple-500/20 hover:text-white transition-all flex items-center gap-3 border-b border-gray-800">
-                <i class="fas fa-home text-pink w-6"></i>
+            <a href="#home" class="block py-2 px-3 text-lavender hover:bg-purple-500/20 hover:text-white transition-all flex items-center gap-1.5 border-b border-gray-800 text-xs"> <!-- Reduced text size -->
+                <i class="fas fa-home text-pink w-3"></i> <!-- Reduced icon size -->
                 Home
             </a>
-            <a href="#features" class="block py-4 px-6 text-lavender hover:bg-purple-500/20 hover:text-white transition-all flex items-center gap-3 border-b border-gray-800">
-                <i class="fas fa-star text-light-purple w-6"></i>
+            <a href="#features" class="block py-2 px-3 text-lavender hover:bg-purple-500/20 hover:text-white transition-all flex items-center gap-1.5 border-b border-gray-800 text-xs"> <!-- Reduced text size -->
+                <i class="fas fa-star text-light-purple w-3"></i> <!-- Reduced icon size -->
                 Features
             </a>
-            <a href="#commands" class="block py-4 px-6 text-lavender hover:bg-purple-500/20 hover:text-white transition-all flex items-center gap-3 border-b border-gray-800">
-                <i class="fas fa-code text-purple w-6"></i>
+            <a href="#commands" class="block py-2 px-3 text-lavender hover:bg-purple-500/20 hover:text-white transition-all flex items-center gap-1.5 border-b border-gray-800 text-xs"> <!-- Reduced text size -->
+                <i class="fas fa-code text-purple w-3"></i> <!-- Reduced icon size -->
                 Commands
             </a>
-            <a href="#start" class="block py-4 px-6 text-lavender hover:bg-purple-500/20 hover:text-white transition-all flex items-center gap-3 border-b border-gray-800">
-                <i class="fas fa-rocket text-pink w-6"></i>
+            <a href="#start" class="block py-2 px-3 text-lavender hover:bg-purple-500/20 hover:text-white transition-all flex items-center gap-1.5 border-b border-gray-800 text-xs"> <!-- Reduced text size -->
+                <i class="fas fa-rocket text-pink w-3"></i> <!-- Reduced icon size -->
                 Get Started
             </a>
-            <a href="#" target="_blank" class="block py-4 px-6 text-lavender hover:bg-purple-500/20 hover:text-white transition-all flex items-center gap-3 border-b border-gray-800">
-                <i class="fas fa-bell text-light-purple w-6"></i>
+            <a href="#" target="_blank" class="block py-2 px-3 text-lavender hover:bg-purple-500/20 hover:text-white transition-all flex items-center gap-1.5 border-b border-gray-800 text-xs"> <!-- Reduced text size -->
+                <i class="fas fa-bell text-light-purple w-3"></i> <!-- Reduced icon size -->
                 Updates
             </a>
-            <a href="#" id="owner-link-mobile" class="block py-4 px-6 text-lavender hover:bg-purple-500/20 hover:text-white transition-all flex items-center gap-3">
-                <i class="fas fa-user text-purple w-6"></i>
+            <a href="#" id="owner-link-mobile" class="block py-2 px-3 text-lavender hover:bg-purple-500/20 hover:text-white transition-all flex items-center gap-1.5 text-xs"> <!-- Reduced text size -->
+                <i class="fas fa-user text-purple w-3"></i> <!-- Reduced icon size -->
                 Owner
             </a>
         </div>
     </header>
 
-    <main class="pt-24">
+    <main class="pt-12"> <!-- Reduced padding -->
         
         <section id="home" class="min-h-screen flex items-center justify-center text-center px-4">
-            <div class="relative z-10 max-w-4xl mx-auto">
-                <div class="image-container mb-10 floating">
+            <div class="relative z-10 max-w-2xl mx-auto"> <!-- Reduced max-width -->
+                <div class="image-container mb-5 floating"> <!-- Reduced margin -->
                     <img src="https://i.ibb.co/ZzK3y1m8/malvin-xd.jpg" alt="CaseyRhodes Bot Thumbnail" class="bot-hero-image">
                 </div>
 
-                 <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-4">
+                 <h1 class="text-2xl md:text-3.5xl font-bold text-white leading-tight mb-2"> <!-- Reduced text size -->
                     <span class="hero-title-gradient">CASEYRHODES</span> MINI.
                 </h1>
-                <p class="text-lg md:text-xl text-lavender max-w-2xl mx-auto mb-10">Introducing CaseyRhodes, the ultimate bot engineered for unparalleled speed, functionality, and user experience.</p>
-                <a href="#start" class="btn-glow inline-block text-white font-bold py-4 px-10 rounded-lg text-lg">
+                <p class="text-sm md:text-base text-lavender max-w-xl mx-auto mb-5"> <!-- Reduced text size -->
+                    Introducing CaseyRhodes, the ultimate bot engineered for unparalleled speed, functionality, and user experience.
+                </p>
+                <a href="#start" class="btn-glow inline-block text-white font-bold py-2 px-5 rounded text-sm"> <!-- Reduced button size -->
                     Get Started Now
                 </a>
             </div>
         </section>
 
-        <section id="features" class="py-20 px-4">
+        <section id="features" class="py-10 px-4"> <!-- Reduced padding -->
             <div class="container mx-auto">
-                <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
-                    <h2 class="text-4xl font-bold text-white mb-4">Premium Features</h2>
-                    <p class="text-lavender">CaseyRhodes is packed with a premium set of tools designed to elevate your experience to the next level.</p>
+                <div class="text-center max-w-xl mx-auto mb-8 fade-in-up"> <!-- Reduced max-width -->
+                    <h2 class="text-2xl font-bold text-white mb-2"> <!-- Reduced text size -->
+                        Premium Features
+                    </h2>
+                    <p class="text-lavender text-sm"> <!-- Reduced text size -->
+                        CaseyRhodes is packed with a premium set of tools designed to elevate your experience to the next level.
+                    </p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4"> <!-- Reduced gap -->
                     
-                    <div class="feature-card-advanced rounded-xl p-8 text-center fade-in-up">
-                        <div class="text-5xl mb-6 text-pink">
+                    <div class="feature-card-advanced rounded-lg p-4 text-center fade-in-up"> <!-- Reduced padding -->
+                        <div class="text-2xl mb-3 text-pink"> <!-- Reduced icon size -->
                             <i class="fas fa-bolt"></i>
                         </div>
-                        <h3 class="text-2xl font-semibold text-white mb-3">Lightning Fast Performance</h3>
-                        <p class="text-lavender">Engineered for instant command execution and zero-latency responses.</p>
+                        <h3 class="text-lg font-semibold text-white mb-1.5"> <!-- Reduced text size -->
+                            Lightning Fast Performance
+                        </h3>
+                        <p class="text-lavender text-xs"> <!-- Reduced text size -->
+                            Engineered for instant command execution and zero-latency responses.
+                        </p>
                     </div>
                     
-                    <div class="feature-card-advanced rounded-xl p-8 text-center fade-in-up" style="transition-delay: 150ms;">
-                         <div class="text-5xl mb-6 text-light-purple">
+                    <div class="feature-card-advanced rounded-lg p-4 text-center fade-in-up" style="transition-delay: 150ms;">
+                         <div class="text-2xl mb-3 text-light-purple"> <!-- Reduced icon size -->
                             <i class="fas fa-download"></i>
                         </div>
-                        <h3 class="text-2xl font-semibold text-white mb-3">Advanced Download System</h3>
-                        <p class="text-lavender">Download from YouTube, TikTok, Instagram, Facebook and more with zero-latency speed.</p>
+                        <h3 class="text-lg font-semibold text-white mb-1.5"> <!-- Reduced text size -->
+                            Advanced Download System
+                        </h3>
+                        <p class="text-lavender text-xs"> <!-- Reduced text size -->
+                            Download from YouTube, TikTok, Instagram, Facebook and more with zero-latency speed.
+                        </p>
                     </div>
 
-                    <div class="feature-card-advanced rounded-xl p-8 text-center fade-in-up" style="transition-delay: 300ms;">
-                        <div class="text-5xl mb-6 text-purple">
+                    <div class="feature-card-advanced rounded-lg p-4 text-center fade-in-up" style="transition-delay: 300ms;">
+                        <div class="text-2xl mb-3 text-purple"> <!-- Reduced icon size -->
                             <i class="fas fa-shield-alt"></i>
                         </div>
-                        <h3 class="text-2xl font-semibold text-white mb-3">Advanced Security</h3>
-                        <p class="text-lavender">Your privacy is paramount. Built with end-to-end security measures to protect your data.</p>
+                        <h3 class="text-lg font-semibold text-white mb-1.5"> <!-- Reduced text size -->
+                            Advanced Security
+                        </h3>
+                        <p class="text-lavender text-xs"> <!-- Reduced text size -->
+                            Your privacy is paramount. Built with end-to-end security measures to protect your data.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="commands" class="py-20 px-4 bg-black/20">
+        <section id="commands" class="py-10 px-4 bg-black/20"> <!-- Reduced padding -->
             <div class="container mx-auto">
-                 <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
-                    <h2 class="text-4xl font-bold text-white mb-4">Commands List</h2>
-                    <p class="text-lavender">Explore a glimpse of what CaseyRhodes can do for you. Over 100+ commands at your fingertips</p>
+                 <div class="text-center max-w-xl mx-auto mb-8 fade-in-up"> <!-- Reduced max-width -->
+                    <h2 class="text-2xl font-bold text-white mb-2"> <!-- Reduced text size -->
+                        Commands List
+                    </h2>
+                    <p class="text-lavender text-sm"> <!-- Reduced text size -->
+                        Explore a glimpse of what CaseyRhodes can do for you. Over 100+ commands at your fingertips
+                    </p>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                    <div class="bg-gray-900/50 p-6 rounded-lg fade-in-up">
-                        <div class="text-3xl mb-4 text-pink">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center"> <!-- Reduced gap -->
+                    <div class="bg-gray-900/50 p-3 rounded-lg fade-in-up"> <!-- Reduced padding -->
+                        <div class="text-base mb-2 text-pink"> <!-- Reduced icon size -->
                             <i class="fas fa-download"></i>
                         </div>
-                        <h4 class="font-bold text-pink text-lg">Download Tools</h4>
-                        <p class="text-sm text-lavender">.song, .video, .tiktok, .fb, .apk</p>
+                        <h4 class="font-bold text-pink text-sm">Download Tools</h4> <!-- Reduced text size -->
+                        <p class="text-xs text-lavender">.song, .video, .tiktok, .fb, .apk</p> <!-- Reduced text size -->
                     </div>
-                    <div class="bg-gray-900/50 p-6 rounded-lg fade-in-up" style="transition-delay: 100ms;">
-                        <div class="text-3xl mb-4 text-light-purple">
+                    <div class="bg-gray-900/50 p-3 rounded-lg fade-in-up" style="transition-delay: 100ms;">
+                        <div class="text-base mb-2 text-light-purple"> <!-- Reduced icon size -->
                             <i class="fas fa-cog"></i>
                         </div>
-                        <h4 class="font-bold text-light-purple text-lg">System Commands</h4>
-                        <p class="text-sm text-lavender">.alive, .system, .ping, .jid</p>
+                        <h4 class="font-bold text-light-purple text-sm">System Commands</h4> <!-- Reduced text size -->
+                        <p class="text-xs text-lavender">.alive, .system, .ping, .jid</p> <!-- Reduced text size -->
                     </div>
-                    <div class="bg-gray-900/50 p-6 rounded-lg fade-in-up" style="transition-delay: 200ms;">
-                        <div class="text-3xl mb-4 text-purple">
+                    <div class="bg-gray-900/50 p-3 rounded-lg fade-in-up" style="transition-delay: 200ms;">
+                        <div class="text-base mb-2 text-purple"> <!-- Reduced icon size -->
                             <i class="fas fa-photo-video"></i>
                         </div>
-                     <h4 class="font-bold text-purple text-lg">Media Tools</h4>
-                        <p class="text-sm text-lavender">.sticker, .getdp, .cinfo, .save</p>
+                     <h4 class="font-bold text-purple text-sm">Media Tools</h4> <!-- Reduced text size -->
+                        <p class="text-xs text-lavender">.sticker, .getdp, .cinfo, .save</p> <!-- Reduced text size -->
                     </div>
-                     <div class="bg-gray-900/50 p-6 rounded-lg fade-in-up" style="transition-delay: 500ms;">
-                        <div class="text-3xl mb-4 text-pink">
+                     <div class="bg-gray-900/50 p-3 rounded-lg fade-in-up" style="transition-delay: 500ms;">
+                        <div class="text-base mb-2 text-pink"> <!-- Reduced icon size -->
                             <i class="fas fa-gamepad"></i>
                         </div>
-                        <h4 class="font-bold text-pink text-lg">Fun & Games</h4>
-                        <p class="text-sm text-lavender">.meme, .quiz, .joke, .dice</p>
+                        <h4 class="font-bold text-pink text-sm">Fun & Games</h4> <!-- Reduced text size -->
+                        <p class="text-xs text-lavender">.meme, .quiz, .joke, .dice</p> <!-- Reduced text size -->
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="start" class="py-20 px-4">
+        <section id="start" class="py-10 px-4"> <!-- Reduced padding -->
              <div class="container mx-auto">
-                 <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
-                    <h2 class="text-4xl font-bold text-white mb-4">Get Started in 3 Steps</h2>
-                    <p class="text-lavender">Deploying your own CaseyRhodes bot is simple and straightforward.</p>
+                 <div class="text-center max-w-xl mx-auto mb-8 fade-in-up"> <!-- Reduced max-width -->
+                    <h2 class="text-2xl font-bold text-white mb-2"> <!-- Reduced text size -->
+                        Get Started in 3 Steps
+                    </h2>
+                    <p class="text-lavender text-sm"> <!-- Reduced text size -->
+                        Deploying your own CaseyRhodes bot is simple and straightforward.
+                    </p>
                 </div>
-                <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+                <div class="max-w-2xl mx-auto grid md:grid-cols-3 gap-4 text-center"> <!-- Reduced max-width and gap -->
                     <div class="fade-in-up">
-                        <div class="text-4xl font-bold hero-title-gradient mb-4">1</div>
-                        <h3 class="text-xl text-white font-semibold mb-2">Click Get Started</h3>
-                        <p class="text-lavender">Begin your journey with CaseyRhodes</p>
+                        <div class="text-2xl font-bold hero-title-gradient mb-2">1</div> <!-- Reduced text size -->
+                        <h3 class="text-sm text-white font-semibold mb-1">Click Get Started</h3> <!-- Reduced text size -->
+                        <p class="text-lavender text-xs">Begin your journey with CaseyRhodes</p> <!-- Reduced text size -->
                     </div>
                     <div class="fade-in-up" style="transition-delay: 150ms;">
-                        <div class="text-4xl font-bold hero-title-gradient mb-4">2</div>
-                        <h3 class="text-xl text-white font-semibold mb-2">Deploy & Pair</h3>
-                        <p class="text-lavender">Deploy the bot and pair with your device</p>
+                        <div class="text-2xl font-bold hero-title-gradient mb-2">2</div> <!-- Reduced text size -->
+                        <h3 class="text-sm text-white font-semibold mb-1">Deploy & Pair</h3> <!-- Reduced text size -->
+                        <p class="text-lavender text-xs">Deploy the bot and pair with your device</p> <!-- Reduced text size -->
                     </div>
                     <div class="fade-in-up" style="transition-delay: 300ms;">
-                        <div class="text-4xl font-bold hero-title-gradient mb-4">3</div>
-                        <h3 class="text-xl text-white font-semibold mb-2">Enjoy Premium Features</h3>
-                        <p class="text-lavender">Your bot is now live and ready to serve</p>
+                        <div class="text-2xl font-bold hero-title-gradient mb-2">3</div> <!-- Reduced text size -->
+                        <h3 class="text-sm text-white font-semibold mb-1">Enjoy Premium Features</h3> <!-- Reduced text size -->
+                        <p class="text-lavender text-xs">Your bot is now live and ready to serve</p> <!-- Reduced text size -->
                     </div>
                 </div>
                 
-                <div class="text-center mt-12 fade-in-up">
-                    <a href="#" target="_blank" class="btn-glow inline-block text-white font-bold py-4 px-10 rounded-lg text-lg">
-                        <i class="fab fa-whatsapp mr-2"></i>
+                <div class="text-center mt-6 fade-in-up"> <!-- Reduced margin -->
+                    <a href="#" target="_blank" class="btn-glow inline-block text-white font-bold py-2 px-5 rounded text-sm"> <!-- Reduced button size -->
+                        <i class="fab fa-whatsapp mr-1 text-xs"></i> <!-- Reduced icon size -->
                         Connect now
                     </a>
                 </div>
@@ -382,35 +408,37 @@
 
     </main>
     
-    <footer class="bg-black/30 border-t border-gray-800/50 text-center pt-12 pb-6 px-4">
+    <footer class="bg-black/30 border-t border-gray-800/50 text-center pt-6 pb-3 px-4"> <!-- Reduced padding -->
         <div class="container mx-auto">
-            <p class="text-lavender max-w-lg mx-auto mb-8">Elevate your WhatsApp experience with premium-powered automation.</p>
-            <div class="border-t border-gray-800 pt-6 mt-8">
-                <p class="text-lavender text-sm">© 2024 CaseyRhodes. All Rights Reserved.</p>
-                <p class="text-gray-600 text-xs mt-1">Powered by <span class="text-light-purple">CaseyRhodes Team</span></p>
+            <p class="text-lavender max-w-lg mx-auto mb-4 text-sm"> <!-- Reduced text size -->
+                Elevate your WhatsApp experience with premium-powered automation.
+            </p>
+            <div class="border-t border-gray-800 pt-3 mt-4"> <!-- Reduced padding -->
+                <p class="text-lavender text-xs">© 2024 CaseyRhodes. All Rights Reserved.</p> <!-- Reduced text size -->
+                <p class="text-gray-600 text-2xs mt-0.5">Powered by <span class="text-light-purple">CaseyRhodes Team</span></p> <!-- Reduced text size -->
             </div>
         </div>
     </footer>
 
-    <div id="owner-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div id="owner-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-2"> <!-- Reduced padding -->
         <div class="absolute inset-0 bg-black/80" id="modal-backdrop"></div>
-        <div class="modal-advanced w-full max-w-sm mx-auto rounded-2xl relative z-10 p-8 text-center">
-            <button id="close-modal" class="absolute top-4 right-4 text-gray-500 hover:text-white text-3xl">×</button>
-            <img src="https://github.com/XdKing2.png" alt="Owner" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-purple-500/50">
-            <h3 class="text-2xl font-bold text-white">CASEY RHODES</h3>
-            <p class="text-light-purple mt-1 font-medium">Bot Developer</p>
-            <div class="mt-6 text-left space-y-3">
-                <a href="#" target="_blank" class="flex items-center p-3 bg-white/5 rounded-lg hover:bg-white/10 transition">
-                    <i class="fab fa-github text-purple mr-3"></i>
-                    <span class="text-lavender text-sm">GitHub: CaseyRhodes</span>
+        <div class="modal-advanced w-full max-w-xs mx-auto rounded-lg relative z-10 p-4 text-center"> <!-- Reduced max-width and padding -->
+            <button id="close-modal" class="absolute top-2 right-2 text-gray-500 hover:text-white text-xl">×</button> <!-- Reduced size -->
+            <img src="https://github.com/XdKing2.png" alt="Owner" class="w-12 h-12 rounded-full mx-auto mb-2 border-2 border-purple-500/50"> <!-- Reduced size -->
+            <h3 class="text-lg font-bold text-white">CASEY RHODES</h3> <!-- Reduced text size -->
+            <p class="text-light-purple mt-0.5 font-medium text-sm">Bot Developer</p> <!-- Reduced text size -->
+            <div class="mt-3 text-left space-y-1.5"> <!-- Reduced margin and gap -->
+                <a href="#" target="_blank" class="flex items-center p-1.5 bg-white/5 rounded text-xs hover:bg-white/10 transition"> <!-- Reduced padding and text size -->
+                    <i class="fab fa-github text-purple mr-1.5 text-xs"></i> <!-- Reduced icon size -->
+                    <span class="text-lavender">GitHub: CaseyRhodes</span>
                 </a>
-                <a href="#" target="_blank" class="flex items-center p-3 bg-white/5 rounded-lg hover:bg-white/10 transition">
-                    <i class="fab fa-whatsapp text-light-purple mr-3"></i>
-                    <span class="text-lavender text-sm">WhatsApp Channel</span>
+                <a href="#" target="_blank" class="flex items-center p-1.5 bg-white/5 rounded text-xs hover:bg-white/10 transition"> <!-- Reduced padding and text size -->
+                    <i class="fab fa-whatsapp text-light-purple mr-1.5 text-xs"></i> <!-- Reduced icon size -->
+                    <span class="text-lavender">WhatsApp Channel</span>
                 </a>
-                <a href="#" target="_blank" class="flex items-center p-3 bg-white/5 rounded-lg hover:bg-white/10 transition">
-                    <i class="fab fa-youtube text-pink mr-3"></i>
-                    <span class="text-lavender text-sm">YouTube: CaseyRhodes</span>
+                <a href="#" target="_blank" class="flex items-center p-1.5 bg-white/5 rounded text-xs hover:bg-white/10 transition"> <!-- Reduced padding and text size -->
+                    <i class="fab fa-youtube text-pink mr-1.5 text-xs"></i> <!-- Reduced icon size -->
+                    <span class="text-lavender">YouTube: CaseyRhodes</span>
                 </a>
             </div>
         </div>
@@ -428,7 +456,7 @@
                 
                 const x = Math.random() * 100;
                 const y = Math.random() * 100;
-                const size = Math.random() * 4 + 2;
+                const size = Math.random() * 2 + 1; // Reduced by 50%
                 const opacity = Math.random() * 0.5 + 0.3;
                 
                 particle.style.left = `${x}%`;
