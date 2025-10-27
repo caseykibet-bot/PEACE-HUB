@@ -122,59 +122,32 @@
         }
         
         body {
-            background: linear-gradient(135deg, #1A0B2E 0%, #2D1B47 50%, #4A235A 100%);
+            background: #000;
             color: white;
             min-height: 100vh;
             overflow-x: hidden;
         }
         
-        /* Simplified Space Background */
-        .space-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -3;
-            background: radial-gradient(ellipse at center, #2D1B47 0%, #1A0B2E 70%);
-        }
-        
-        /* Reduced Stars Background */
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-        }
-        
-        .star {
-            position: absolute;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            animation: twinkle linear infinite;
-        }
-        
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.1); }
-        }
-        
-        /* Reduced Nebula Effect */
-        .nebula {
+        /* Black Background with Purple Particles */
+        .particles-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.3;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 105, 180, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(218, 112, 214, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(138, 43, 226, 0.2) 0%, transparent 50%);
-            filter: blur(20px);
+            background: #000;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(138, 43, 226, 0.7);
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(138, 43, 226, 0.5);
+            pointer-events: none;
+            transition: transform 0.1s ease;
         }
         
         /* Reduced Floating animation for the hero section */
@@ -212,10 +185,8 @@
     </style>
 </head>
 <body>
-    <!-- Simplified Space Background -->
-    <div class="space-background"></div>
-    <div class="stars" id="stars"></div>
-    <div class="nebula"></div>
+    <!-- Black Background with Purple Particles -->
+    <div class="particles-container" id="particles-container"></div>
 
     <header id="header" class="navbar-premium fixed top-0 left-0 right-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -446,30 +417,62 @@
     </div>
 
     <script>
-        // Create reduced stars background
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            const starsCount = 80; // Reduced by 50%
+        // Create purple particles
+        function createParticles() {
+            const container = document.getElementById('particles-container');
+            const particleCount = 80;
             
-            for (let i = 0; i < starsCount; i++) {
-                const star = document.createElement('div');
-                star.classList.add('star');
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
                 
                 const x = Math.random() * 100;
                 const y = Math.random() * 100;
-                const size = Math.random() * 2 + 1; // Smaller stars
-                const duration = Math.random() * 10 + 5;
-                const delay = Math.random() * 5;
+                const size = Math.random() * 4 + 2;
+                const opacity = Math.random() * 0.5 + 0.3;
                 
-                star.style.left = `${x}%`;
-                star.style.top = `${y}%`;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                star.style.animationDuration = `${duration}s`;
-                star.style.animationDelay = `${delay}s`;
+                particle.style.left = `${x}%`;
+                particle.style.top = `${y}%`;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.opacity = opacity;
                 
-                starsContainer.appendChild(star);
+                container.appendChild(particle);
             }
+        }
+        
+        // Mouse interaction with particles
+        function createMouseInteraction() {
+            const particles = document.querySelectorAll('.particle');
+            
+            document.addEventListener('mousemove', (e) => {
+                particles.forEach(particle => {
+                    const rect = particle.getBoundingClientRect();
+                    const particleX = rect.left + rect.width / 2;
+                    const particleY = rect.top + rect.height / 2;
+                    
+                    const distance = Math.sqrt(
+                        Math.pow(e.clientX - particleX, 2) + 
+                        Math.pow(e.clientY - particleY, 2)
+                    );
+                    
+                    if (distance < 100) {
+                        const moveX = (e.clientX - particleX) * 0.05;
+                        const moveY = (e.clientY - particleY) * 0.05;
+                        
+                        particle.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                        particle.style.opacity = '0.9';
+                    } else {
+                        particle.style.transform = 'translate(0, 0)';
+                        particle.style.opacity = particle.getAttribute('data-opacity') || '0.5';
+                    }
+                });
+            });
+            
+            // Store original opacity for each particle
+            particles.forEach(particle => {
+                particle.setAttribute('data-opacity', particle.style.opacity);
+            });
         }
 
         // Mobile menu functionality
@@ -527,7 +530,8 @@
 
         // Initialize
         window.addEventListener('DOMContentLoaded', function() {
-            createStars();
+            createParticles();
+            createMouseInteraction();
             checkScroll();
         });
 
