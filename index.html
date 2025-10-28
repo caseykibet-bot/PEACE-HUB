@@ -47,8 +47,8 @@
         }
         
         .bot-hero-image {
-            width: 220px; /* Increased image size */
-            height: 220px; /* Increased image size */
+            width: 220px;
+            height: 220px;
             border-radius: 15px;
             box-shadow: 
                 0 0 20px rgba(219, 95, 219, 0.6),
@@ -96,17 +96,6 @@
             box-shadow: 0 0 15px rgba(219, 95, 219, 0.7);
         }
         
-        .btn-whatsapp {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            box-shadow: 0 0 10px rgba(37, 211, 102, 0.5);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-whatsapp:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.7);
-        }
-        
         .feature-card-advanced {
             background: rgba(40, 20, 50, 0.6);
             backdrop-filter: blur(15px);
@@ -122,8 +111,8 @@
         
         .fade-in-up {
             opacity: 0;
-            transform: translateY(4px);
-            transition: all 0.24s ease;
+            transform: translateY(8px); /* Reduced by 50% */
+            transition: all 0.5s ease; /* Reduced by 50% */
         }
         
         .fade-in-up.visible {
@@ -155,7 +144,7 @@
             background: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
             pointer-events: none;
-            animation: twinkle 4.2s infinite ease-in-out; /* Reduced animation by 30% */
+            animation: twinkle 4.2s infinite ease-in-out;
         }
         
         .star.purple {
@@ -175,7 +164,7 @@
         
         @keyframes twinkle {
             0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.8; } /* Reduced intensity */
+            50% { opacity: 0.8; }
         }
         
         @keyframes float {
@@ -340,6 +329,71 @@
             text-align: center;
             font-weight: 400;
         }
+        
+        /* WhatsApp Icon Styling */
+        .whatsapp-icon {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+            transition: all 0.3s ease;
+            z-index: 100;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.7);
+        }
+        
+        .whatsapp-icon i {
+            color: white;
+            font-size: 32px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        /* WhatsApp Tooltip */
+        .whatsapp-tooltip {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: rgba(15, 15, 35, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .whatsapp-icon:hover .whatsapp-tooltip {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -353,7 +407,6 @@
             <a href="#features" class="menu-item">Features</a>
             <a href="#commands" class="menu-item">Commands</a>
             <a href="#start" class="menu-item">Get Started</a>
-            <a href="#owner" class="menu-item">Owner</a>
         </div>
         <button id="mobile-menu-button" class="mobile-menu-button">
             <i class="fas fa-bars"></i>
@@ -365,8 +418,13 @@
         <a href="#features" class="menu-item text-center">Features</a>
         <a href="#commands" class="menu-item text-center">Commands</a>
         <a href="#start" class="menu-item text-center">Get Started</a>
-        <a href="#owner" class="menu-item text-center">Owner</a>
     </div>
+
+    <!-- WhatsApp Icon -->
+    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-icon">
+        <i class="fab fa-whatsapp"></i>
+        <div class="whatsapp-tooltip">Contact Owner</div>
+    </a>
 
     <main class="pt-8">
         
@@ -392,13 +450,9 @@
                     Introducing CaseyRhodes, the ultimate bot engineered for unparalleled speed, functionality, and user experience.
                 </p>
                 
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <div class="flex justify-center">
                     <a href="https://mini-5e04ab3aea23.herokuapp.com/" target="_blank" class="btn-glow inline-block text-white font-bold py-3 px-8 rounded-lg text-base">
                         Get Started Now
-                    </a>
-                    <a href="https://wa.me/1234567890" target="_blank" class="btn-whatsapp inline-block text-white font-bold py-3 px-8 rounded-lg text-base">
-                        <i class="fab fa-whatsapp mr-2 text-base"></i>
-                        Owner on WhatsApp
                     </a>
                 </div>
             </div>
@@ -428,7 +482,7 @@
                         </p>
                     </div>
                     
-                    <div class="feature-card-advanced rounded-lg p-6 text-center fade-in-up glow-border" style="transition-delay: 120ms;">
+                    <div class="feature-card-advanced rounded-lg p-6 text-center fade-in-up glow-border" style="transition-delay: 200ms;">
                          <div class="text-3xl mb-4 text-light-purple">
                             <i class="fas fa-download"></i>
                         </div>
@@ -440,7 +494,7 @@
                         </p>
                     </div>
 
-                    <div class="feature-card-advanced rounded-lg p-6 text-center fade-in-up glow-border" style="transition-delay: 240ms;">
+                    <div class="feature-card-advanced rounded-lg p-6 text-center fade-in-up glow-border" style="transition-delay: 400ms;">
                         <div class="text-3xl mb-4 text-purple">
                             <i class="fas fa-shield-alt"></i>
                         </div>
@@ -455,7 +509,7 @@
                 
                 <!-- Additional Features -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                    <div class="feature-card-advanced rounded-lg p-6 text-center fade-in-up glow-border" style="transition-delay: 360ms;">
+                    <div class="feature-card-advanced rounded-lg p-6 text-center fade-in-up glow-border" style="transition-delay: 600ms;">
                         <div class="text-3xl mb-4 text-pink">
                             <i class="fas fa-robot"></i>
                         </div>
@@ -467,7 +521,7 @@
                         </p>
                     </div>
                     
-                    <div class="feature-card-advanced rounded-lg p-6 text-center fade-in-up glow-border" style="transition-delay: 480ms;">
+                    <div class="feature-card-advanced rounded-lg p-6 text-center fade-in-up glow-border" style="transition-delay: 800ms;">
                          <div class="text-3xl mb-4 text-light-purple">
                             <i class="fas fa-sync-alt"></i>
                         </div>
@@ -500,21 +554,21 @@
                         <h4 class="font-bold text-pink text-base">Download Tools</h4>
                         <p class="text-sm text-lavender">.song, .video, .tiktok, .fb, .apk</p>
                     </div>
-                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 80ms;">
+                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 100ms;">
                         <div class="text-xl mb-2 text-light-purple">
                             <i class="fas fa-cog"></i>
                         </div>
                         <h4 class="font-bold text-light-purple text-base">System Commands</h4>
                         <p class="text-sm text-lavender">.alive, .system, .ping, .jid</p>
                     </div>
-                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 160ms;">
+                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 200ms;">
                         <div class="text-xl mb-2 text-purple">
                             <i class="fas fa-photo-video"></i>
                         </div>
                      <h4 class="font-bold text-purple text-base">Media Tools</h4>
                         <p class="text-sm text-lavender">.sticker, .getdp, .cinfo, .save</p>
                     </div>
-                     <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 400ms;">
+                     <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 300ms;">
                         <div class="text-xl mb-2 text-pink">
                             <i class="fas fa-gamepad"></i>
                         </div>
@@ -525,28 +579,28 @@
                 
                 <!-- Additional Commands -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mt-6">
-                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 500ms;">
+                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 400ms;">
                         <div class="text-xl mb-2 text-light-purple">
                             <i class="fas fa-search"></i>
                         </div>
                         <h4 class="font-bold text-light-purple text-base">Search Tools</h4>
                         <p class="text-sm text-lavender">.google, .ytsearch, .wiki, .weather</p>
                     </div>
-                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 580ms;">
+                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 500ms;">
                         <div class="text-xl mb-2 text-purple">
                             <i class="fas fa-users"></i>
                         </div>
                         <h4 class="font-bold text-purple text-base">Group Management</h4>
                         <p class="text-sm text-lavender">.kick, .promote, .demote, .groupinfo</p>
                     </div>
-                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 660ms;">
+                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 600ms;">
                         <div class="text-xl mb-2 text-pink">
                             <i class="fas fa-image"></i>
                         </div>
                      <h4 class="font-bold text-pink text-base">Image Tools</h4>
                         <p class="text-sm text-lavender">.edit, .filter, .caption, .qr</p>
                     </div>
-                     <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 740ms;">
+                     <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 700ms;">
                         <div class="text-xl mb-2 text-light-purple">
                             <i class="fas fa-music"></i>
                         </div>
@@ -573,12 +627,12 @@
                         <h3 class="text-lg text-white font-semibold mb-2">Click Get Started</h3>
                         <p class="text-lavender text-sm">Begin your journey with CaseyRhodes</p>
                     </div>
-                    <div class="fade-in-up" style="transition-delay: 120ms;">
+                    <div class="fade-in-up" style="transition-delay: 200ms;">
                         <div class="text-3xl font-bold hero-title-gradient mb-3">2</div>
                         <h3 class="text-lg text-white font-semibold mb-2">Deploy & Pair</h3>
                         <p class="text-lavender text-sm">Deploy the bot and pair with your device</p>
                     </div>
-                    <div class="fade-in-up" style="transition-delay: 240ms;">
+                    <div class="fade-in-up" style="transition-delay: 400ms;">
                         <div class="text-3xl font-bold hero-title-gradient mb-3">3</div>
                         <h3 class="text-lg text-white font-semibold mb-2">Enjoy Premium Features</h3>
                         <p class="text-lavender text-sm">Your bot is now live and ready to serve</p>
@@ -609,30 +663,6 @@
              </div>
         </section>
 
-        <!-- Owner Section -->
-        <section id="owner" class="py-16 px-4 bg-black/20">
-            <div class="container mx-auto">
-                <div class="text-center max-w-xl mx-auto mb-12 fade-in-up">
-                    <h2 class="text-3xl font-bold text-white mb-4">
-                        Contact Owner
-                    </h2>
-                    <p class="text-lavender text-base">
-                        Get in touch with the developer for questions, support, or collaborations.
-                    </p>
-                </div>
-                <div class="max-w-md mx-auto bg-gray-900/50 rounded-lg p-8 text-center fade-in-up glow-border">
-                    <img src="https://github.com/XdKing2.png" alt="Owner" class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-purple-500/50">
-                    <h3 class="text-2xl font-bold text-white mb-2">Casey Rhodes</h3>
-                    <p class="text-light-purple mb-4">Bot Developer & Founder</p>
-                    <p class="text-lavender text-sm mb-6">Creator of CaseyRhodes Mini Bot with expertise in automation and AI technologies.</p>
-                    <a href="https://wa.me/1234567890" target="_blank" class="btn-whatsapp inline-block text-white font-bold py-3 px-8 rounded-lg text-base w-full">
-                        <i class="fab fa-whatsapp mr-2 text-base"></i>
-                        Message on WhatsApp
-                    </a>
-                </div>
-            </div>
-        </section>
-
     </main>
     
     <footer class="footer-section bg-black/30 border-t border-gray-800/50 text-center pt-8 pb-6 px-4">
@@ -651,7 +681,7 @@
         // Create star particles
         function createStars() {
             const container = document.getElementById('particles-container');
-            const starCount = 400; // Increased star count
+            const starCount = 400;
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
@@ -670,9 +700,9 @@
                 
                 const x = Math.random() * 100;
                 const y = Math.random() * 100;
-                const size = Math.random() * 3 + 1; // Slightly larger stars
-                const opacity = Math.random() * 0.6 + 0.2; // Reduced opacity
-                const animationDelay = Math.random() * 4.2; // Reduced animation delay
+                const size = Math.random() * 3 + 1;
+                const opacity = Math.random() * 0.6 + 0.2;
+                const animationDelay = Math.random() * 4.2;
                 
                 star.style.left = `${x}%`;
                 star.style.top = `${y}%`;
@@ -691,12 +721,12 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Scroll animations
+        // Scroll animations - Reduced by 50%
         function checkScroll() {
             const elements = document.querySelectorAll('.fade-in-up');
             elements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 120;
+                const elementVisible = 150; // Reduced trigger point
                 
                 if (elementTop < window.innerHeight - elementVisible) {
                     element.classList.add('visible');
