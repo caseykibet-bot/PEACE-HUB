@@ -111,8 +111,8 @@
         
         .fade-in-up {
             opacity: 0;
-            transform: translateY(8px); /* Reduced by 50% */
-            transition: all 0.5s ease; /* Reduced by 50% */
+            transform: translateY(8px);
+            transition: all 0.5s ease;
         }
         
         .fade-in-up.visible {
@@ -308,11 +308,11 @@
             }
         }
         
-        /* Text above image styling */
+        /* Text above image styling - Moved up */
         .image-title {
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem; /* Reduced margin */
             text-align: center;
             background: linear-gradient(135deg, #FF69B4, #DA70D6, #8A2BE2);
             -webkit-background-clip: text;
@@ -325,7 +325,7 @@
         .image-subtitle {
             font-size: 1.1rem;
             color: #DA70D6;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem; /* Reduced margin */
             text-align: center;
             font-weight: 400;
         }
@@ -394,6 +394,11 @@
             opacity: 1;
             transform: translateY(0);
         }
+        
+        /* Adjusted hero section padding */
+        .hero-content {
+            padding-top: 2rem; /* Reduced padding to move content up */
+        }
     </style>
 </head>
 <body>
@@ -426,11 +431,11 @@
         <div class="whatsapp-tooltip">Contact Owner</div>
     </a>
 
-    <main class="pt-8">
+    <main>
         
         <section id="home" class="hero-section min-h-screen flex items-center justify-center text-center px-4">
-            <div class="relative z-10 max-w-2xl mx-auto">
-                <!-- Text above image -->
+            <div class="relative z-10 max-w-2xl mx-auto hero-content">
+                <!-- Text above image - Moved up -->
                 <h1 class="image-title">
                     CASEYRHODES MINI BOT PAIR
                 </h1>
@@ -438,7 +443,7 @@
                     Connect • Automate • Elevate
                 </p>
                 
-                <div class="image-container mb-6 floating">
+                <div class="image-container mb-4 floating"> <!-- Reduced margin -->
                     <img src="https://i.ibb.co/nqpB44Mb/IMG-20250114-WA0097.jpg" alt="CaseyRhodes Bot Thumbnail" class="bot-hero-image">
                 </div>
 
@@ -726,7 +731,7 @@
             const elements = document.querySelectorAll('.fade-in-up');
             elements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150; // Reduced trigger point
+                const elementVisible = 150;
                 
                 if (elementTop < window.innerHeight - elementVisible) {
                     element.classList.add('visible');
