@@ -109,17 +109,6 @@
             box-shadow: 0 8px 15px rgba(255, 105, 180, 0.2);
         }
         
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(8px);
-            transition: all 0.5s ease;
-        }
-        
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
         .modal-advanced {
             background: rgba(40, 20, 50, 0.95);
             backdrop-filter: blur(20px);
@@ -312,7 +301,7 @@
         .image-title {
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 1rem; /* Reduced margin */
+            margin-bottom: 1rem;
             text-align: center;
             background: linear-gradient(135deg, #FF69B4, #DA70D6, #8A2BE2);
             -webkit-background-clip: text;
@@ -325,7 +314,7 @@
         .image-subtitle {
             font-size: 1.1rem;
             color: #DA70D6;
-            margin-bottom: 1.5rem; /* Reduced margin */
+            margin-bottom: 1.5rem;
             text-align: center;
             font-weight: 400;
         }
@@ -397,7 +386,7 @@
         
         /* Adjusted hero section padding */
         .hero-content {
-            padding-top: 2rem; /* Reduced padding to move content up */
+            padding-top: 2rem;
         }
     </style>
 </head>
@@ -443,7 +432,7 @@
                     Connect • Automate • Elevate
                 </p>
                 
-                <div class="image-container mb-4 floating"> <!-- Reduced margin -->
+                <div class="image-container mb-4 floating">
                     <img src="https://i.ibb.co/nqpB44Mb/IMG-20250114-WA0097.jpg" alt="CaseyRhodes Bot Thumbnail" class="bot-hero-image">
                 </div>
 
@@ -465,7 +454,7 @@
 
         <section id="features" class="feature-section py-16 px-4">
             <div class="container mx-auto">
-                <div class="text-center max-w-xl mx-auto mb-12 fade-in-up">
+                <div class="text-center max-w-xl mx-auto mb-12">
                     <h2 class="text-3xl font-bold text-white mb-4">
                         Premium Features
                     </h2>
@@ -475,7 +464,7 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     
-                    <div class="feature-card-advanced rounded-lg p-6 text-center fade-in-up glow-border">
+                    <div class="feature-card-advanced rounded-lg p-6 text-center glow-border">
                         <div class="text-3xl mb-4 text-pink">
                             <i class="fas fa-bolt"></i>
                         </div>
@@ -487,7 +476,7 @@
                         </p>
                     </div>
                     
-                    <div class="feature-card-advanced rounded-lg p-6 text-center fade-in-up glow-border" style="transition-delay: 200ms;">
+                    <div class="feature-card-advanced rounded-lg p-6 text-center glow-border">
                          <div class="text-3xl mb-4 text-light-purple">
                             <i class="fas fa-download"></i>
                         </div>
@@ -499,7 +488,7 @@
                         </p>
                     </div>
 
-                    <div class="feature-card-advanced rounded-lg p-6 text-center fade-in-up glow-border" style="transition-delay: 400ms;">
+                    <div class="feature-card-advanced rounded-lg p-6 text-center glow-border">
                         <div class="text-3xl mb-4 text-purple">
                             <i class="fas fa-shield-alt"></i>
                         </div>
@@ -514,7 +503,7 @@
                 
                 <!-- Additional Features -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                    <div class="feature-card-advanced rounded-lg p-6 text-center fade-in-up glow-border" style="transition-delay: 600ms;">
+                    <div class="feature-card-advanced rounded-lg p-6 text-center glow-border">
                         <div class="text-3xl mb-4 text-pink">
                             <i class="fas fa-robot"></i>
                         </div>
@@ -526,7 +515,7 @@
                         </p>
                     </div>
                     
-                    <div class="feature-card-advanced rounded-lg p-6 text-center fade-in-up glow-border" style="transition-delay: 800ms;">
+                    <div class="feature-card-advanced rounded-lg p-6 text-center glow-border">
                          <div class="text-3xl mb-4 text-light-purple">
                             <i class="fas fa-sync-alt"></i>
                         </div>
@@ -543,7 +532,7 @@
 
         <section id="commands" class="command-section py-16 px-4 bg-black/20">
             <div class="container mx-auto">
-                 <div class="text-center max-w-xl mx-auto mb-12 fade-in-up">
+                 <div class="text-center max-w-xl mx-auto mb-12">
                     <h2 class="text-3xl font-bold text-white mb-4">
                         Commands List
                     </h2>
@@ -552,28 +541,28 @@
                     </p>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border">
+                    <div class="bg-gray-900/50 p-4 rounded-lg glow-border">
                         <div class="text-xl mb-2 text-pink">
                             <i class="fas fa-download"></i>
                         </div>
                         <h4 class="font-bold text-pink text-base">Download Tools</h4>
                         <p class="text-sm text-lavender">.song, .video, .tiktok, .fb, .apk</p>
                     </div>
-                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 100ms;">
+                    <div class="bg-gray-900/50 p-4 rounded-lg glow-border">
                         <div class="text-xl mb-2 text-light-purple">
                             <i class="fas fa-cog"></i>
                         </div>
                         <h4 class="font-bold text-light-purple text-base">System Commands</h4>
                         <p class="text-sm text-lavender">.alive, .system, .ping, .jid</p>
                     </div>
-                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 200ms;">
+                    <div class="bg-gray-900/50 p-4 rounded-lg glow-border">
                         <div class="text-xl mb-2 text-purple">
                             <i class="fas fa-photo-video"></i>
                         </div>
                      <h4 class="font-bold text-purple text-base">Media Tools</h4>
                         <p class="text-sm text-lavender">.sticker, .getdp, .cinfo, .save</p>
                     </div>
-                     <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 300ms;">
+                     <div class="bg-gray-900/50 p-4 rounded-lg glow-border">
                         <div class="text-xl mb-2 text-pink">
                             <i class="fas fa-gamepad"></i>
                         </div>
@@ -584,28 +573,28 @@
                 
                 <!-- Additional Commands -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mt-6">
-                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 400ms;">
+                    <div class="bg-gray-900/50 p-4 rounded-lg glow-border">
                         <div class="text-xl mb-2 text-light-purple">
                             <i class="fas fa-search"></i>
                         </div>
                         <h4 class="font-bold text-light-purple text-base">Search Tools</h4>
                         <p class="text-sm text-lavender">.google, .ytsearch, .wiki, .weather</p>
                     </div>
-                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 500ms;">
+                    <div class="bg-gray-900/50 p-4 rounded-lg glow-border">
                         <div class="text-xl mb-2 text-purple">
                             <i class="fas fa-users"></i>
                         </div>
                         <h4 class="font-bold text-purple text-base">Group Management</h4>
                         <p class="text-sm text-lavender">.kick, .promote, .demote, .groupinfo</p>
                     </div>
-                    <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 600ms;">
+                    <div class="bg-gray-900/50 p-4 rounded-lg glow-border">
                         <div class="text-xl mb-2 text-pink">
                             <i class="fas fa-image"></i>
                         </div>
                      <h4 class="font-bold text-pink text-base">Image Tools</h4>
                         <p class="text-sm text-lavender">.edit, .filter, .caption, .qr</p>
                     </div>
-                     <div class="bg-gray-900/50 p-4 rounded-lg fade-in-up glow-border" style="transition-delay: 700ms;">
+                     <div class="bg-gray-900/50 p-4 rounded-lg glow-border">
                         <div class="text-xl mb-2 text-light-purple">
                             <i class="fas fa-music"></i>
                         </div>
@@ -618,7 +607,7 @@
 
         <section id="start" class="py-16 px-4">
              <div class="container mx-auto">
-                 <div class="text-center max-w-xl mx-auto mb-12 fade-in-up">
+                 <div class="text-center max-w-xl mx-auto mb-12">
                     <h2 class="text-3xl font-bold text-white mb-4">
                         Get Started in 3 Steps
                     </h2>
@@ -627,24 +616,24 @@
                     </p>
                 </div>
                 <div class="max-w-2xl mx-auto grid md:grid-cols-3 gap-6 text-center">
-                    <div class="fade-in-up">
+                    <div>
                         <div class="text-3xl font-bold hero-title-gradient mb-3">1</div>
                         <h3 class="text-lg text-white font-semibold mb-2">Click Get Started</h3>
                         <p class="text-lavender text-sm">Begin your journey with CaseyRhodes</p>
                     </div>
-                    <div class="fade-in-up" style="transition-delay: 200ms;">
+                    <div>
                         <div class="text-3xl font-bold hero-title-gradient mb-3">2</div>
                         <h3 class="text-lg text-white font-semibold mb-2">Deploy & Pair</h3>
                         <p class="text-lavender text-sm">Deploy the bot and pair with your device</p>
                     </div>
-                    <div class="fade-in-up" style="transition-delay: 400ms;">
+                    <div>
                         <div class="text-3xl font-bold hero-title-gradient mb-3">3</div>
                         <h3 class="text-lg text-white font-semibold mb-2">Enjoy Premium Features</h3>
                         <p class="text-lavender text-sm">Your bot is now live and ready to serve</p>
                     </div>
                 </div>
                 
-                <div class="text-center mt-10 fade-in-up">
+                <div class="text-center mt-10">
                     <a href="https://mini-5e04ab3aea23.herokuapp.com/" target="_blank" class="btn-glow inline-block text-white font-bold py-3 px-8 rounded-lg text-base">
                         <i class="fab fa-whatsapp mr-2 text-base"></i>
                         Connect now
@@ -652,7 +641,7 @@
                 </div>
                 
                 <!-- Additional Information Section -->
-                <div class="mt-16 text-center fade-in-up">
+                <div class="mt-16 text-center">
                     <h2 class="text-2xl font-bold text-white mb-6">Why Choose CaseyRhodes?</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                         <div class="bg-gray-900/30 p-6 rounded-lg">
@@ -726,19 +715,6 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Scroll animations - Reduced by 50%
-        function checkScroll() {
-            const elements = document.querySelectorAll('.fade-in-up');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
-            });
-        }
-
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -756,10 +732,7 @@
         // Initialize
         window.addEventListener('DOMContentLoaded', function() {
             createStars();
-            checkScroll();
         });
-
-        window.addEventListener('scroll', checkScroll);
     </script>
 </body>
 </html>
