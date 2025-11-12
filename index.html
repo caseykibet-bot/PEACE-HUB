@@ -434,7 +434,7 @@
             display: none;
         }
         
-        /* Play Button Styles */
+        /* Play Button Styles - Updated with Music Icon */
         .play-button-container {
             position: fixed;
             top: 20px;
@@ -443,41 +443,40 @@
         }
         
         .play-button {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background: rgba(15, 15, 35, 0.85);
+            background: linear-gradient(135deg, #DA70D6, #8A2BE2);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(219, 95, 219, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #DA70D6;
+            color: white;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(219, 95, 219, 0.5);
         }
         
         .play-button:hover {
             transform: scale(1.1);
-            color: #FF69B4;
+            color: white;
             border-color: #FF69B4;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+            background: linear-gradient(135deg, #FF69B4, #DA70D6);
         }
         
         .play-button.playing {
-            color: #FF69B4;
+            color: white;
             border-color: #FF69B4;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+            background: linear-gradient(135deg, #FF69B4, #DA70D6);
         }
         
         .play-button i {
-            font-size: 18px;
+            font-size: 20px;
             transition: all 0.2s ease;
-        }
-        
-        .play-button .fa-play {
-            margin-left: 2px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
         
         .audio-player {
@@ -635,6 +634,33 @@
             font-size: 1rem;
         }
         
+        /* Enhanced bot description styling */
+        .bot-description {
+            background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(138, 43, 226, 0.1));
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(219, 95, 219, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .bot-description p {
+            color: #E6E6FA;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            text-align: center;
+            margin-bottom: 0;
+        }
+        
+        .highlight-text {
+            background: linear-gradient(135deg, #FF69B4, #DA70D6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+        
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -673,6 +699,15 @@
                 width: 220px;
                 height: 220px;
             }
+            
+            .bot-description {
+                padding: 1rem;
+                margin: 1rem 0;
+            }
+            
+            .bot-description p {
+                font-size: 1rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -695,10 +730,10 @@
     <!-- Enhanced Particles Background -->
     <div id="particles-js"></div>
 
-    <!-- Play Button - Top Left -->
+    <!-- Play Button - Top Left with Music Icon -->
     <div class="play-button-container">
         <div class="play-button" id="play-button">
-            <i class="fas fa-play"></i>
+            <i class="fas fa-music"></i>
         </div>
     </div>
 
@@ -774,13 +809,15 @@
                         Connect • Automate • Elevate
                     </p>
                     
-                    <p class="text-lg md:text-xl text-lavender mb-2 font-light">
-                        The Future of Automation is Here.
-                    </p>
-                    
-                    <p class="text-sm md:text-base text-lavender mb-6">
-                        Introducing CaseyRhodes, the ultimate bot engineered for unparalleled speed, functionality, and user experience.
-                    </p>
+                    <!-- Enhanced Bot Description -->
+                    <div class="bot-description">
+                        <p>
+                            Introducing <span class="highlight-text">CaseyRhodes</span>, the ultimate WhatsApp bot engineered for 
+                            <span class="highlight-text">unparalleled speed</span>, advanced functionality, and 
+                            <span class="highlight-text">premium user experience</span>. Transform your messaging with 
+                            cutting-edge automation and intelligent features.
+                        </p>
+                    </div>
                     
                     <div class="flex justify-center">
                         <a href="https://caseytest-034f5f71cfae.herokuapp.com/" target="_blank" class="btn-glow inline-block text-white font-bold py-3 px-8 rounded-lg text-base">
@@ -1105,7 +1142,7 @@
         function togglePlayPause() {
             if (isPlaying) {
                 audioPlayer.pause();
-                playButton.innerHTML = '<i class="fas fa-play"></i>';
+                playButton.innerHTML = '<i class="fas fa-music"></i>';
                 modalPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
                 playButton.classList.remove('playing');
             } else {
