@@ -129,8 +129,8 @@
         }
         
         .bot-hero-image {
-            width: 320px;
-            height: 320px;
+            width: 280px;
+            height: 280px;
             border-radius: 15px;
             box-shadow: 
                 0 0 20px rgba(219, 95, 219, 0.6),
@@ -152,6 +152,7 @@
         .image-container {
             position: relative;
             display: inline-block;
+            margin-bottom: 1rem;
         }
         
         .btn-glow {
@@ -214,7 +215,7 @@
         /* Hero section styling */
         .hero-section {
             background: radial-gradient(ellipse at center, rgba(138, 43, 226, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
-            padding-top: 2rem;
+            padding-top: 1.5rem;
         }
         
         /* Feature section styling */
@@ -327,25 +328,16 @@
             }
             
             .bot-hero-image {
-                width: 280px;
-                height: 280px;
-            }
-            
-            .hero-content {
-                flex-direction: column;
-            }
-            
-            .hero-text {
-                text-align: center;
-                margin-bottom: 2rem;
+                width: 240px;
+                height: 240px;
             }
         }
         
-        /* Text above image styling */
+        /* Text styling */
         .image-title {
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             text-align: center;
             background: linear-gradient(135deg, #FF69B4, #DA70D6, #8A2BE2);
             -webkit-background-clip: text;
@@ -358,7 +350,7 @@
         .image-subtitle {
             font-size: 1.1rem;
             color: #DA70D6;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             text-align: center;
             font-weight: 400;
         }
@@ -430,22 +422,10 @@
         
         /* Adjusted hero section padding */
         .hero-content {
-            padding-top: 0.5rem;
+            padding-top: 0.25rem;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 3rem;
-            max-width: 1000px;
-        }
-        
-        .hero-text {
-            flex: 1;
-            text-align: left;
-        }
-        
-        .hero-image {
-            flex: 1;
-            display: flex;
             justify-content: center;
         }
         
@@ -631,7 +611,7 @@
         /* Plugin header styling */
         .plugin-header {
             text-align: center;
-            padding: 3rem 2rem 0.5rem;
+            padding: 1.5rem 2rem 0.25rem;
             margin-bottom: 0;
             opacity: 0;
             animation: fadeInUp 0.8s ease forwards;
@@ -639,9 +619,9 @@
         }
         
         .plugin-header h1 {
-            font-size: 2.75rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
             background: linear-gradient(to right, var(--white), var(--gray-300));
             -webkit-background-clip: text;
             background-clip: text;
@@ -652,7 +632,7 @@
             color: var(--gray-400);
             max-width: 600px;
             margin: 0 auto;
-            font-size: 1.125rem;
+            font-size: 1rem;
         }
         
         @keyframes fadeInUp {
@@ -678,11 +658,11 @@
             }
             
             .plugin-header {
-                padding: 2.5rem 1rem 0.25rem;
+                padding: 1rem 1rem 0.125rem;
             }
             
             .plugin-header h1 {
-                font-size: 2.25rem;
+                font-size: 2rem;
             }
             
             .image-title {
@@ -690,14 +670,14 @@
             }
             
             .bot-hero-image {
-                width: 260px;
-                height: 260px;
+                width: 220px;
+                height: 220px;
             }
         }
         
         @media (max-width: 480px) {
             .plugin-header h1 {
-                font-size: 2rem;
+                font-size: 1.75rem;
             }
             
             .image-title {
@@ -705,8 +685,8 @@
             }
             
             .bot-hero-image {
-                width: 240px;
-                height: 240px;
+                width: 200px;
+                height: 200px;
             }
         }
     </style>
@@ -776,16 +756,21 @@
     <audio id="audio-player" class="audio-player"></audio>
 
     <main>
-        <!-- Enhanced Plugin Header -->
-        <div class="plugin-header">
-            <h1>CASEYRHODES MINI BOT</h1>
-            <p>The Future of Automation is Here.</p>
-        </div>
-        
         <section id="home" class="hero-section min-h-screen flex items-center justify-center px-4">
             <div class="relative z-10 hero-content">
-                <div class="hero-text">
-                    <p class="image-subtitle text-left">
+                <!-- Image placed FIRST above the header -->
+                <div class="image-container floating mb-2">
+                    <img src="https://i.ibb.co/nqpB44Mb/IMG-20250114-WA0097.jpg" alt="CaseyRhodes Bot Thumbnail" class="bot-hero-image">
+                </div>
+
+                <!-- Header content below the image -->
+                <div class="plugin-header">
+                    <h1>CASEYRHODES MINI BOT</h1>
+                    <p>The Future of Automation is Here.</p>
+                </div>
+                
+                <div class="text-center max-w-xl">
+                    <p class="image-subtitle">
                         Connect • Automate • Elevate
                     </p>
                     
@@ -797,16 +782,10 @@
                         Introducing CaseyRhodes, the ultimate bot engineered for unparalleled speed, functionality, and user experience.
                     </p>
                     
-                    <div class="flex">
+                    <div class="flex justify-center">
                         <a href="https://caseytest-034f5f71cfae.herokuapp.com/" target="_blank" class="btn-glow inline-block text-white font-bold py-3 px-8 rounded-lg text-base">
                             Get Started Now
                         </a>
-                    </div>
-                </div>
-                
-                <div class="hero-image">
-                    <div class="image-container floating">
-                        <img src="https://i.ibb.co/nqpB44Mb/IMG-20250114-WA0097.jpg" alt="CaseyRhodes Bot Thumbnail" class="bot-hero-image">
                     </div>
                 </div>
             </div>
