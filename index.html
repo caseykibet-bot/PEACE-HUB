@@ -393,11 +393,192 @@
         .hidden {
             display: none;
         }
+        
+        /* Play Button Styles */
+        .play-button-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 50;
+        }
+        
+        .play-button {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(15, 15, 35, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(219, 95, 219, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #DA70D6;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .play-button:hover {
+            transform: scale(1.1);
+            color: #FF69B4;
+            border-color: #FF69B4;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+        }
+        
+        .play-button.playing {
+            color: #FF69B4;
+            border-color: #FF69B4;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+        }
+        
+        .play-button i {
+            font-size: 18px;
+            transition: all 0.2s ease;
+        }
+        
+        .play-button .fa-play {
+            margin-left: 2px;
+        }
+        
+        .audio-player {
+            display: none;
+        }
+        
+        /* Music player modal */
+        .music-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .music-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .music-player {
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(219, 95, 219, 0.5);
+            border-radius: 15px;
+            padding: 25px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .music-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #DA70D6;
+        }
+        
+        .track-list {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        
+        .track-item {
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .track-item:hover {
+            background: rgba(219, 95, 219, 0.2);
+        }
+        
+        .track-item.active {
+            background: rgba(219, 95, 219, 0.3);
+            color: #FF69B4;
+        }
+        
+        .track-item i {
+            font-size: 14px;
+        }
+        
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .control-btn {
+            background: rgba(219, 95, 219, 0.3);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .control-btn:hover {
+            background: rgba(219, 95, 219, 0.5);
+            transform: scale(1.1);
+        }
+        
+        .play-pause-btn {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 105, 180, 0.5);
+        }
+        
+        .play-pause-btn:hover {
+            background: rgba(255, 105, 180, 0.7);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .close-modal:hover {
+            color: #FF69B4;
+        }
     </style>
 </head>
 <body>
     <!-- Black Background with Star Particles -->
     <div class="particles-container" id="particles-container"></div>
+
+    <!-- Play Button - Top Left -->
+    <div class="play-button-container">
+        <div class="play-button" id="play-button">
+            <i class="fas fa-play"></i>
+        </div>
+    </div>
 
     <!-- Menu - Top Right -->
     <div class="menu-container">
@@ -424,6 +605,33 @@
         <i class="fab fa-whatsapp"></i>
         <div class="whatsapp-tooltip">Contact Owner</div>
     </a>
+
+    <!-- Music Player Modal -->
+    <div class="music-modal" id="music-modal">
+        <div class="music-player">
+            <button class="close-modal" id="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="music-title">Background Music</h2>
+            <div class="track-list" id="track-list">
+                <!-- Tracks will be added here by JavaScript -->
+            </div>
+            <div class="player-controls">
+                <button class="control-btn" id="prev-btn">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button class="control-btn play-pause-btn" id="modal-play-btn">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button class="control-btn" id="next-btn">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="audio-player" class="audio-player"></audio>
 
     <main>
         
@@ -677,6 +885,137 @@
     </footer>
 
     <script>
+        // Playlist of songs
+        const playlist = [
+            { title: "Chill Vibes", src: "https://files.catbox.moe/kxdej4.m4a" },
+            { title: "Starlight", src: "https://files.catbox.moe/0aoqzx.mp3" },
+            { title: "Enemies", src: "https://files.catbox.moe/d5yxdu.mp3" }
+        ];
+        
+        // DOM Elements
+        const playButton = document.getElementById('play-button');
+        const audioPlayer = document.getElementById('audio-player');
+        const musicModal = document.getElementById('music-modal');
+        const closeModal = document.getElementById('close-modal');
+        const trackList = document.getElementById('track-list');
+        const modalPlayBtn = document.getElementById('modal-play-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        
+        // Current track index
+        let currentTrackIndex = 0;
+        let isPlaying = false;
+        
+        // Initialize the playlist
+        function initPlaylist() {
+            trackList.innerHTML = '';
+            
+            playlist.forEach((track, index) => {
+                const trackItem = document.createElement('div');
+                trackItem.className = `track-item ${index === currentTrackIndex ? 'active' : ''}`;
+                trackItem.innerHTML = `
+                    <span>${track.title}</span>
+                    <i class="fas ${index === currentTrackIndex && isPlaying ? 'fa-volume-up' : 'fa-music'}"></i>
+                `;
+                
+                trackItem.addEventListener('click', () => {
+                    playTrack(index);
+                });
+                
+                trackList.appendChild(trackItem);
+            });
+            
+            // Set the first track
+            audioPlayer.src = playlist[currentTrackIndex].src;
+        }
+        
+        // Play a specific track
+        function playTrack(index) {
+            currentTrackIndex = index;
+            audioPlayer.src = playlist[currentTrackIndex].src;
+            
+            // Update active track in the list
+            document.querySelectorAll('.track-item').forEach((item, i) => {
+                item.className = `track-item ${i === currentTrackIndex ? 'active' : ''}`;
+                const icon = item.querySelector('i');
+                icon.className = i === currentTrackIndex && isPlaying ? 'fas fa-volume-up' : 'fas fa-music';
+            });
+            
+            if (isPlaying) {
+                audioPlayer.play();
+            }
+        }
+        
+        // Toggle play/pause
+        function togglePlayPause() {
+            if (isPlaying) {
+                audioPlayer.pause();
+                playButton.innerHTML = '<i class="fas fa-play"></i>';
+                modalPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
+                playButton.classList.remove('playing');
+            } else {
+                audioPlayer.play();
+                playButton.innerHTML = '<i class="fas fa-pause"></i>';
+                modalPlayBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                playButton.classList.add('playing');
+            }
+            
+            // Update active track icon
+            document.querySelectorAll('.track-item').forEach((item, i) => {
+                if (i === currentTrackIndex) {
+                    const icon = item.querySelector('i');
+                    icon.className = isPlaying ? 'fas fa-music' : 'fas fa-volume-up';
+                }
+            });
+            
+            isPlaying = !isPlaying;
+        }
+        
+        // Play next track
+        function playNextTrack() {
+            currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+            playTrack(currentTrackIndex);
+            
+            if (isPlaying) {
+                audioPlayer.play();
+            }
+        }
+        
+        // Play previous track
+        function playPrevTrack() {
+            currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+            playTrack(currentTrackIndex);
+            
+            if (isPlaying) {
+                audioPlayer.play();
+            }
+        }
+        
+        // Event Listeners
+        playButton.addEventListener('click', () => {
+            musicModal.classList.add('active');
+        });
+        
+        closeModal.addEventListener('click', () => {
+            musicModal.classList.remove('active');
+        });
+        
+        modalPlayBtn.addEventListener('click', togglePlayPause);
+        
+        prevBtn.addEventListener('click', playPrevTrack);
+        
+        nextBtn.addEventListener('click', playNextTrack);
+        
+        // When audio ends, play next track
+        audioPlayer.addEventListener('ended', playNextTrack);
+        
+        // Close modal when clicking outside
+        musicModal.addEventListener('click', (e) => {
+            if (e.target === musicModal) {
+                musicModal.classList.remove('active');
+            }
+        });
+        
         // Create star particles
         function createStars() {
             const container = document.getElementById('particles-container');
@@ -723,6 +1062,7 @@
         // Initialize
         window.addEventListener('DOMContentLoaded', function() {
             createStars();
+            initPlaylist();
         });
     </script>
 </body>
