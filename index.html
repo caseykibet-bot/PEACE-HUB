@@ -119,8 +119,8 @@
             bottom: -5px;
             left: 0;
             width: 0;
-            height: 1px;
-            background: white;
+            height: 2px;
+            background: linear-gradient(90deg, #ffffff, #a0a0a0);
             transition: width 0.3s ease;
         }
         
@@ -129,12 +129,9 @@
         }
         
         .bot-hero-image {
-            width: 240px;
-            height: 240px;
+            width: 220px;
+            height: 220px;
             border-radius: 15px;
-            box-shadow: 
-                0 0 20px rgba(255, 255, 255, 0.2),
-                0 5px 15px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
             transform-style: preserve-3d;
             position: relative;
@@ -145,9 +142,6 @@
         
         .bot-hero-image:hover {
             transform: translateY(-5px) scale(1.03);
-            box-shadow: 
-                0 0 30px rgba(255, 255, 255, 0.3),
-                0 8px 20px rgba(0, 0, 0, 0.5);
         }
         
         .image-container {
@@ -157,16 +151,33 @@
         }
         
         .btn-glow {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, #ffffff, #a0a0a0);
+            color: #000;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         
         .btn-glow:hover {
-            transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.6);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
+        }
+        
+        .btn-glow::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-glow:hover::after {
+            left: 100%;
         }
         
         .feature-card-advanced {
@@ -179,7 +190,6 @@
         .feature-card-advanced:hover {
             transform: translateY(-3px);
             border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
         }
         
         .modal-advanced {
@@ -213,7 +223,6 @@
         
         /* Hero section styling */
         .hero-section {
-            background: radial-gradient(ellipse at center, rgba(100, 100, 100, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
             padding-top: 1.5rem;
         }
         
@@ -308,8 +317,8 @@
             }
             
             .bot-hero-image {
-                width: 200px;
-                height: 200px;
+                width: 180px;
+                height: 180px;
             }
         }
         
@@ -674,8 +683,8 @@
             }
             
             .bot-hero-image {
-                width: 180px;
-                height: 180px;
+                width: 160px;
+                height: 160px;
             }
             
             .bot-description {
@@ -698,8 +707,8 @@
             }
             
             .bot-hero-image {
-                width: 160px;
-                height: 160px;
+                width: 140px;
+                height: 140px;
             }
         }
     </style>
@@ -797,8 +806,9 @@
                         </p>
                     </div>
                     
-                    <div class="flex justify-center">
-                        <a href="https://caseytest-034f5f71cfae.herokuapp.com/" target="_blank" class="btn-glow inline-block text-white font-bold py-3 px-8 rounded-lg text-base">
+                    <div class="flex justify-center mt-6">
+                        <a href="https://caseytest-034f5f71cfae.herokuapp.com/" target="_blank" class="btn-glow inline-block font-bold py-4 px-10 rounded-lg text-lg">
+                            <i class="fab fa-whatsapp mr-2"></i>
                             Get Started Now
                         </a>
                     </div>
@@ -806,132 +816,116 @@
             </div>
         </section>
 
-        <section id="features" class="feature-section py-12 px-4">
+        <section id="features" class="feature-section py-8 px-4">
             <div class="container mx-auto">
-                <div class="text-center max-w-xl mx-auto mb-8">
-                    <h2 class="text-2xl font-bold text-white mb-4">
+                <div class="text-center max-w-xl mx-auto mb-6">
+                    <h2 class="text-xl font-bold text-white mb-2">
                         Premium Features
                     </h2>
-                    <p class="text-medium text-sm">
-                        Caseyrhodes is packed with a premium set of tools designed to elevate your experience.
+                    <p class="text-medium text-xs">
+                        Powerful tools for enhanced messaging experience
                     </p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                     
-                    <div class="feature-card-advanced rounded-lg p-4 text-center">
-                        <div class="text-2xl mb-3 text-light">
+                    <div class="feature-card-advanced rounded-lg p-3 text-center">
+                        <div class="text-xl mb-2 text-light">
                             <i class="fas fa-bolt"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-white mb-2">
+                        <h3 class="text-base font-semibold text-white mb-1">
                             Lightning Fast
                         </h3>
-                        <p class="text-medium text-xs">
-                            Engineered for instant command execution and zero-latency responses.
-                        </p>
                     </div>
                     
-                    <div class="feature-card-advanced rounded-lg p-4 text-center">
-                         <div class="text-2xl mb-3 text-light">
+                    <div class="feature-card-advanced rounded-lg p-3 text-center">
+                         <div class="text-xl mb-2 text-light">
                             <i class="fas fa-download"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-white mb-2">
+                        <h3 class="text-base font-semibold text-white mb-1">
                             Advanced Downloads
                         </h3>
-                        <p class="text-medium text-xs">
-                            Download from YouTube, TikTok, Instagram, Facebook and more.
-                        </p>
                     </div>
 
-                    <div class="feature-card-advanced rounded-lg p-4 text-center">
-                        <div class="text-2xl mb-3 text-light">
+                    <div class="feature-card-advanced rounded-lg p-3 text-center">
+                        <div class="text-xl mb-2 text-light">
                             <i class="fas fa-shield-alt"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-white mb-2">
+                        <h3 class="text-base font-semibold text-white mb-1">
                             Advanced Security
                         </h3>
-                        <p class="text-medium text-xs">
-                            Your privacy is paramount with end-to-end security measures.
-                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="commands" class="command-section py-12 px-4 bg-black/20">
+        <section id="commands" class="command-section py-8 px-4 bg-black/20">
             <div class="container mx-auto">
-                 <div class="text-center max-w-xl mx-auto mb-8">
-                    <h2 class="text-2xl font-bold text-white mb-4">
+                 <div class="text-center max-w-xl mx-auto mb-6">
+                    <h2 class="text-xl font-bold text-white mb-2">
                         Commands List
                     </h2>
-                    <p class="text-medium text-sm">
-                        Explore a glimpse of what CaseyRhodes can do for you.
+                    <p class="text-medium text-xs">
+                        Explore what CaseyRhodes can do for you
                     </p>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
-                    <div class="bg-gray-900/30 p-3 rounded-lg">
-                        <div class="text-lg mb-1 text-light">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-center">
+                    <div class="bg-gray-900/30 p-2 rounded-lg">
+                        <div class="text-base mb-1 text-light">
                             <i class="fas fa-download"></i>
                         </div>
-                        <h4 class="font-bold text-light text-sm">Download Tools</h4>
-                        <p class="text-xs text-medium">.song, .video, .tiktok, .fb, .apk</p>
+                        <h4 class="font-bold text-light text-xs">Download Tools</h4>
                     </div>
-                    <div class="bg-gray-900/30 p-3 rounded-lg">
-                        <div class="text-lg mb-1 text-light">
+                    <div class="bg-gray-900/30 p-2 rounded-lg">
+                        <div class="text-base mb-1 text-light">
                             <i class="fas fa-cog"></i>
                         </div>
-                        <h4 class="font-bold text-light text-sm">System Commands</h4>
-                        <p class="text-xs text-medium">.alive, .system, .ping, .jid</p>
+                        <h4 class="font-bold text-light text-xs">System Commands</h4>
                     </div>
-                    <div class="bg-gray-900/30 p-3 rounded-lg">
-                        <div class="text-lg mb-1 text-light">
+                    <div class="bg-gray-900/30 p-2 rounded-lg">
+                        <div class="text-base mb-1 text-light">
                             <i class="fas fa-photo-video"></i>
                         </div>
-                     <h4 class="font-bold text-light text-sm">Media Tools</h4>
-                        <p class="text-xs text-medium">.sticker, .getdp, .cinfo, .save</p>
+                     <h4 class="font-bold text-light text-xs">Media Tools</h4>
                     </div>
-                     <div class="bg-gray-900/30 p-3 rounded-lg">
-                        <div class="text-lg mb-1 text-light">
+                     <div class="bg-gray-900/30 p-2 rounded-lg">
+                        <div class="text-base mb-1 text-light">
                             <i class="fas fa-gamepad"></i>
                         </div>
-                        <h4 class="font-bold text-light text-sm">Fun & Games</h4>
-                        <p class="text-xs text-medium">.meme, .quiz, .joke, .dice</p>
+                        <h4 class="font-bold text-light text-xs">Fun & Games</h4>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="start" class="py-12 px-4">
+        <section id="start" class="py-8 px-4">
              <div class="container mx-auto">
-                 <div class="text-center max-w-xl mx-auto mb-8">
-                    <h2 class="text-2xl font-bold text-white mb-4">
+                 <div class="text-center max-w-xl mx-auto mb-6">
+                    <h2 class="text-xl font-bold text-white mb-2">
                         Get Started in 3 Steps
                     </h2>
-                    <p class="text-medium text-sm">
-                        Deploying your own CaseyRhodes bot is simple and straightforward.
+                    <p class="text-medium text-xs">
+                        Simple setup for powerful automation
                     </p>
                 </div>
-                <div class="max-w-2xl mx-auto grid md:grid-cols-3 gap-4 text-center">
+                <div class="max-w-2xl mx-auto grid md:grid-cols-3 gap-3 text-center">
                     <div>
-                        <div class="text-2xl font-bold hero-title-gradient mb-2">1</div>
-                        <h3 class="text-base text-white font-semibold mb-1">Click Get Started</h3>
-                        <p class="text-medium text-xs">Begin your journey with CaseyRhodes</p>
+                        <div class="text-xl font-bold hero-title-gradient mb-1">1</div>
+                        <h3 class="text-sm text-white font-semibold mb-1">Click Get Started</h3>
                     </div>
                     <div>
-                        <div class="text-2xl font-bold hero-title-gradient mb-2">2</div>
-                        <h3 class="text-base text-white font-semibold mb-1">Deploy & Pair</h3>
-                        <p class="text-medium text-xs">Deploy the bot and pair with your device</p>
+                        <div class="text-xl font-bold hero-title-gradient mb-1">2</div>
+                        <h3 class="text-sm text-white font-semibold mb-1">Deploy & Pair</h3>
                     </div>
                     <div>
-                        <div class="text-2xl font-bold hero-title-gradient mb-2">3</div>
-                        <h3 class="text-base text-white font-semibold mb-1">Enjoy Features</h3>
-                        <p class="text-medium text-xs">Your bot is now live and ready to serve</p>
+                        <div class="text-xl font-bold hero-title-gradient mb-1">3</div>
+                        <h3 class="text-sm text-white font-semibold mb-1">Enjoy Features</h3>
                     </div>
                 </div>
                 
-                <div class="text-center mt-8">
-                    <a href="https://caseytest-034f5f71cfae.herokuapp.com/" target="_blank" class="btn-glow inline-block text-white font-bold py-3 px-8 rounded-lg text-base">
-                        <i class="fab fa-whatsapp mr-2 text-base"></i>
-                        Connect now
+                <div class="text-center mt-6">
+                    <a href="https://caseytest-034f5f71cfae.herokuapp.com/" target="_blank" class="btn-glow inline-block font-bold py-4 px-10 rounded-lg text-lg">
+                        <i class="fab fa-whatsapp mr-2"></i>
+                        Connect Now
                     </a>
                 </div>
              </div>
@@ -939,12 +933,12 @@
 
     </main>
     
-    <footer class="footer-section bg-black/30 border-t border-gray-800/50 text-center pt-6 pb-4 px-4">
+    <footer class="footer-section bg-black/30 border-t border-gray-800/50 text-center pt-4 pb-3 px-4">
         <div class="container mx-auto">
-            <p class="text-medium max-w-lg mx-auto mb-3 text-sm">
+            <p class="text-medium max-w-lg mx-auto mb-2 text-xs">
                 Elevate your WhatsApp experience with premium-powered automation.
             </p>
-            <div class="border-t border-gray-800 pt-3 mt-3">
+            <div class="border-t border-gray-800 pt-2 mt-2">
                 <p class="text-medium text-xs">© 2025 CaseyRhodes. All Rights Reserved.</p>
                 <p class="text-gray-600 text-xs mt-1">Powered by <span class="text-light">Caseyrhodes Team</span></p>
             </div>
@@ -955,9 +949,9 @@
         // Initialize particles.js with enhanced configuration
         particlesJS("particles-js", {
             particles: {
-                number: { value: 60, density: { enable: true, value_area: 800 } },
+                number: { value: 50, density: { enable: true, value_area: 800 } },
                 color: { value: "#ffffff" },
-                opacity: { value: 0.3, random: true },
+                opacity: { value: 0.2, random: true },
                 size: { value: 2, random: true },
                 line_linked: {
                     enable: true,
