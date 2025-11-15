@@ -129,19 +129,24 @@
         }
         
         .bot-hero-image {
-            width: 220px;
-            height: 220px;
+            width: 280px;
+            height: 280px;
             border-radius: 15px;
+            box-shadow: 
+                0 0 20px rgba(100, 100, 100, 0.6),
+                0 5px 15px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
             transform-style: preserve-3d;
             position: relative;
             z-index: 2;
             object-fit: cover;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .bot-hero-image:hover {
             transform: translateY(-5px) scale(1.03);
+            box-shadow: 
+                0 0 30px rgba(150, 150, 150, 0.8),
+                0 8px 20px rgba(0, 0, 0, 0.5);
         }
         
         .image-container {
@@ -151,51 +156,33 @@
         }
         
         .btn-glow {
-            background: linear-gradient(135deg, #ffffff, #a0a0a0);
-            color: #000;
-            font-weight: bold;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            background: linear-gradient(135deg, #606060, #404040);
+            box-shadow: 0 0 15px rgba(100, 100, 100, 0.6);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
         
         .btn-glow:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
-        }
-        
-        .btn-glow::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.5s;
-        }
-        
-        .btn-glow:hover::after {
-            left: 100%;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(150, 150, 150, 0.8);
         }
         
         .feature-card-advanced {
-            background: rgba(20, 20, 20, 0.7);
+            background: rgba(30, 30, 30, 0.6);
             backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(100, 100, 100, 0.3);
             transition: all 0.3s ease;
         }
         
         .feature-card-advanced:hover {
-            transform: translateY(-3px);
-            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+            border-color: #ffffff;
+            box-shadow: 0 8px 15px rgba(255, 255, 255, 0.2);
         }
         
         .modal-advanced {
-            background: rgba(20, 20, 20, 0.95);
+            background: rgba(30, 30, 30, 0.95);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(100, 100, 100, 0.5);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
         }
         
@@ -208,37 +195,61 @@
             animation: float 8s ease-in-out infinite;
         }
         
-        /* Text colors */
-        .text-light {
-            color: #f5f5f5;
+        /* Black/Gray text colors */
+        .text-silver {
+            color: #C0C0C0;
         }
         
-        .text-medium {
-            color: #a0a0a0;
+        .text-light-gray {
+            color: #D3D3D3;
         }
         
-        .text-dark {
+        .text-medium-gray {
+            color: #A0A0A0;
+        }
+        
+        .text-dark-gray {
             color: #606060;
         }
         
         /* Hero section styling */
         .hero-section {
+            background: radial-gradient(ellipse at center, rgba(100, 100, 100, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
             padding-top: 1.5rem;
         }
         
         /* Feature section styling */
         .feature-section {
-            background: radial-gradient(ellipse at top, rgba(150, 150, 150, 0.03) 0%, rgba(0, 0, 0, 0) 70%);
+            background: radial-gradient(ellipse at top, rgba(150, 150, 150, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
         }
         
         /* Command section styling */
         .command-section {
-            background: radial-gradient(ellipse at center, rgba(120, 120, 120, 0.03) 0%, rgba(0, 0, 0, 0) 70%);
+            background: radial-gradient(ellipse at center, rgba(120, 120, 120, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
         }
         
         /* Footer styling */
         .footer-section {
-            background: radial-gradient(ellipse at bottom, rgba(100, 100, 100, 0.03) 0%, rgba(0, 0, 0, 0) 70%);
+            background: radial-gradient(ellipse at bottom, rgba(100, 100, 100, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+        }
+        
+        /* Glowing border effect */
+        .glow-border {
+            position: relative;
+        }
+        
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ffffff, #a0a0a0, #606060, #ffffff);
+            border-radius: 12px;
+            z-index: -1;
+            opacity: 0.5;
+            filter: blur(5px);
         }
         
         /* Menu styling - Top Right */
@@ -254,7 +265,7 @@
         .menu-items {
             background: rgba(15, 15, 15, 0.85);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(100, 100, 100, 0.4);
             border-radius: 50px;
             padding: 10px 25px;
             display: flex;
@@ -263,7 +274,7 @@
         }
         
         .menu-item {
-            color: #f5f5f5;
+            color: #D3D3D3;
             font-size: 14px;
             font-weight: 500;
             transition: all 0.3s ease;
@@ -273,7 +284,7 @@
         
         .menu-item:hover {
             color: white;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(100, 100, 100, 0.3);
             transform: translateY(-2px);
         }
         
@@ -281,7 +292,7 @@
             display: none;
             background: rgba(15, 15, 15, 0.85);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(100, 100, 100, 0.4);
             border-radius: 50%;
             width: 45px;
             height: 45px;
@@ -306,7 +317,7 @@
                 right: 20px;
                 background: rgba(15, 15, 15, 0.95);
                 backdrop-filter: blur(20px);
-                border: 1px solid rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(100, 100, 100, 0.4);
                 border-radius: 15px;
                 padding: 15px;
                 display: flex;
@@ -317,28 +328,28 @@
             }
             
             .bot-hero-image {
-                width: 180px;
-                height: 180px;
+                width: 240px;
+                height: 240px;
             }
         }
         
         /* Text styling */
         .image-title {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
             text-align: center;
-            background: linear-gradient(135deg, #ffffff, #a0a0a0);
+            background: linear-gradient(135deg, #ffffff, #a0a0a0, #606060);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
             letter-spacing: 1px;
         }
         
         .image-subtitle {
-            font-size: 1rem;
-            color: #a0a0a0;
+            font-size: 1.1rem;
+            color: #A0A0A0;
             margin-bottom: 0.5rem;
             text-align: center;
             font-weight: 400;
@@ -435,29 +446,31 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: transparent;
+            background: linear-gradient(135deg, #a0a0a0, #606060);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(100, 100, 100, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(100, 100, 100, 0.5);
         }
         
         .play-button:hover {
             transform: scale(1.1);
             color: white;
-            border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            border-color: #ffffff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+            background: linear-gradient(135deg, #ffffff, #a0a0a0);
         }
         
         .play-button.playing {
             color: white;
-            border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            border-color: #ffffff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            background: linear-gradient(135deg, #ffffff, #a0a0a0);
         }
         
         .play-button i {
@@ -495,7 +508,7 @@
         .music-player {
             background: rgba(15, 15, 15, 0.95);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(100, 100, 100, 0.5);
             border-radius: 15px;
             padding: 25px;
             width: 90%;
@@ -508,7 +521,7 @@
             font-weight: 600;
             margin-bottom: 15px;
             text-align: center;
-            color: #a0a0a0;
+            color: #A0A0A0;
         }
         
         .track-list {
@@ -529,11 +542,11 @@
         }
         
         .track-item:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(100, 100, 100, 0.2);
         }
         
         .track-item.active {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(100, 100, 100, 0.3);
             color: #ffffff;
         }
         
@@ -550,7 +563,7 @@
         }
         
         .control-btn {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(100, 100, 100, 0.3);
             border: none;
             border-radius: 50%;
             width: 40px;
@@ -564,18 +577,18 @@
         }
         
         .control-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(100, 100, 100, 0.5);
             transform: scale(1.1);
         }
         
         .play-pause-btn {
             width: 50px;
             height: 50px;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(150, 150, 150, 0.5);
         }
         
         .play-pause-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(150, 150, 150, 0.7);
         }
         
         .close-modal {
@@ -605,7 +618,7 @@
         }
         
         .plugin-header h1 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 0.25rem;
             background: linear-gradient(to right, var(--white), var(--gray-300));
@@ -623,18 +636,18 @@
         
         /* Enhanced bot description styling */
         .bot-description {
-            background: rgba(20, 20, 20, 0.7);
+            background: linear-gradient(135deg, rgba(100, 100, 100, 0.1), rgba(60, 60, 60, 0.1));
             border-radius: 12px;
             padding: 1.5rem;
             margin: 1.5rem 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(100, 100, 100, 0.2);
             backdrop-filter: blur(10px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
         
         .bot-description p {
-            color: #f5f5f5;
-            font-size: 1rem;
+            color: #D3D3D3;
+            font-size: 1.1rem;
             line-height: 1.7;
             text-align: center;
             margin-bottom: 0;
@@ -675,16 +688,16 @@
             }
             
             .plugin-header h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
             .image-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
             .bot-hero-image {
-                width: 160px;
-                height: 160px;
+                width: 220px;
+                height: 220px;
             }
             
             .bot-description {
@@ -693,22 +706,22 @@
             }
             
             .bot-description p {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
         }
         
         @media (max-width: 480px) {
             .plugin-header h1 {
-                font-size: 1.6rem;
+                font-size: 1.75rem;
             }
             
             .image-title {
-                font-size: 1.6rem;
+                font-size: 1.75rem;
             }
             
             .bot-hero-image {
-                width: 140px;
-                height: 140px;
+                width: 200px;
+                height: 200px;
             }
         }
     </style>
@@ -806,9 +819,8 @@
                         </p>
                     </div>
                     
-                    <div class="flex justify-center mt-6">
-                        <a href="https://caseytest-034f5f71cfae.herokuapp.com/" target="_blank" class="btn-glow inline-block font-bold py-4 px-10 rounded-lg text-lg">
-                            <i class="fab fa-whatsapp mr-2"></i>
+                    <div class="flex justify-center">
+                        <a href="https://caseytest-034f5f71cfae.herokuapp.com/" target="_blank" class="btn-glow inline-block text-white font-bold py-3 px-8 rounded-lg text-base">
                             Get Started Now
                         </a>
                     </div>
@@ -816,131 +828,221 @@
             </div>
         </section>
 
-        <section id="features" class="feature-section py-8 px-4">
+        <section id="features" class="feature-section py-16 px-4">
             <div class="container mx-auto">
-                <div class="text-center max-w-xl mx-auto mb-6">
-                    <h2 class="text-xl font-bold text-white mb-2">
+                <div class="text-center max-w-xl mx-auto mb-12">
+                    <h2 class="text-3xl font-bold text-white mb-4">
                         Premium Features
                     </h2>
-                    <p class="text-medium text-xs">
-                        Powerful tools for enhanced messaging experience
+                    <p class="text-light-gray text-base">
+                        Caseyrhodes is packed with a premium set of tools designed to elevate your experience to the next level.
                     </p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     
-                    <div class="feature-card-advanced rounded-lg p-3 text-center">
-                        <div class="text-xl mb-2 text-light">
+                    <div class="feature-card-advanced rounded-lg p-6 text-center glow-border">
+                        <div class="text-3xl mb-4 text-silver">
                             <i class="fas fa-bolt"></i>
                         </div>
-                        <h3 class="text-base font-semibold text-white mb-1">
-                            Lightning Fast
+                        <h3 class="text-xl font-semibold text-white mb-3">
+                            Lightning Fast Performance
                         </h3>
+                        <p class="text-light-gray text-sm">
+                            Engineered for instant command execution and zero-latency responses.
+                        </p>
                     </div>
                     
-                    <div class="feature-card-advanced rounded-lg p-3 text-center">
-                         <div class="text-xl mb-2 text-light">
+                    <div class="feature-card-advanced rounded-lg p-6 text-center glow-border">
+                         <div class="text-3xl mb-4 text-medium-gray">
                             <i class="fas fa-download"></i>
                         </div>
-                        <h3 class="text-base font-semibold text-white mb-1">
-                            Advanced Downloads
+                        <h3 class="text-xl font-semibold text-white mb-3">
+                            Advanced Download System
                         </h3>
+                        <p class="text-light-gray text-sm">
+                            Download from YouTube, TikTok, Instagram, Facebook and more with zero-latency speed.
+                        </p>
                     </div>
 
-                    <div class="feature-card-advanced rounded-lg p-3 text-center">
-                        <div class="text-xl mb-2 text-light">
+                    <div class="feature-card-advanced rounded-lg p-6 text-center glow-border">
+                        <div class="text-3xl mb-4 text-dark-gray">
                             <i class="fas fa-shield-alt"></i>
                         </div>
-                        <h3 class="text-base font-semibold text-white mb-1">
+                        <h3 class="text-xl font-semibold text-white mb-3">
                             Advanced Security
                         </h3>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="commands" class="command-section py-8 px-4 bg-black/20">
-            <div class="container mx-auto">
-                 <div class="text-center max-w-xl mx-auto mb-6">
-                    <h2 class="text-xl font-bold text-white mb-2">
-                        Commands List
-                    </h2>
-                    <p class="text-medium text-xs">
-                        Explore what CaseyRhodes can do for you
-                    </p>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-center">
-                    <div class="bg-gray-900/30 p-2 rounded-lg">
-                        <div class="text-base mb-1 text-light">
-                            <i class="fas fa-download"></i>
-                        </div>
-                        <h4 class="font-bold text-light text-xs">Download Tools</h4>
-                    </div>
-                    <div class="bg-gray-900/30 p-2 rounded-lg">
-                        <div class="text-base mb-1 text-light">
-                            <i class="fas fa-cog"></i>
-                        </div>
-                        <h4 class="font-bold text-light text-xs">System Commands</h4>
-                    </div>
-                    <div class="bg-gray-900/30 p-2 rounded-lg">
-                        <div class="text-base mb-1 text-light">
-                            <i class="fas fa-photo-video"></i>
-                        </div>
-                     <h4 class="font-bold text-light text-xs">Media Tools</h4>
-                    </div>
-                     <div class="bg-gray-900/30 p-2 rounded-lg">
-                        <div class="text-base mb-1 text-light">
-                            <i class="fas fa-gamepad"></i>
-                        </div>
-                        <h4 class="font-bold text-light text-xs">Fun & Games</h4>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="start" class="py-8 px-4">
-             <div class="container mx-auto">
-                 <div class="text-center max-w-xl mx-auto mb-6">
-                    <h2 class="text-xl font-bold text-white mb-2">
-                        Get Started in 3 Steps
-                    </h2>
-                    <p class="text-medium text-xs">
-                        Simple setup for powerful automation
-                    </p>
-                </div>
-                <div class="max-w-2xl mx-auto grid md:grid-cols-3 gap-3 text-center">
-                    <div>
-                        <div class="text-xl font-bold hero-title-gradient mb-1">1</div>
-                        <h3 class="text-sm text-white font-semibold mb-1">Click Get Started</h3>
-                    </div>
-                    <div>
-                        <div class="text-xl font-bold hero-title-gradient mb-1">2</div>
-                        <h3 class="text-sm text-white font-semibold mb-1">Deploy & Pair</h3>
-                    </div>
-                    <div>
-                        <div class="text-xl font-bold hero-title-gradient mb-1">3</div>
-                        <h3 class="text-sm text-white font-semibold mb-1">Enjoy Features</h3>
+                        <p class="text-light-gray text-sm">
+                            Your privacy is paramount. Built with end-to-end security measures to protect your data.
+                        </p>
                     </div>
                 </div>
                 
-                <div class="text-center mt-6">
-                    <a href="https://caseytest-034f5f71cfae.herokuapp.com/" target="_blank" class="btn-glow inline-block font-bold py-4 px-10 rounded-lg text-lg">
-                        <i class="fab fa-whatsapp mr-2"></i>
-                        Connect Now
+                <!-- Additional Features -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                    <div class="feature-card-advanced rounded-lg p-6 text-center glow-border">
+                        <div class="text-3xl mb-4 text-silver">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">
+                            AI-Powered Automation
+                        </h3>
+                        <p class="text-light-gray text-sm">
+                            Smart automation that learns from your usage patterns to provide personalized experiences.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card-advanced rounded-lg p-6 text-center glow-border">
+                         <div class="text-3xl mb-4 text-medium-gray">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">
+                            Cross-Platform Compatibility
+                        </h3>
+                        <p class="text-light-gray text-sm">
+                            Works seamlessly across multiple platforms and devices with synchronized data.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="commands" class="command-section py-16 px-4 bg-black/20">
+            <div class="container mx-auto">
+                 <div class="text-center max-w-xl mx-auto mb-12">
+                    <h2 class="text-3xl font-bold text-white mb-4">
+                        Commands List
+                    </h2>
+                    <p class="text-light-gray text-base">
+                        Explore a glimpse of what CaseyRhodes can do for you. Over 100+ commands at your fingertips
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="bg-gray-900/50 p-4 rounded-lg glow-border">
+                        <div class="text-xl mb-2 text-silver">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <h4 class="font-bold text-silver text-base">Download Tools</h4>
+                        <p class="text-sm text-light-gray">.song, .video, .tiktok, .fb, .apk</p>
+                    </div>
+                    <div class="bg-gray-900/50 p-4 rounded-lg glow-border">
+                        <div class="text-xl mb-2 text-medium-gray">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <h4 class="font-bold text-medium-gray text-base">System Commands</h4>
+                        <p class="text-sm text-light-gray">.alive, .system, .ping, .jid</p>
+                    </div>
+                    <div class="bg-gray-900/50 p-4 rounded-lg glow-border">
+                        <div class="text-xl mb-2 text-dark-gray">
+                            <i class="fas fa-photo-video"></i>
+                        </div>
+                     <h4 class="font-bold text-dark-gray text-base">Media Tools</h4>
+                        <p class="text-sm text-light-gray">.sticker, .getdp, .cinfo, .save</p>
+                    </div>
+                     <div class="bg-gray-900/50 p-4 rounded-lg glow-border">
+                        <div class="text-xl mb-2 text-silver">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h4 class="font-bold text-silver text-base">Fun & Games</h4>
+                        <p class="text-sm text-light-gray">.meme, .quiz, .joke, .dice</p>
+                    </div>
+                </div>
+                
+                <!-- Additional Commands -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mt-6">
+                    <div class="bg-gray-900/50 p-4 rounded-lg glow-border">
+                        <div class="text-xl mb-2 text-medium-gray">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4 class="font-bold text-medium-gray text-base">Search Tools</h4>
+                        <p class="text-sm text-light-gray">.google, .ytsearch, .wiki, .weather</p>
+                    </div>
+                    <div class="bg-gray-900/50 p-4 rounded-lg glow-border">
+                        <div class="text-xl mb-2 text-dark-gray">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4 class="font-bold text-dark-gray text-base">Group Management</h4>
+                        <p class="text-sm text-light-gray">.kick, .promote, .demote, .groupinfo</p>
+                    </div>
+                    <div class="bg-gray-900/50 p-4 rounded-lg glow-border">
+                        <div class="text-xl mb-2 text-silver">
+                            <i class="fas fa-image"></i>
+                        </div>
+                     <h4 class="font-bold text-silver text-base">Image Tools</h4>
+                        <p class="text-sm text-light-gray">.edit, .filter, .caption, .qr</p>
+                    </div>
+                     <div class="bg-gray-900/50 p-4 rounded-lg glow-border">
+                        <div class="text-xl mb-2 text-medium-gray">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h4 class="font-bold text-medium-gray text-base">Audio Tools</h4>
+                        <p class="text-sm text-light-gray">.play, .lyrics, .bass, .volume</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="start" class="py-16 px-4">
+             <div class="container mx-auto">
+                 <div class="text-center max-w-xl mx-auto mb-12">
+                    <h2 class="text-3xl font-bold text-white mb-4">
+                        Get Started in 3 Steps
+                    </h2>
+                    <p class="text-light-gray text-base">
+                        Deploying your own CaseyRhodes bot is simple and straightforward.
+                    </p>
+                </div>
+                <div class="max-w-2xl mx-auto grid md:grid-cols-3 gap-6 text-center">
+                    <div>
+                        <div class="text-3xl font-bold hero-title-gradient mb-3">1</div>
+                        <h3 class="text-lg text-white font-semibold mb-2">Click Get Started</h3>
+                        <p class="text-light-gray text-sm">Begin your journey with CaseyRhodes</p>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold hero-title-gradient mb-3">2</div>
+                        <h3 class="text-lg text-white font-semibold mb-2">Deploy & Pair</h3>
+                        <p class="text-light-gray text-sm">Deploy the bot and pair with your device</p>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold hero-title-gradient mb-3">3</div>
+                        <h3 class="text-lg text-white font-semibold mb-2">Enjoy Premium Features</h3>
+                        <p class="text-light-gray text-sm">Your bot is now live and ready to serve</p>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-10">
+                    <a href="https://caseytest-034f5f71cfae.herokuapp.com/" target="_blank" class="btn-glow inline-block text-white font-bold py-3 px-8 rounded-lg text-base">
+                        <i class="fab fa-whatsapp mr-2 text-base"></i>
+                        Connect now
                     </a>
+                </div>
+                
+                <!-- Additional Information Section -->
+                <div class="mt-16 text-center">
+                    <h2 class="text-2xl font-bold text-white mb-6">Why Choose CaseyRhodes?</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                        <div class="bg-gray-900/30 p-6 rounded-lg">
+                            <h3 class="text-xl font-semibold text-white mb-3">24/7 Active Support</h3>
+                            <p class="text-light-gray text-sm">Our dedicated support team is available around the clock to assist you with any issues or questions.</p>
+                        </div>
+                        <div class="bg-gray-900/30 p-6 rounded-lg">
+                            <h3 class="text-xl font-semibold text-white mb-3">Regular Updates</h3>
+                            <p class="text-light-gray text-sm">We continuously improve our bot with new features, security patches, and performance enhancements.</p>
+                        </div>
+                    </div>
                 </div>
              </div>
         </section>
 
     </main>
     
-    <footer class="footer-section bg-black/30 border-t border-gray-800/50 text-center pt-4 pb-3 px-4">
+    <footer class="footer-section bg-black/30 border-t border-gray-800/50 text-center pt-8 pb-6 px-4">
         <div class="container mx-auto">
-            <p class="text-medium max-w-lg mx-auto mb-2 text-xs">
+            <p class="text-light-gray max-w-lg mx-auto mb-4 text-base">
                 Elevate your WhatsApp experience with premium-powered automation.
             </p>
-            <div class="border-t border-gray-800 pt-2 mt-2">
-                <p class="text-medium text-xs">© 2025 CaseyRhodes. All Rights Reserved.</p>
-                <p class="text-gray-600 text-xs mt-1">Powered by <span class="text-light">Caseyrhodes Team</span></p>
+            <div class="border-t border-gray-800 pt-4 mt-4">
+                <p class="text-light-gray text-sm">© 2025 CaseyRhodes. All Rights Reserved.</p>
+                <p class="text-gray-600 text-xs mt-1">Powered by <span class="text-medium-gray">Caseyrhodes Team</span></p>
             </div>
         </div>
     </footer>
@@ -949,15 +1051,15 @@
         // Initialize particles.js with enhanced configuration
         particlesJS("particles-js", {
             particles: {
-                number: { value: 50, density: { enable: true, value_area: 800 } },
+                number: { value: 80, density: { enable: true, value_area: 800 } },
                 color: { value: "#ffffff" },
-                opacity: { value: 0.2, random: true },
-                size: { value: 2, random: true },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
                 line_linked: {
                     enable: true,
                     distance: 150,
                     color: "#ffffff",
-                    opacity: 0.1,
+                    opacity: 0.2,
                     width: 1
                 },
                 move: { enable: true, speed: 1, out_mode: "out" }
@@ -968,7 +1070,7 @@
                     onclick: { enable: true, mode: "push" }
                 },
                 modes: {
-                    grab: { distance: 200, line_linked: { opacity: 0.2 } },
+                    grab: { distance: 200, line_linked: { opacity: 0.4 } },
                     push: { particles_nb: 4 }
                 }
             },
