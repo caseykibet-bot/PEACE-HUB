@@ -302,6 +302,84 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
+        /* Stats Container Styles */
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .stat-card {
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(100, 100, 100, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            min-width: 200px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .stat-card.active {
+            border-left: 4px solid #25D366;
+        }
+        
+        .stat-card.total {
+            border-left: 4px solid #a0a0a0;
+        }
+        
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat-card.active .stat-icon {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.2), rgba(37, 211, 102, 0.1));
+            color: #25D366;
+        }
+        
+        .stat-card.total .stat-icon {
+            background: linear-gradient(135deg, rgba(160, 160, 160, 0.2), rgba(160, 160, 160, 0.1));
+            color: #a0a0a0;
+        }
+        
+        .stat-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+            font-weight: 500;
+        }
+        
         @media (max-width: 768px) {
             .menu-items {
                 display: none;
@@ -335,6 +413,19 @@
             .owner-image {
                 width: 180px;
                 height: 180px;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .stat-card {
+                width: 100%;
+                max-width: 300px;
+                padding: 1.25rem 1.5rem;
             }
         }
         
@@ -881,9 +972,32 @@
                         </p>
                     </div>
                     
+                    <!-- Stats Container -->
+                    <div class="stats-container">
+                        <div class="stat-card active">
+                            <div class="stat-icon">
+                                <i class="fas fa-signal"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="activeSockets">1,247</div>
+                                <div class="stat-label">Active Sockets</div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card total">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="totalUsers">10,582</div>
+                                <div class="stat-label">Total Users</div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="flex justify-center">
                         <a href="https://mini1-o1n6.onrender.com/" target="_blank" class="btn-glow inline-block text-white font-bold py-3 px-8 rounded-lg text-base">
-                            🤖 Get Started Now
+                            Get Started Now
                         </a>
                     </div>
                 </div>
@@ -895,17 +1009,17 @@
             <div class="container mx-auto">
                 <div class="text-center max-w-xl mx-auto mb-12">
                     <h2 class="text-3xl font-bold text-white mb-4">
-                        Meet The Owner🧑‍💻
+                        Meet The Owner
                     </h2>
                     <p class="text-light-gray text-base">
-                        The visionary behind Caseyrhodes Bot, dedicated to creating exceptional automation experiences.
+                        The visionary behind CaseyRhodes Bot, dedicated to creating exceptional automation experiences.
                     </p>
                 </div>
                 
                 <div class="flex flex-col md:flex-row items-center justify-center gap-10">
                     <!-- Owner Image -->
                     <div class="image-container floating">
-                        <img src="https://i.ibb.co/s9SXVK36/caseyweb.jpg" alt="CaseyRhodes Owner" class="owner-image">
+                        <img src="https://i.ibb.co/6Rz4wS52/caseyweb.jpg" alt="CaseyRhodes Owner" class="owner-image">
                     </div>
                     
                     <!-- Owner Information -->
@@ -1149,6 +1263,10 @@
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
         
+        // Stats elements
+        const activeSocketsElement = document.getElementById('activeSockets');
+        const totalUsersElement = document.getElementById('totalUsers');
+        
         // Current track index
         let currentTrackIndex = 0;
         let isPlaying = false;
@@ -1238,6 +1356,58 @@
             }
         }
         
+        // Animate numbers with counting effect
+        function animateCounter(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value.toLocaleString();
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        // Initialize stats with animated counting
+        function initStats() {
+            // Simulate live updating stats (in a real app, you'd fetch these from an API)
+            const baseActiveSockets = 1247;
+            const baseTotalUsers = 10582;
+            
+            // Add some random variation to make it look dynamic
+            const activeSockets = baseActiveSockets + Math.floor(Math.random() * 50);
+            const totalUsers = baseTotalUsers + Math.floor(Math.random() * 200);
+            
+            // Animate the counting effect
+            animateCounter(activeSocketsElement, 0, activeSockets, 1500);
+            animateCounter(totalUsersElement, 0, totalUsers, 2000);
+            
+            // Simulate real-time updates every 30 seconds
+            setInterval(() => {
+                const variationActive = Math.floor(Math.random() * 30) - 15;
+                const variationUsers = Math.floor(Math.random() * 100) - 50;
+                
+                const newActiveSockets = Math.max(1200, baseActiveSockets + variationActive);
+                const newTotalUsers = Math.max(10400, baseTotalUsers + variationUsers);
+                
+                // Quick update without animation for real-time changes
+                activeSocketsElement.textContent = newActiveSockets.toLocaleString();
+                totalUsersElement.textContent = newTotalUsers.toLocaleString();
+                
+                // Add a subtle pulse effect on update
+                activeSocketsElement.style.transform = 'scale(1.1)';
+                totalUsersElement.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    activeSocketsElement.style.transform = 'scale(1)';
+                    totalUsersElement.style.transform = 'scale(1)';
+                }, 300);
+                
+            }, 30000); // Update every 30 seconds
+        }
+        
         // Event Listeners
         playButton.addEventListener('click', () => {
             musicModal.classList.add('active');
@@ -1272,6 +1442,7 @@
         // Initialize
         window.addEventListener('DOMContentLoaded', function() {
             initPlaylist();
+            initStats();
         });
     </script>
 </body>
