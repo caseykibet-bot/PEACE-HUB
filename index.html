@@ -166,6 +166,75 @@
             box-shadow: 0 0 20px rgba(150, 150, 150, 0.8);
         }
         
+        /* YouTube Button Styles */
+        .youtube-btn {
+            background: linear-gradient(135deg, #FF0000, #CC0000);
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        
+        .youtube-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .youtube-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+            background: linear-gradient(135deg, #FF3333, #E60000);
+        }
+        
+        .youtube-btn:hover::before {
+            left: 100%;
+        }
+        
+        .youtube-btn .youtube-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 4px;
+            padding: 2px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .youtube-btn:hover .youtube-icon {
+            transform: scale(1.1);
+        }
+        
+        .youtube-btn .youtube-icon::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 8px solid #FF0000;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            position: absolute;
+        }
+        
         .feature-card-advanced {
             background: rgba(30, 30, 30, 0.6);
             backdrop-filter: blur(15px);
@@ -302,48 +371,48 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
-        /* Stats Container Styles - Below Owner Section */
+        /* Stats Container Styles - Reduced by 70% */
         .owner-stats-section {
             background: radial-gradient(ellipse at center, rgba(120, 120, 120, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
-            padding: 3rem 1rem;
+            padding: 2rem 1rem;
             margin-top: 2rem;
         }
         
         .owner-stats-container {
             display: flex;
             justify-content: center;
-            gap: 3rem;
-            margin: 2rem auto;
-            max-width: 800px;
+            gap: 1.5rem;
+            margin: 1rem auto;
+            max-width: 500px;
             width: 100%;
         }
         
         .owner-stat-card {
             background: linear-gradient(135deg, rgba(40, 40, 40, 0.8), rgba(20, 20, 20, 0.9));
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(15px);
             border: 1px solid rgba(100, 100, 100, 0.4);
-            border-radius: 20px;
-            padding: 2.5rem;
+            border-radius: 12px;
+            padding: 1.2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-width: 250px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            min-width: 160px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
-            transform: translateY(50px);
+            transform: translateY(30px);
             opacity: 0;
-            animation: statCardSlideUp 0.8s ease forwards;
+            animation: statCardSlideUp 0.6s ease forwards;
         }
         
         .owner-stat-card:nth-child(1) {
-            animation-delay: 0.2s;
+            animation-delay: 0.1s;
         }
         
         .owner-stat-card:nth-child(2) {
-            animation-delay: 0.4s;
+            animation-delay: 0.2s;
         }
         
         @keyframes statCardSlideUp {
@@ -353,79 +422,49 @@
             }
         }
         
-        .owner-stat-card::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #ffffff, #a0a0a0, #606060, #ffffff);
-            border-radius: 22px;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
         .owner-stat-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
             border-color: rgba(255, 255, 255, 0.6);
         }
         
-        .owner-stat-card:hover::before {
-            opacity: 0.7;
-            animation: borderGlow 2s linear infinite;
-        }
-        
-        @keyframes borderGlow {
-            0%, 100% { filter: blur(5px); }
-            50% { filter: blur(10px); }
-        }
-        
         .owner-stat-card.active {
-            border-top: 5px solid #25D366;
+            border-top: 3px solid #25D366;
         }
         
         .owner-stat-card.total {
-            border-top: 5px solid #a0a0a0;
+            border-top: 3px solid #a0a0a0;
         }
         
         .owner-stat-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 20px;
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            transition: all 0.5s ease;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            transition: all 0.4s ease;
             position: relative;
             z-index: 1;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
         
         .owner-stat-card:hover .owner-stat-icon {
-            transform: scale(1.1) rotate(5deg);
-            animation: iconFloat 2s ease-in-out infinite;
-        }
-        
-        @keyframes iconFloat {
-            0%, 100% { transform: translateY(0) scale(1.1) rotate(5deg); }
-            50% { transform: translateY(-10px) scale(1.1) rotate(5deg); }
+            transform: scale(1.1);
         }
         
         .owner-stat-card.active .owner-stat-icon {
-            background: linear-gradient(135deg, rgba(37, 211, 102, 0.3), rgba(37, 211, 102, 0.15));
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.25), rgba(37, 211, 102, 0.15));
             color: #25D366;
-            border: 2px solid rgba(37, 211, 102, 0.5);
+            border: 1px solid rgba(37, 211, 102, 0.4);
         }
         
         .owner-stat-card.total .owner-stat-icon {
-            background: linear-gradient(135deg, rgba(160, 160, 160, 0.3), rgba(160, 160, 160, 0.15));
+            background: linear-gradient(135deg, rgba(160, 160, 160, 0.25), rgba(160, 160, 160, 0.15));
             color: #a0a0a0;
-            border: 2px solid rgba(160, 160, 160, 0.5);
+            border: 1px solid rgba(160, 160, 160, 0.4);
         }
         
         .owner-stat-info {
@@ -436,14 +475,13 @@
         }
         
         .owner-stat-value {
-            font-size: 3.5rem;
-            font-weight: 800;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: white;
             line-height: 1;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 0.3rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
-            position: relative;
             background: linear-gradient(135deg, #ffffff, #a0a0a0);
             -webkit-background-clip: text;
             background-clip: text;
@@ -451,36 +489,34 @@
         }
         
         .owner-stat-card:hover .owner-stat-value {
-            transform: scale(1.1);
-            text-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+            transform: scale(1.05);
         }
         
         .owner-stat-label {
-            font-size: 1.1rem;
+            font-size: 0.8rem;
             color: #a0a0a0;
-            font-weight: 600;
-            letter-spacing: 1px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.2rem;
         }
         
         .owner-stat-subtitle {
-            font-size: 0.9rem;
+            font-size: 0.7rem;
             color: #808080;
             font-weight: 400;
-            margin-top: 0.25rem;
         }
         
         .owner-stat-pulse {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 12px;
-            height: 12px;
+            top: 12px;
+            right: 12px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background: #25D366;
             animation: statPulse 2s infinite;
-            box-shadow: 0 0 10px rgba(37, 211, 102, 0.8);
+            box-shadow: 0 0 5px rgba(37, 211, 102, 0.8);
         }
         
         @keyframes statPulse {
@@ -489,28 +525,13 @@
                 transform: scale(1);
             }
             70% {
-                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+                box-shadow: 0 0 0 5px rgba(37, 211, 102, 0);
                 transform: scale(1.1);
             }
             100% {
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
                 transform: scale(1);
             }
-        }
-        
-        .owner-stat-glow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        .owner-stat-card:hover .owner-stat-glow {
-            opacity: 1;
         }
         
         @media (max-width: 768px) {
@@ -551,24 +572,34 @@
             .owner-stats-container {
                 flex-direction: column;
                 align-items: center;
-                gap: 2rem;
+                gap: 1rem;
                 padding: 0 1rem;
             }
             
             .owner-stat-card {
                 width: 100%;
-                max-width: 350px;
-                padding: 2rem;
+                max-width: 220px;
+                padding: 1rem;
             }
             
             .owner-stat-icon {
-                width: 70px;
-                height: 70px;
-                font-size: 2rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
             }
             
             .owner-stat-value {
-                font-size: 3rem;
+                font-size: 1.6rem;
+            }
+            
+            .youtube-btn {
+                padding: 0.8rem 1.8rem;
+                font-size: 0.95rem;
+            }
+            
+            .youtube-btn .youtube-icon {
+                width: 22px;
+                height: 22px;
             }
         }
         
@@ -1021,13 +1052,23 @@
             }
             
             .owner-stat-value {
-                font-size: 2.5rem;
+                font-size: 1.4rem;
             }
             
             .owner-stat-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.8rem;
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            .youtube-btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .youtube-btn .youtube-icon {
+                width: 20px;
+                height: 20px;
             }
         }
     </style>
@@ -1220,7 +1261,6 @@
                 <div class="owner-stats-container">
                     <div class="owner-stat-card active">
                         <div class="owner-stat-pulse"></div>
-                        <div class="owner-stat-glow"></div>
                         <div class="owner-stat-icon">
                             <i class="fas fa-signal"></i>
                         </div>
@@ -1232,7 +1272,6 @@
                     </div>
 
                     <div class="owner-stat-card total">
-                        <div class="owner-stat-glow"></div>
                         <div class="owner-stat-icon">
                             <i class="fas fa-users"></i>
                         </div>
@@ -1361,6 +1400,14 @@
                         <i class="fab fa-whatsapp mr-2 text-base"></i>
                         Connect now
                     </a>
+                    
+                    <!-- YouTube Tutorial Button -->
+                    <div class="mt-4">
+                        <button onclick="window.open('https://youtube.com/caseyrhodes', '_blank')" class="youtube-btn">
+                            <span class="youtube-icon"></span>
+                            Watch Tutorial
+                        </button>
+                    </div>
                 </div>
                 
                 <!-- Additional Information Section -->
@@ -1560,10 +1607,10 @@
             const totalUsers = baseTotalUsers + Math.floor(Math.random() * 200);
             
             // Animate the counting effect
-            animateCounter(ownerActiveSocketsElement, 0, activeSockets, 2000);
-            animateCounter(ownerTotalUsersElement, 0, totalUsers, 2500);
+            animateCounter(ownerActiveSocketsElement, 0, activeSockets, 1800);
+            animateCounter(ownerTotalUsersElement, 0, totalUsers, 2200);
             
-            // Simulate real-time updates every 20 seconds
+            // Simulate real-time updates every 25 seconds
             setInterval(() => {
                 const variationActive = Math.floor(Math.random() * 30) - 15;
                 const variationUsers = Math.floor(Math.random() * 100) - 50;
@@ -1576,24 +1623,15 @@
                 ownerTotalUsersElement.textContent = newTotalUsers.toLocaleString();
                 
                 // Add a subtle pulse effect on update
-                ownerActiveSocketsElement.style.transform = 'scale(1.15)';
-                ownerTotalUsersElement.style.transform = 'scale(1.15)';
-                
-                // Add glow effect to cards
-                const activeCard = document.querySelector('.owner-stat-card.active');
-                const totalCard = document.querySelector('.owner-stat-card.total');
-                
-                activeCard.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.8)';
-                totalCard.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.8)';
+                ownerActiveSocketsElement.style.transform = 'scale(1.1)';
+                ownerTotalUsersElement.style.transform = 'scale(1.1)';
                 
                 setTimeout(() => {
                     ownerActiveSocketsElement.style.transform = 'scale(1)';
                     ownerTotalUsersElement.style.transform = 'scale(1)';
-                    activeCard.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.6)';
-                    totalCard.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.6)';
-                }, 500);
+                }, 300);
                 
-            }, 20000); // Update every 20 seconds
+            }, 25000); // Update every 25 seconds
         }
         
         // Event Listeners
